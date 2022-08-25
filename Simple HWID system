@@ -1,0 +1,5 @@
+local getrequest = (request or http_request or syn and syn.request)({
+    Url = "https://api.luauth.xyz/hwid", Method = "GET"})
+        local hwid = string.match(getrequest.Body, "`(%w+)`")
+        setclipboard(hwid)
+        -- Now add "..hwid.." in a string like this to your webhook
