@@ -1,0 +1,88 @@
+--//     Services     //--
+local rns = game:GetService("RunService")
+local plyrs = game:GetService("Players")
+local ws = game:GetService("Workspace")
+local ChatBar = game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar
+local function cht(massage)
+    ChatBar:SetTextFromInput(massage)
+    game.Players:Chat(massage)
+    ChatBar.Text = ""
+end
+
+--//     Variables     //--
+local object = ws.Terrain["_Game"].Workspace.Baseplate
+
+local lp = plyrs.LocalPlayer
+local backpack = lp.Backpack
+local chra = lp.Character
+local cf = chra:FindFirstChild("HumanoidRootPart")
+
+local org = ws.Gravity -- store gravity
+
+--//     Function     //--
+local function PushChat(msg)
+	game.StarterGui:SetCore("ChatMakeSystemMessage", { Text = "{Ivory.lua} " .. msg, Color = Color3.fromRGB(0, 0, 255) })
+end
+
+function EqupidIvory()
+	cht("invis 000000000000000000000000000000000000000000000000 me")
+	cht("gear me 000000000000000000000000000000000000000000000000108158379")
+	repeat rns.Heartbeat:Wait() until backpack:FindFirstChild("IvoryPeriastron") ~= nil
+	backpack:FindFirstChild("IvoryPeriastron").Parent = chra
+end
+
+function IvoryEventE()
+	chra:FindFirstChild("IvoryPeriastron").Remote:FireServer(Enum.KeyCode.E)
+end
+
+function AttachAsync(mobj)
+	spawn(function()
+		while ws.Gravity == 0 do
+			rns.Heartbeat:Wait()
+			chra["Humanoid"]:ChangeState(11) -- phase state
+			local tmpCf = CFrame.new(-1 * (mobj.Size.X / 2) - (chra['Torso'].Size.X / 2), 0, 0)
+			cf.CFrame = mobj.CFrame * tmpCf
+		end
+	end)
+	spawn(function()
+		function _wait() wait(0.15) cht("unpunish me " .. math.random(1, 1000)) end
+		repeat _wait() until ws.Gravity ~= 0
+	end)
+	spawn(function() wait(1) ws.Gravity = org return end)
+	local weld = ws[chra.Name].Torso:WaitForChild("Weld")
+end
+
+function MovePart(mobj, pos, has)
+	PushChat("Moving " .. mobj.Name .. " to '" .. tostring(pos) .. "'")
+	ws.Gravity = 0
+	EqupidIvory()
+	wait()
+	if has == nil or not has then
+		cf.CFrame = CFrame.new(pos)
+	else
+		cf.CFrame = pos
+	end
+	local hfgd = false
+	spawn(function()
+		function stuff()
+			rns.Heartbeat:Wait()
+			chra["Humanoid"]:ChangeState(11)
+		end
+		repeat stuff() until hfgd
+	end)
+	cf.Position = Vector3.new(cf.Position.X, cf.Position.Y - (chra['Torso'].Size.Y / 2), cf.Position.Z)
+	wait(0.2)
+	IvoryEventE()
+	repeat rns.Heartbeat:Wait() until ws.Camera:FindFirstChild("FakeCharacter") ~= nil
+	hfgd = true
+	wait(0.1)
+	AttachAsync(mobj)
+	ws.Gravity = org
+	wait(0.5)
+	IvoryEventE()
+	PushChat("Ivory.lua finished!")
+end
+
+--//     Code     //--
+--MovePart(object, Vector3.new(-500, 0, 500)) 
+return MovePart
