@@ -1,0 +1,4 @@
+local L_1_ = game:GetService("CoreGui")
+
+local L_2_ = L_1_.ThemeProvider.TopBarFrame
+local L_3_ = L_2_.LeftFrame
