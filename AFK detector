@@ -1,0 +1,19 @@
+--//functions\\--
+local autoafk = true
+
+--//Script\\--
+local UserInputService = game:GetService("UserInputService")
+
+UserInputService.WindowFocused:Connect(
+    function()
+        if autoafk == true then
+          print(game.Players.LocalPlayer.DisplayName.." is no longer afk")
+        end
+    end)
+
+UserInputService.WindowFocusReleased:Connect(
+    function()
+        if autoafk == true then
+            print(game.Players.LocalPlayer.DisplayName.." has gone afk")
+        end
+    end)
