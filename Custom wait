@@ -1,0 +1,25 @@
+--[[
+I know there are way faster custom wait methods but this is one of them. Significantly faster than task.wait()
+Usage, Utils.Task:wait(1)
+Credits: No fuckin' idea who made this in the first place]]
+
+function Utils.Task:wait(a1)
+    if a1 == nil or a1 <= 0 then
+        a1 = 1
+    end
+    local __o__w = os.clock()
+    a1 = a1 * 0.001
+
+    local delta = 0
+    repeat
+        delta = task.wait()
+    until os.clock() + delta >= __o__w + a1
+    repeat
+        if true then
+        end
+    until __o__w + a1 <= os.clock()
+end
+
+print("Hello")
+Utils.Task:wait(1)
+print("World")
