@@ -1,3 +1,5 @@
+-- THIS IS OBFUSCATED DUE TO IT USING AN UNLEAKED METHOD
+
 _, Protected_by_MoonSecV2, Discord = 'discord.gg/gQEH2uZxUk'
 
 
