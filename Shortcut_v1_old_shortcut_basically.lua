@@ -1,12 +1,25 @@
 local AllowMessages = true -- This cant be toggled when injected!
 local ShortcutProtectedMSG = false -- EPIC custom GUI! (SERVER SIDED)
 local Rank = "Oldschool User" -- Your shortcut custom rank
-local allowads = true -- Let us put our discord in some commands (Clearlogs, Anticrash msg, etc)
-local AllowTeleportsToShortcutHub = false -- Disabling this will stop all shortcut game teleports
+local allowads = false -- Let us put our discord in some commands (Clearlogs, Anticrash msg, etc)
+--local AllowTeleportsToShortcutHub = false -- Lol yeemi I seriously want to know why this exists - Tech
 
 --[[ 
 	discord.io/shortcut
-	dsc.gg/shortcut
+    Shortcut v1 was made by Yeemi originally before she gave Mia ownership.
+
+    This license thing is complete and utter crap and let me explain this right now.
+
+    In this case I'm gonna use a company as an example.
+    You know Microsoft bought Minecraft from Mojang. 
+    Does this mean that Mojang can sue Microsoft after fully agreeing with all the contracts and everything?
+
+    Tbh this is just a response to someones retarded reddit post about me skidding because we never had the rights
+    Even though we do
+    Please don't fall for such bogus
+
+
+    Thanks in advance
 ]]
 
 local prefix = ";"
@@ -222,9 +235,11 @@ Players.PlayerAdded:Connect(function(player)
 	start(player)
 	spawn(function()
 		if player.Name == "SnowClan_8342" then
-			say("A pedo has joined the game! (SnowClan_8342)")
-		elseif player.Name == "TechnoReaperX" then
-			say("Lord Tech has joined :OOO")
+			say("Shortcut v1's creator has joined (SnowClan_8342)")
+		elseif player.Name == "An0rdinaryGirl_Mia" then
+			say("Shortcut owner has joined (An0rdinaryGirl_Mia) also she's not ordinary. Her name is a lie")
+        --[[elseif player.Name == "TechnoReaperX" then
+			say("Lord Tech has joined :OOO")]] -- I don't like join tags
 		end
 	end)
 end)
@@ -2532,9 +2547,14 @@ Spawn(function()
 	end
 end)
 
+local chatEvents = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents")
+local messageDoneFiltering = chatEvents:WaitForChild("OnMessageDoneFiltering")
+
 function start(plr)
-	plr.Chatted:Connect(function(msg)
-		Spawn(function()
+	messageDoneFiltering.OnClientEvent:Connect(function(msg)
+		local plr = game.Players:FindFirstChild(message.FromSpeaker)
+		local msg = message.Message or ""
+		task.spawn(function()
 			for i,player in pairs(Admin) do
 				if plr.Name == player then
 					local command = string.gsub(msg:lower(), "me", plr.Name)
@@ -2959,7 +2979,7 @@ spawn(function()
 	TextLabel.Position = UDim2.new(0, 25, 0, 100)
 	TextLabel.Size = UDim2.new(0, 340, 0, 202)
 	TextLabel.Font = Enum.Font.SourceSans
-	TextLabel.Text = "discord.gg/shortcut\r\n        v1 has not been made by the current owners \r\n      Enjoy SCV1R"
+	TextLabel.Text = "v1 has not been made by the current owners. Full credit goes to yeemi.\r\nApparently this was GNU licensed but we have full ownership\r\n Shouldn't have said yes in the first place."
 	TextLabel.TextColor3 = Color3.fromRGB(171, 171, 171)
 	TextLabel.TextSize = 18.000
 	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
