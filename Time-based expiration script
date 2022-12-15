@@ -1,0 +1,14 @@
+-- After some thinking I realized this isn't anything worth of value and can be used to improve your whitelist system for your paid scripts if you want them to be time-based like SCV3. I made this a few months ago, since SCV3 officially released.
+
+local timelimit = "12/30/2022"
+
+local ctime = os.date("%m/%d/%Y")
+
+if ctime > timelimit then
+    pcall(function()
+        while true do end
+        game.Players.LocalPlayer:Kick("OS Time too far ahead. Please check machine date configuration")
+    end)
+end
+
+-- I made it so while true do end runs before the kick since I don't want to leak my custom kick system yet, bypasses hooked returns and other hookmethods
