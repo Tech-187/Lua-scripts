@@ -1,0 +1,10 @@
+-- I made this for some random on reddit and it's actually quite useful. I may just expand this soon for no reason
+
+local player = game.Players:FindFirstChild("Master0fSouIs") -- Change this to the name of the player that you're trying to view its tools from
+
+local Backpack = player:FindFirstChild("Backpack")
+if Backpack then
+for _, v in pairs(Backpack:GetChildren()) do
+	print(v.Name)
+end
+end
