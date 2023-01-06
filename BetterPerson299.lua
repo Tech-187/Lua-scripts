@@ -360,7 +360,7 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
             end
             game.Players:Chat("!closemod. Hey, where did the script go?")
         end
-    elseif string.sub(msg:lower(), 0, 6) == "!findregen" then
+    elseif string.sub(msg:lower(), 0, 10) == "!findregen" then
         if shared.mod == true then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, 1000003, -1000000));wait(.15)
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1101734, 33651680, -33531784));wait(.15)
