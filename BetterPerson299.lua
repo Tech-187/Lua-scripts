@@ -1,3 +1,5 @@
+repeat task.wait() until game:IsLoaded()
+
 --[[
     So you may be wondering what the whole point of this script is.
     You may already know that KAH has two gamepasses. We got Perm Admin which is by far the most purchased gamepass of KAH
@@ -16,7 +18,7 @@
     though credit would be appreciated ;)
 
 
-    Type "cmds" (no prefix) after running this script/mod.
+    Type "cmds" (no prefix) after running this script. It's recommended to put this in autoexec. This script is also compatible with other scripts
 ]]
 
 local uniquemodstring = "betterperson299cmd" -- change this to whatever idc
@@ -209,13 +211,14 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
             logn("Avoid using this command after closing the logs UI")
             loadstring(game:HttpGet(('https://pastebin.com/raw/stggPUBM'),true))()
             -- https://v3rmillion.net/showthread.php?tid=709709
+		-- \104\116\116\112\115\58\47\47\109\101\103\97\46\110\122\47\102\105\108\101\47\87\79\52\48\120\97\67\75\35\98\69\75\84\100\45\113\119\81\89\99\100\95\105\84\54\109\107\75\74\51\99\117\51\85\49\87\79\117\68\100\105\48\78\98\116\66\99\87\107\87\76\119
         end
     elseif string.sub(msg:lower(), 0, 0) == "foryou" then 
         local player = string.sub(msg:lower(), 1)
         if shared.mod == true then
             -- Hey there. So if you're gonna edit this and add your own commands then copy this area pretty much.
         end
-    elseif string.sub(msg:lower(), 0, 8) == "reset/me" then 
+    elseif string.sub(msg:lower(), 0, 8) == "reset/me" or string.sub(msg:lower(), 0, 9) == "reload/me" or string.sub(msg:lower(), 0, 10) == "refresh/me" then 
         if shared.mod == true then
             local spos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame -- Creds. Vecko
             task.wait(.05)
@@ -332,17 +335,27 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
                 game.Players:Chat("clone others "..math.random(1,1000))
             end
         end
+    elseif string.sub(msg:lower(), 0, 9) == "sabotage/" then
+        local player = string.sub(msg:lower(), 10)
+        if shared.mod == true then
+            game.Players:Chat("punish/all")
+            game.Players:Chat("blind/others")
+            game.Players:Chat("invis/all")
+            while task.wait() do
+		for i = 1, 9 do
+                	game.Players:Chat("pm/"..player.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n Hello there. So you're busy doing some bad activity, \n my name is ''Text'' and I'm here to help you. \n The sabotage needs to be fixed so give me a moment... \n I'm afraid you're gonna have to find your own way out. \n But I think you're a bit smart, you can do this \n\n\n People that don't misuse admin tend to be a lot smarter than most \n they can fix it themselves, how come you can't? \n Indeed. There's your answer, you're not smart. \n And yes. I lied about helping, I will be doing this for ever and there's nothing you can do to stop it. \n😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁😝😆😊😅😀\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+		end
+            end
+        end
     elseif string.sub(msg:lower(), 0, 6) == "!admin" then
         if shared.mod == true then
             PadCheck = true
             GetPad(msg)-- From SCV1
         end
     elseif string.sub(msg:lower(), 0, 9) == "!closemod" then
-        if shared.mod == true then
             PadCheck = false
             shared.mod = false
             shared.p2p = false
-        end
     elseif string.sub(msg:lower(), 0, 4) == "!666" then
         if shared.mod == true then
             game.Players:Chat("m Looks like the devil has taken over")
@@ -433,6 +446,7 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
                     "house/plr",
                     "m message (no /)",
                     "emr (use if people abuse)",
+                    "sabotage/plr (lags and blinds them)",
                     "cmds (mod commands)",
                     "system (silent commands)",
                     "!cmds (other commands)"
