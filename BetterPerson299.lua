@@ -341,11 +341,26 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
             game.Players:Chat("punish/all")
             game.Players:Chat("blind/others")
             game.Players:Chat("invis/all")
+            pcall(function()
+                fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
+            end)
             while task.wait() do
-		for i = 1, 9 do
-                	game.Players:Chat("pm/"..player.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n Hello there. So you're busy doing some bad activity, \n my name is ''Text'' and I'm here to help you. \n The sabotage needs to be fixed so give me a moment... \n I'm afraid you're gonna have to find your own way out. \n But I think you're a bit smart, you can do this \n\n\n People that don't misuse admin tend to be a lot smarter than most \n they can fix it themselves, how come you can't? \n Indeed. There's your answer, you're not smart. \n And yes. I lied about helping, I will be doing this for ever and there's nothing you can do to stop it. \n😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁😝😆😊😅😀\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-		end
+                for i = 1, 9 do
+                    game.Players:Chat("pm/"..player.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n Hello there. So you're busy doing some bad activity, \n my name is ''Text'' and I'm here to help you. \n The sabotage needs to be fixed so give me a moment... \n I'm afraid you're gonna have to find your own way out. \n But I think you're a bit smart, you can do this \n\n\n People that don't misuse admin tend to be a lot smarter than most \n they can fix it themselves, how come you can't? \n Indeed. There's your answer, you're not smart. \n And yes. I lied about helping, I will be doing this for ever and there's nothing you can do to stop it. \n😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁😝😆😊😅😀\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                end
             end
+        end
+    elseif string.sub(msg:lower(), 0, 8) == "control/" then
+        local player = string.sub(msg:lower(), 9)
+        if shared.mod == true then
+            game.Players:Chat("speed "..player.." 0");wait(.65)
+            game.Players:Chat("dog me," .. player)
+            game.Players:Chat("tp me " .. player);wait(1)
+            game.Players:Chat("undog me," .. player);task.wait(0.25)
+            game.Players:Chat("unpunish me," .. player)
+            game.Players:Chat("invis me")
+            game.Players:Chat("speed me 32")
+            fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
         end
     elseif string.sub(msg:lower(), 0, 6) == "!admin" then
         if shared.mod == true then
@@ -436,6 +451,8 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
             end
     elseif string.sub(msg:lower(), 0, 4) == "cmds" then 
         if shared.mod == true then
+            game.Players:Chat("!admin");wait(1)
+            game.Players:Chat("Commands moment") -- So basically when you have just Persons and not perm, it does not load the full commands list. So if you just have persons it will do this
             createKohlsUi(
                 {
                     "Thank you for using BetterPerson299\nCreated by Tech",
@@ -447,11 +464,13 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
                     "m message (no /)",
                     "emr (use if people abuse)",
                     "sabotage/plr (lags and blinds them)",
+                    "control/plr (Removed cmd)",
                     "cmds (mod commands)",
                     "system (silent commands)",
                     "!cmds (other commands)"
                 }
             )
+            PadCheck = false
         end
     elseif string.sub(msg:lower(), 0, 5) == "!cmds" then 
         if shared.mod == true then
