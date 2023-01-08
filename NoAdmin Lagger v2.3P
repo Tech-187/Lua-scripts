@@ -66,7 +66,7 @@ local function Source()
 			game.RobloxReplicatedStorage.UpdatePlayerBlockList:FireServer(maintable)
 		end
 	end
-	bomb(290, 8) --// change values if client crashes
+	bomb(250, 2) --// change values if client crashes
 end
 UIS.InputBegan:Connect(function(Key)
 	if Key.KeyCode == Enum.KeyCode[getgenv().KeyBind:upper()] and not UIS:GetFocusedTextBox() then
