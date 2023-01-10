@@ -24,10 +24,12 @@ repeat task.wait() until game:IsLoaded()
 local uniquemodstring = "betterperson299cmd" -- change this to whatever idc
 local antilog = "00000000000000000000000000000000"
 local lplayer = game.Players.LocalPlayer
+local userId = game.Players.LocalPlayer.UserId
 
 -- CONFIGURE ANYTHING BELOW
 
 shared.mod = true -- Turn this off and re-run the script to disable the mod
+shared.gpcheck = true -- Only boot if you have the gamepass (recommended for autoexec). Cannot be altered after the script ran obviously
 shared.p2p = false -- This will enable perm to persons. Re-run the script and turn this off to disable the mod
 
 if p299running then
@@ -35,7 +37,8 @@ if p299running then
 end
 getgenv().p299running = true -- Don't touch
 
--- Perm to Persons
+--// Perm to Persons \\--
+
 local player = game.Players.LocalPlayer
 player.Chatted:Connect(function(message)
     if shared.p2p == true then
@@ -46,7 +49,21 @@ player.Chatted:Connect(function(message)
     end
 end)
 
--- BetterPerson299
+--// Gamepass checker \\--
+
+local id = 35748 or 37127
+
+if shared.gpcheck == true then
+    if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. userId .. "/items/GamePass/" .. id), id) then
+        print("Person299 found. Booting BetterPerson299")
+    else
+        print("Person299 pass not found\n Therefore BetterPerson299 didn't load.")
+        return
+    end
+end
+
+--// BetterPerson299 \\--
+
 function createKohlsUi(textTable)
 	local kohlsUI = Instance.new("ScreenGui")
 	local TextButton = Instance.new("TextButton")
@@ -206,7 +223,7 @@ local function GetPad(msg)
 end
 
 game.Players.LocalPlayer.Chatted:Connect(function(msg)
-    if string.sub(msg:lower(), 0, 4) == "logs" then 
+    if string.sub(msg:lower(), 0, 5) == "logs/" then -- Renamed from logs to logs/ because it kept interfering
         if shared.mod == true then
             logn("Avoid using this command after closing the logs UI")
             loadstring(game:HttpGet(('https://pastebin.com/raw/stggPUBM'),true))()
@@ -457,7 +474,7 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
                 {
                     "Thank you for using BetterPerson299\nCreated by Tech",
                     "",
-                    "logs",
+                    "logs/",
                     "reset/me or all",
                     "skydive/plr",
                     "house/plr",
