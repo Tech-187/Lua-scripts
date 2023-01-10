@@ -51,10 +51,10 @@ end)
 
 --// Gamepass checker \\--
 
-local id = 35748 or 37127
+local passid = 35748 or 37127
 
 if shared.gpcheck == true then
-    if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. userId .. "/items/GamePass/" .. id), id) then
+    if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. userId .. "/items/GamePass/" .. passid), passid) then
         print("Person299 found. Booting BetterPerson299")
     else
         print("Person299 pass not found\n Therefore BetterPerson299 didn't load.")
