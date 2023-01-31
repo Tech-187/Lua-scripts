@@ -31,6 +31,7 @@ local userId = game.Players.LocalPlayer.UserId
 shared.mod = true -- Turn this off and re-run the script to disable the mod
 shared.gpcheck = true -- Only boot if you have the gamepass (recommended for autoexec). Cannot be altered after the script ran obviously
 shared.p2p = false -- This will enable perm to persons. Re-run the script and turn this off to disable the mod
+shared.padgrab = false -- Set this to true if your account has no perm
 
 if p299running then
     return
@@ -39,8 +40,7 @@ getgenv().p299running = true -- Don't touch
 
 --// Perm to Persons \\--
 
-local player = game.Players.LocalPlayer
-player.Chatted:Connect(function(message)
+lplayer.Chatted:Connect(function(message)
     if shared.p2p == true then
         if msgg then return end
         msgg = true
@@ -222,13 +222,15 @@ local function GetPad(msg)
     end
 end
 
-game.Players.LocalPlayer.Chatted:Connect(function(msg)
+lplayer.Chatted:Connect(function(msg)
     if string.sub(msg:lower(), 0, 5) == "logs/" then -- Renamed from logs to logs/ because it kept interfering
         if shared.mod == true then
-            logn("Avoid using this command after closing the logs UI")
+            if loga then return end
+            loadstring(game:HttpGet(('https://pastebin.com/raw/EthjHsJ7'),true))()
             loadstring(game:HttpGet(('https://pastebin.com/raw/stggPUBM'),true))()
+            loga = true
             -- https://v3rmillion.net/showthread.php?tid=709709
-		-- \104\116\116\112\115\58\47\47\109\101\103\97\46\110\122\47\102\105\108\101\47\87\79\52\48\120\97\67\75\35\98\69\75\84\100\45\113\119\81\89\99\100\95\105\84\54\109\107\75\74\51\99\117\51\85\49\87\79\117\68\100\105\48\78\98\116\66\99\87\107\87\76\119
+		-- \104\116\116\112\115\58\47\47\109\101\103\97\46\110\122\47\102\105\108\101\47\87\79\52\48\120\97\67\75\35\98\69\75\84\100\45\113\119\81\89\99\100\95\105\84\54\109\107\75\74\51\99\117\51\85\49\87\79\117\68\100\105\48\78\98\116\66\99\87\107\87\76\119 also type "savetofile" to save the chatlogs to a file. Bypasses the full chat GUI limit
         end
     elseif string.sub(msg:lower(), 0, 0) == "foryou" then 
         local player = string.sub(msg:lower(), 1)
@@ -237,13 +239,13 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
         end
     elseif string.sub(msg:lower(), 0, 8) == "reset/me" or string.sub(msg:lower(), 0, 9) == "reload/me" or string.sub(msg:lower(), 0, 10) == "refresh/me" then 
         if shared.mod == true then
-            local spos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame -- Creds. Vecko
+            local spos = lplayer.Character.HumanoidRootPart.CFrame -- Creds. Vecko
             task.wait(.05)
             game.Players:Chat("respawn/"..uniquemodstring.."/me")
             game.Players:Chat("invis/"..uniquemodstring.."/me")
             for i = 1, 2 do
                 wait(.65)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = spos
+                lplayer.Character.HumanoidRootPart.CFrame = spos
             end
             wait(1) -- High ping affects this command, making it nil too fast will simply not make it teleport :/
             local spos = nil
@@ -252,13 +254,13 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
     elseif string.sub(msg:lower(), 0, 9) == "reset/all" or string.sub(msg:lower(), 0, 10) == "reload/all" or string.sub(msg:lower(), 0, 11) == "refresh/all" then 
         -- This will obviously only teleport you back. But people do this cus it's faster to type than respawn
         if shared.mod == true then
-            local spos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame -- Creds. Vecko
+            local spos = lplayer.Character.HumanoidRootPart.CFrame -- Creds. Vecko
             task.wait(.05)
             game.Players:Chat("respawn/"..uniquemodstring.."/all")
             game.Players:Chat("invis/"..uniquemodstring.."/me")
             for i = 1, 2 do
                 wait(.65)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = spos
+                lplayer.Character.HumanoidRootPart.CFrame = spos
             end
             wait(1)
             local spos = nil
@@ -271,10 +273,10 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
     elseif string.sub(msg:lower(), 0, 8) == "skydive/" then 
         local player = string.sub(msg:lower(), 9)
         if shared.mod == true then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X,
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y + 2500,
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z))
+            lplayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(
+            lplayer.Character.HumanoidRootPart.CFrame.X,
+            lplayer.Character.HumanoidRootPart.CFrame.Y + 2500,
+            lplayer.Character.HumanoidRootPart.CFrame.Z))
             wait(.35)
             game.Players:Chat("tp/"..player.."/me")
         end
@@ -313,7 +315,7 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
         local player = string.sub(msg:lower(), 7)
         if shared.mod == true then
             game.Players:Chat("invis/"..uniquemodstring.."/me");task.wait(.35)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-28.6829948, 8.2299995, 66.4913253));task.wait(.65)
+            lplayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-28.6829948, 8.2299995, 66.4913253));task.wait(.65)
             wait(.35)
             game.Players:Chat("tp/"..player.."/me")
         end
@@ -373,10 +375,11 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
             game.Players:Chat("speed "..player.." 0");wait(.65)
             game.Players:Chat("dog me," .. player)
             game.Players:Chat("tp me " .. player);wait(1)
-            game.Players:Chat("undog me," .. player);task.wait(0.25)
-            game.Players:Chat("unpunish me," .. player)
+            game.Players:Chat("undog me," .. player);wait(.1)
+            game.Players:Chat("unpunish me," .. player);wait(.1)
+            game.Players:Chat("unpunish me," .. player);wait(.1)
             game.Players:Chat("invis me")
-            game.Players:Chat("speed me 32")
+            game.Players:Chat("speed me 32");wait(1.5)
             fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
         end
     elseif string.sub(msg:lower(), 0, 6) == "!admin" then
@@ -388,9 +391,28 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
             PadCheck = false
             shared.mod = false
             shared.p2p = false
+    elseif string.sub(msg:lower(), 0, 2) == "!s" then -- Switch admin basically for non-perm accounts with just Person299
+        if shared.mod == true then 
+            if togg then return end
+                if shared.p2p == true then
+                    wait()
+                    shared.p2p = false
+                    print("Perm to person is now false")
+                    togg = true
+                    wait(1)
+                    togg = false
+                else
+                    shared.p2p = true
+                    print("Perm to person is now true")
+                    togg = true
+                    wait(1)
+                    togg = false
+                    -- It has a cooldown system because of p2p overlapping commands
+                end
+            end
     elseif string.sub(msg:lower(), 0, 4) == "!666" then
         if shared.mod == true then
-            game.Players:Chat("m Looks like the devil has taken over")
+            game.Players:Chat("m Looks like the devil has taken over");wait(.49)
             game.Players:Chat("!admin");wait(.49)
             for i = 1, 99 do
                 game.Players:Chat("size all .3")
@@ -407,44 +429,66 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
         end
     elseif string.sub(msg:lower(), 0, 10) == "!findregen" then
         if shared.mod == true then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, 1000003, -1000000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1101734, 33651680, -33531784));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, -1000003, -1000000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, -1000000, -3));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(3, -1000000, 1000000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, -3, -1000000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1000000, -3, 1000000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, 3, 1000000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, 1000003, 1000000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, -1000003, 1000000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(454545, 150000, -678678));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(306712, 420552, 398158));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1000000, 1000003, 1000000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1000000, 1000003, -1000000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1000000, -1000003, -1000000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(45400, -49860, 56673));wait()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(56470, -48312, 28578));wait()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(75304, -49638, 47300));wait()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(34120, -48830, 30233));wait()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(77822, -49751, 79116));wait()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(42682, -29202, 29886));wait()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(51052, -49558, 34068));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-200000, 50000, 3500000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(782629, 385179, 234698));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-251773, 1000003, 382563));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-500000, 300000, 500000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-300000, 300000, 300000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(300000, 300000, 300000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(300000, 300000, -300000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-300000, 300000, -300000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-500000, 300000, 500000));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-7, 12009, 95));game:GetService("RunService").RenderStepped:wait()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(734399, 560502, 2776));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-360263, 421796, 716100));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(999982, 3143, 999997));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(696973, 999997, -1000001));wait(.15)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(100000, 10000, 100000));wait(1)
-        game.Players:Chat("respawn/me")
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, 1000000, 1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-200000, 50000, 3500000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-7, 534009, 95));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, 1000003, -1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1101734, 33651680, -33531784));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, -1000003, -1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, -1000000, -3));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(3, -1000000, 1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, -3, -1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1000000, -3, 1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, 3, 1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-7, 200009, 95));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, 1000003, 1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, -1000003, 1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(454545, 150000, -678678));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(306712, 420552, 398158));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1000000, 1000003, 1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1000000, 1000003, -1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-1000000, -1000003, -1000000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-397746, 503, -168829));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-674082.8125,-698538.6875,-286853.125));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(45400, -49860, 56673));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-559702.25,-724234.1875,-563028.25));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-504678,-470264.90625,-387767.9375));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-397745.9375,499.0865173339844,-168829.078125));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(56470, -48312, 28578));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-9, 60008, 89));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-123317.0625, 119352.671875, 911237));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(75304, -49638, 47300));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(34120, -48830, 30233));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(279584.8125,-47841.0234375,410623.0625));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-225255.265625,-146865.9375,51726.44140625));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(77822, -49751, 79116));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(42682, -29202, 29886));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(54933, -500353, 85934));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(51052, -49558, 34068));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-23529.498046875,-21270.994140625,-17196.0078125));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(57099.02734375,-40034.640625,708909.75));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(562191.25,-39999.55078125,110908.984375));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(777584.875,52895.4140625,3576.002685546875));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(777584.875,52895.4140625,3576.002685546875));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(824511,1000000,24944.01953125));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(782629, 385179, 234698));wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-251773, 1000003, 382563));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(653864.8125,247022.828125,149027.078125));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-500000, 300000, 500000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-300000, 300000, 300000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(300000, 300000, 300000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(300000, 300000, -300000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-300000, 300000, -300000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-500000, 300000, 500000));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-7, 12009, 95));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(734399, 560502, 2776));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-360263, 421796, 716100));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(999982, 3143, 999997));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(696973, 999997, -1000001));wait(.15)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(100000, 10000, 100000));wait(2.5)
+            game.Players:Chat("respawn me")
+            game.Players:Chat("respawn/me")
+            shared.p2p = true
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/FindVerticalRegen"), true))()
     end
     elseif string.sub(msg:lower(), 0, 4) == "!rej" or string.sub(msg:lower(), 0, 3) == "!rj" then
@@ -498,9 +542,30 @@ game.Players.LocalPlayer.Chatted:Connect(function(msg)
                     "!admin",
                     "!findregen",
                     "!666",
-                    "!closemod"
+                    "!closemod",
+                    "!s"
                 }
             )
         end
     end
 end)
+
+RunService.RenderStepped:Connect(function()
+    task.spawn(function()
+        if anticrash == true then
+            for i, player in pairs(game:GetService("Players"):GetPlayers()) do
+                if player.Name ~= lplayer.Name then
+                if player.Character then
+                    if player.Backpack:FindFirstChild("VampireVanquisher") or player.Character:FindFirstChild("VampireVanquisher") then
+                        local plrname = player.Name
+                        game.Players:Chat("ungear/"..plrname.."                                                                     others "..math.random(1,1000));wait(.35)
+                    end
+                end
+                end
+            end
+        end
+    end)
+end)
+wait(1) if shared.padgrab then PadCheck = true end
+
+-- Official BP299 Version 1.2
