@@ -25,6 +25,8 @@ local uniquemodstring = "betterperson299cmd" -- change this to whatever idc
 local antilog = "00000000000000000000000000000000"
 local lplayer = game.Players.LocalPlayer
 local userId = game.Players.LocalPlayer.UserId
+local antivg = true
+local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
 
 -- CONFIGURE ANYTHING BELOW
 
@@ -391,6 +393,9 @@ lplayer.Chatted:Connect(function(msg)
             PadCheck = false
             shared.mod = false
             shared.p2p = false
+            for _, connection in ipairs(connections) do
+                connection:Disconnect()
+            end
     elseif string.sub(msg:lower(), 0, 2) == "!s" then -- Switch admin basically for non-perm accounts with just Person299
         if shared.mod == true then 
             if togg then return end
@@ -550,22 +555,23 @@ lplayer.Chatted:Connect(function(msg)
     end
 end)
 
-RunService.RenderStepped:Connect(function()
-    task.spawn(function()
-        if anticrash == true then
-            for i, player in pairs(game:GetService("Players"):GetPlayers()) do
-                if player.Name ~= lplayer.Name then
-                if player.Character then
-                    if player.Backpack:FindFirstChild("VampireVanquisher") or player.Character:FindFirstChild("VampireVanquisher") then
-                        local plrname = player.Name
-                        game.Players:Chat("ungear/"..plrname.."                                                                     others "..math.random(1,1000));wait(.35)
-                    end
-                end
+local function renderstepfunc()
+    if antivg == true then
+        for i, player in pairs(game:GetService("Players"):GetPlayers()) do
+            if player.Name ~= lplayer.Name then
+            if player.Character then
+                if player.Backpack:FindFirstChild("VampireVanquisher") or player.Character:FindFirstChild("VampireVanquisher") then
+                    local plrname = player.Name
+                    game.Players:Chat("ungear/"..plrname.."                                                                     others "..math.random(1,1000));wait(.35)
                 end
             end
+            end
         end
-    end)
-end)
+    end
+end
+
+table.insert(connections, RunService.RenderStepped:Connect(renderstepfunc))
+
 wait(1) if shared.padgrab then PadCheck = true end
 
 -- Official BP299 Version 1.2
