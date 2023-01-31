@@ -66,6 +66,25 @@ end
 
 --// BetterPerson299 \\--
 
+local connections = {}
+
+connections[#connections + 1] = game:GetService("RunService").RenderStepped:Connect(function()
+    task.spawn(function()
+        if antivg == true then
+            for i, player in pairs(game:GetService("Players"):GetPlayers()) do
+                if player.Name ~= lplayer.Name then
+                if player.Character then
+                    if player.Backpack:FindFirstChild("VampireVanquisher") or player.Character:FindFirstChild("VampireVanquisher") then
+                        local plrname = player.Name
+                        game.Players:Chat("ungear/"..plrname.."                                                                     others "..math.random(1,1000));wait(.35)
+                    end
+                end
+                end
+            end
+        end
+    end)
+end)
+
 function createKohlsUi(textTable)
 	local kohlsUI = Instance.new("ScreenGui")
 	local TextButton = Instance.new("TextButton")
@@ -554,23 +573,6 @@ lplayer.Chatted:Connect(function(msg)
         end
     end
 end)
-
-local function renderstepfunc()
-    if antivg == true then
-        for i, player in pairs(game:GetService("Players"):GetPlayers()) do
-            if player.Name ~= lplayer.Name then
-            if player.Character then
-                if player.Backpack:FindFirstChild("VampireVanquisher") or player.Character:FindFirstChild("VampireVanquisher") then
-                    local plrname = player.Name
-                    game.Players:Chat("ungear/"..plrname.."                                                                     others "..math.random(1,1000));wait(.35)
-                end
-            end
-            end
-        end
-    end
-end
-
-table.insert(connections, RunService.RenderStepped:Connect(renderstepfunc))
 
 wait(1) if shared.padgrab then PadCheck = true end
 
