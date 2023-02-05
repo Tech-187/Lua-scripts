@@ -22,7 +22,7 @@ repeat task.wait() until game:IsLoaded()
 ]]
 
 local uniquemodstring = "betterperson299cmd" -- change this to whatever idc
-local antilog = "00000000000000000000000000000000"
+local antilog = string.rep("0", 32)
 local lplayer = game.Players.LocalPlayer
 local userId = game.Players.LocalPlayer.UserId
 local antivg = true
@@ -339,7 +339,12 @@ lplayer.Chatted:Connect(function(msg)
             lplayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-28.6829948, 8.2299995, 66.4913253));task.wait(.65)
             wait(.35)
             game.Players:Chat("tp/"..player.."/me")
+            --game.Players:Chat("vis/"..uniquemodstring.."/me")
         end
+    elseif string.sub(msg, 0, 12) == "!crashonjoin" then
+		writefile('bp299startups.txt', 'emr\nhop') 
+    elseif string.sub(msg, 0, 9) == "!findpads" then
+	    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y + 6500, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z))
     elseif string.sub(msg, 0, 2) == "m " then 
         local mesg = string.sub(msg, 3)
         if shared.mod == true then
@@ -360,29 +365,44 @@ lplayer.Chatted:Connect(function(msg)
             loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/NoAdmin%20Lagger%20v2.3P'),true))()
             game.Players:Chat("!admin");wait(.35)
             game.Players:Chat("blind/others");wait(.65)
-	for i = 1, 99 do
-                game.Players:Chat("shield/others/others/others "..math.random(1,1000))
-            end;wait(.49)
-	for i = 1, 99 do
-                game.Players:Chat("shield/others/others/others "..math.random(1,1000))
-            end;wait(.49)
-	for i = 1, 99 do
-                game.Players:Chat("shield/others/others/others "..math.random(1,1000))
-            end;wait(.35)
-	for i = 1, 99 do
-                game.Players:Chat("rocket/others/others/others "..math.random(1,1000))
-            end;wait(.35)
+		for i = 1, 99 do
+                game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
+            end;wait()
+		for i = 1, 99 do
+                game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
+            end;wait()
+		for i = 1, 99 do
+                game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
+            end;wait()
+		for i = 1, 99 do
+                game.Players:Chat("rocket/others/others/others/"..math.random(1,1000))
+            end;wait(.1)
+		for i = 1, 99 do
+                game.Players:Chat("rocket/others/others/others/"..math.random(1,1000))
+            end;wait()
+		for i = 1, 99 do
+                game.Players:Chat("rocket/others/others/others/"..math.random(1,1000))
+            end;wait()
+		for i = 1, 99 do
+                game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
+            end;wait(.1)
+		for i = 1, 99 do
+                game.Players:Chat("sparkles/others/others/others/"..math.random(1,1000))
+            end;wait(.1)
             for i = 1, 99 do
-                game.Players:Chat("freeze/others/others/others "..math.random(1,1000))
+                game.Players:Chat("freeze/others/others/others/"..math.random(1,1000))
             end
-            wait(.65)
+            wait(.15)
             for i = 1, 99 do
-                game.Players:Chat("freeze/others/others/others "..math.random(1,1000))
+                game.Players:Chat("freeze/others/others/others/"..math.random(1,1000))
             end
             wait(.35)
             for i = 1, 100 do
                 game.Players:Chat("clone others others others "..math.random(1,1000))
             end
+		game.Players:Chat("ff/others/others/others/"..math.random(1,1000))
+		game.Players:Chat("trip/others/"..math.random(1,1000))
+		game.Players:Chat("explode/others/"..math.random(1,1000))
 	wait(3.5)
 	game.Players:Chat("!s")
         end
@@ -427,7 +447,10 @@ lplayer.Chatted:Connect(function(msg)
                 connection:Disconnect()
             end
     elseif string.sub(msg:lower(), 0, 2) == "!s" then -- Switch admin basically for non-perm accounts with just Person299
-        if shared.mod == true then 
+        if shared.mod == true then
+		    if string.sub(msg:lower(), 0, 9) == "!ser" then
+			    game.Players:Chat("!hop fuck")
+		    else
             if togg then return end
                 if shared.p2p == true then
                     wait()
@@ -445,6 +468,7 @@ lplayer.Chatted:Connect(function(msg)
                     -- It has a cooldown system because of p2p overlapping commands
                 end
             end
+	  end
     elseif string.sub(msg:lower(), 0, 4) == "!666" then
         if shared.mod == true then
             game.Players:Chat("m Looks like the devil has taken over");wait(.49)
@@ -524,6 +548,7 @@ lplayer.Chatted:Connect(function(msg)
             game.Players:Chat("respawn me")
             game.Players:Chat("respawn/me")
             shared.p2p = true
+		wait(2.5)
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/FindVerticalRegen"), true))()
     end
     elseif string.sub(msg:lower(), 0, 4) == "!rej" or string.sub(msg:lower(), 0, 3) == "!rj" then
@@ -576,8 +601,10 @@ lplayer.Chatted:Connect(function(msg)
                     "!hop",
                     "!admin",
                     "!findregen",
+                    "!findpads",
                     "!666",
                     "!closemod",
+			        "!crashonjoin",
                     "!s"
                 }
             )
@@ -585,9 +612,8 @@ lplayer.Chatted:Connect(function(msg)
     end
 end)
 
-wait(1) if shared.padgrab then PadCheck = true end
--- You can create a start-up command like so
--- writefile('bp299startups.txt', '!admin') 
+wait(1) if shared.padgrab then game.Players:Chat("!admin fuck");PadCheck = true end
+-- You can create a start-up commands by editing bp299startups.txt in your workspace folder
 task.spawn(function()
     pcall(function()
         local file = readfile("bp299startups.txt")
@@ -597,4 +623,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.3
+-- Official BP299 Version 1.4
