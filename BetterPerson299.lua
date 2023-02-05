@@ -356,32 +356,35 @@ lplayer.Chatted:Connect(function(msg)
         end
     elseif string.sub(msg, 0, 3) == "emr" then -- Emergency mode. Lag everyone without Perm/admin as long as you have persons
         if shared.mod == true then
-            logn("Press C (keybind) and zoom out cus it will lag")
-            if emr_ == true then return end
-            emr_ = true
+            --logn("Press C (keybind) and zoom out cus it will lag")
             loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/NoAdmin%20Lagger%20v2.3P'),true))()
             game.Players:Chat("!admin");wait(.35)
             game.Players:Chat("blind/others");wait(.65)
-	for i = 1, 100 do
+	for i = 1, 99 do
                 game.Players:Chat("shield/others/others/others "..math.random(1,1000))
-            end;wait(.65)
-	for i = 1, 100 do
+            end;wait(.49)
+	for i = 1, 99 do
                 game.Players:Chat("shield/others/others/others "..math.random(1,1000))
-            end;wait(.65)
-	for i = 1, 100 do
+            end;wait(.49)
+	for i = 1, 99 do
                 game.Players:Chat("shield/others/others/others "..math.random(1,1000))
             end;wait(.35)
+	for i = 1, 99 do
+                game.Players:Chat("rocket/others/others/others "..math.random(1,1000))
+            end;wait(.35)
             for i = 1, 99 do
-                game.Players:Chat("freeze/others/"..math.random(1,1000))
+                game.Players:Chat("freeze/others/others/others "..math.random(1,1000))
             end
-            wait(1.5)
+            wait(.65)
             for i = 1, 99 do
-                game.Players:Chat("freeze/others/"..math.random(1,1000))
+                game.Players:Chat("freeze/others/others/others "..math.random(1,1000))
             end
-            wait(1)
+            wait(.35)
             for i = 1, 100 do
-                game.Players:Chat("clone others "..math.random(1,1000))
+                game.Players:Chat("clone others others others "..math.random(1,1000))
             end
+	wait(3.5)
+	game.Players:Chat("!s")
         end
     elseif string.sub(msg:lower(), 0, 9) == "sabotage/" then
         local player = string.sub(msg:lower(), 10)
@@ -594,4 +597,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.2
+-- Official BP299 Version 1.3
