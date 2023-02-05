@@ -361,8 +361,16 @@ lplayer.Chatted:Connect(function(msg)
             emr_ = true
             loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/NoAdmin%20Lagger%20v2.3P'),true))()
             game.Players:Chat("!admin");wait(.35)
-            game.Players:Chat("punish/others")
             game.Players:Chat("blind/others");wait(.65)
+	for i = 1, 100 do
+                game.Players:Chat("shield/others/others/others "..math.random(1,1000))
+            end;wait(.65)
+	for i = 1, 100 do
+                game.Players:Chat("shield/others/others/others "..math.random(1,1000))
+            end;wait(.65)
+	for i = 1, 100 do
+                game.Players:Chat("shield/others/others/others "..math.random(1,1000))
+            end;wait(.35)
             for i = 1, 99 do
                 game.Players:Chat("freeze/others/"..math.random(1,1000))
             end
@@ -575,5 +583,15 @@ lplayer.Chatted:Connect(function(msg)
 end)
 
 wait(1) if shared.padgrab then PadCheck = true end
-
+-- You can create a start-up command like so
+-- writefile('bp299startups.txt', '!admin') 
+task.spawn(function()
+    pcall(function()
+        local file = readfile("bp299startups.txt")
+        for command in file:gmatch("[^\r\n]+") do 
+            game.Players:Chat(command)
+            print(command)
+        end
+    end)
+end)
 -- Official BP299 Version 1.2
