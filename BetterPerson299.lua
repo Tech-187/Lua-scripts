@@ -76,7 +76,7 @@ connections[#connections + 1] = game:GetService("RunService").RenderStepped:Conn
             for i, player in pairs(game:GetService("Players"):GetPlayers()) do
                 if player.Name ~= lplayer.Name then
                 if player.Character then
-                    if player.Backpack:FindFirstChild(BlacklistedGear[1]) or player.Character:FindFirstChild(BlacklistedGear[1]) or table.find(BlacklistedGear, "VampireVanquisher") or table.find(BlacklistedGear, "IvoryPeriastron") then
+                    if player.Backpack:FindFirstChild(BlacklistedGear[1]) or player.Character:FindFirstChild(BlacklistedGear[1]) then
                         local plrname = player.Name
                         game.Players:Chat("ungear/"..plrname.."                                                                     others "..math.random(1,1000));wait(.35)
                     end
@@ -270,9 +270,9 @@ lplayer.Chatted:Connect(function(msg)
                 wait(.65)
                 lplayer.Character.HumanoidRootPart.CFrame = spos
             end
-            wait(1) -- High ping affects this command, making it nil too fast will simply not make it teleport :/
-            local spos = nil
             game.Players:Chat("vis/"..uniquemodstring.."/me")
+            wait(.75) -- High ping affects this command, making it nil too fast will simply not make it teleport :/
+            local spos = nil
         end
     elseif string.sub(msg:lower(), 0, 9) == "reset/all" or string.sub(msg:lower(), 0, 10) == "reload/all" or string.sub(msg:lower(), 0, 11) == "refresh/all" then 
         -- This will obviously only teleport you back. But people do this cus it's faster to type than respawn
