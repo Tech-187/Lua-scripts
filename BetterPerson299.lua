@@ -68,18 +68,18 @@ end
 
 --// BetterPerson299 \\--
 
-local connections = {}
-
 connections[#connections + 1] = game:GetService("RunService").RenderStepped:Connect(function()
     task.spawn(function()
         if antivg == true then
             for i, player in pairs(game:GetService("Players"):GetPlayers()) do
                 if player.Name ~= lplayer.Name then
                 if player.Character then
-                    if player.Backpack:FindFirstChild(BlacklistedGear[1]) or player.Character:FindFirstChild(BlacklistedGear[1]) then
+			for i, gear in ipairs(BlacklistedGear) do
+  			   if player.Backpack:FindFirstChild(gear) or player.Character:FindFirstChild(gear) then
                         local plrname = player.Name
                         game.Players:Chat("ungear/"..plrname.."                                                                     others "..math.random(1,1000));wait(.35)
-                    end
+                     end
+		     end
                 end
                 end
             end
