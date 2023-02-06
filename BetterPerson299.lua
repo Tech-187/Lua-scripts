@@ -18,21 +18,23 @@ repeat task.wait() until game:IsLoaded()
     though credit would be appreciated ;)
 
 
-    Type "cmds" (no prefix) after running this script. It's recommended to put this in autoexec. This script is also compatible with other scripts
+    Type "cmds" (no prefix) after running this script. It's recommended to put this in autoexec. (This script is literally made for autoexec) 
+    This script should be compatible with all other scripts. Just please check for updates on the github page (https://github.com/Tech-187/Lua-scripts/blob/main/BetterPerson299.lua)
 ]]
 
-local uniquemodstring = "betterperson299cmd" -- change this to whatever idc
+local uniquemodstring = "BetterPerson299Command" -- Change this to whatever, just don't add any spaces or it may break the commands
 local antilog = string.rep("0", 32)
 local lplayer = game.Players.LocalPlayer
 local userId = game.Players.LocalPlayer.UserId
 local antivg = true
 local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
+local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron"}
 
 -- CONFIGURE ANYTHING BELOW
 
-shared.mod = true -- Turn this off and re-run the script to disable the mod
+shared.mod = true -- Turn this off and re-run the script to disable the mod (or just use !closemod)
 shared.gpcheck = true -- Only boot if you have the gamepass (recommended for autoexec). Cannot be altered after the script ran obviously
-shared.p2p = false -- This will enable perm to persons. Re-run the script and turn this off to disable the mod
+shared.p2p = false -- This will enable perm to persons. Re-run the script and turn this off to disable the mod (or just use !s to switch)
 shared.padgrab = false -- Set this to true if your account has no perm
 
 if p299running then
@@ -74,7 +76,7 @@ connections[#connections + 1] = game:GetService("RunService").RenderStepped:Conn
             for i, player in pairs(game:GetService("Players"):GetPlayers()) do
                 if player.Name ~= lplayer.Name then
                 if player.Character then
-                    if player.Backpack:FindFirstChild("VampireVanquisher") or player.Character:FindFirstChild("VampireVanquisher") then
+                    if player.Backpack:FindFirstChild(BlacklistedGear[1]) or player.Character:FindFirstChild(BlacklistedGear[1]) or table.find(BlacklistedGear, "VampireVanquisher") or table.find(BlacklistedGear, "IvoryPeriastron") then
                         local plrname = player.Name
                         game.Players:Chat("ungear/"..plrname.."                                                                     others "..math.random(1,1000));wait(.35)
                     end
@@ -345,6 +347,9 @@ lplayer.Chatted:Connect(function(msg)
 		writefile('bp299startups.txt', 'emr\nhop') 
     elseif string.sub(msg, 0, 9) == "!findpads" then
 	    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y + 6500, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z))
+    elseif string.sub(msg, 0, 12) == "!lookforp299" then
+        wait(10) -- Delay just for start-up commands/autoexec so newmode's perm playerlist loads up faster (https://pastebin.com/raw/1XZ8wHaY)
+        loadstring(game:HttpGet("https://pastebin.com/raw/4dn91uQa"))()
     elseif string.sub(msg, 0, 2) == "m " then 
         local mesg = string.sub(msg, 3)
         if shared.mod == true then
@@ -397,9 +402,10 @@ lplayer.Chatted:Connect(function(msg)
                 game.Players:Chat("freeze/others/others/others/"..math.random(1,1000))
             end
             wait(.35)
-            for i = 1, 100 do
+            for i = 1, 10 do
                 game.Players:Chat("clone others others others "..math.random(1,1000))
             end
+            wait(1)
 		game.Players:Chat("ff/others/others/others/"..math.random(1,1000))
 		game.Players:Chat("trip/others/"..math.random(1,1000))
 		game.Players:Chat("explode/others/"..math.random(1,1000))
@@ -484,6 +490,7 @@ lplayer.Chatted:Connect(function(msg)
                 game.Players:Chat("clone all")
                 wait()
             end
+            game.Players:Chat("emr");wait(1)
             game.Players:Chat("!closemod. Hey, where did the script go?")
         end
     elseif string.sub(msg:lower(), 0, 10) == "!findregen" then
@@ -553,7 +560,7 @@ lplayer.Chatted:Connect(function(msg)
     end
     elseif string.sub(msg:lower(), 0, 4) == "!rej" or string.sub(msg:lower(), 0, 3) == "!rj" then
         game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer);wait()
-    elseif string.sub(msg:lower(), 0, 4) == "!hop" or string.sub(msg:lower(), 0, 4) == "!ser" then
+    elseif string.sub(msg:lower(), 0, 4) == "!hop" or string.sub(msg:lower(), 0, 4) == "!ser" then -- Some people type !serverhop lol
         if shared.mod == true then
             local x = {}
                 for _, v in ipairs(game:GetService("HttpService"):JSONDecode(
@@ -604,8 +611,9 @@ lplayer.Chatted:Connect(function(msg)
                     "!findpads",
                     "!666",
                     "!closemod",
-			        "!crashonjoin",
-                    "!s"
+                    "!crashonjoin",
+                    "!lookforp299",
+                    "!s" -- switch
                 }
             )
         end
@@ -623,4 +631,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.4
+-- Official BP299 Version 1.5
