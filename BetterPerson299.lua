@@ -454,7 +454,7 @@ lplayer.Chatted:Connect(function(msg)
             end
     elseif string.sub(msg:lower(), 0, 2) == "!s" then -- Switch admin basically for non-perm accounts with just Person299
         if shared.mod == true then
-		    if string.sub(msg:lower(), 0, 9) == "!ser" then
+		    if string.sub(msg:lower(), 0, 4) == "!ser" then
 			    game.Players:Chat("!hop fuck")
 		    else
             if togg then return end
