@@ -415,12 +415,25 @@ lplayer.Chatted:Connect(function(msg)
 	game.Players:Chat("!s")
         end
     elseif string.sub(msg:lower(), 0, 10) == "!unlisted1" then
-        wait(.9)
+        wait(.65)
         print("Join shield active")
-        if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y > 1.5 or game:GetService("Workspace").Terrain._Game.Workspace["Basic House"].SmoothBlockModel112.CFrame.Y > 15 then
-            game.Players:Chat("emr fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
-        end
-        local countdown = 5
+        pcall(function()
+            if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") or game:GetService("Workspace").Terrain["_Game"].WorkspaceFindFirstChild("Baseplate") or game:GetService("Workspace").Terrain._Game.Workspace["Basic House"]:FindFirstChild("SmoothBlockModel112") then
+                print("Part missing")
+                game.Players:Chat("emr fuck")
+            end
+        end)
+        pcall(function()
+            if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y > 1.5 or game:GetService("Workspace").Terrain._Game.Workspace["Basic House"].SmoothBlockModel112.CFrame.Y > 15 then
+                game.Players:Chat("emr fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
+            end
+        end)
+        pcall(function()
+            if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y < 0 then
+                game.Players:Chat("emr fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
+            end
+        end)
+        local countdown = 7
         while countdown > 0 do
             local c = game.Players.LocalPlayer.Character
             local h = c:FindFirstChild("Humanoid")
