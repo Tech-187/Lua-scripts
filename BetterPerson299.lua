@@ -344,7 +344,9 @@ lplayer.Chatted:Connect(function(msg)
             --game.Players:Chat("vis/"..uniquemodstring.."/me")
         end
     elseif string.sub(msg, 0, 12) == "!crashonjoin" then
-		writefile('bp299startups.txt', 'emr\nhop') 
+		writefile('bp299startups.txt', 'emr\nhop')
+    elseif string.sub(msg, 0, 19) == "!crashifbrokenparts" then
+		writefile('bp299startups.txt', '!unlisted1\n') -- This command will shield you from servers with no baseplate and abuse on join. It will immediately try to shield crash the server if someone did abuse in those few seconds 
     elseif string.sub(msg, 0, 9) == "!findpads" then
 	    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y + 6500, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z))
     elseif string.sub(msg, 0, 12) == "!lookforp299" then
@@ -412,6 +414,28 @@ lplayer.Chatted:Connect(function(msg)
 	wait(3.5)
 	game.Players:Chat("!s")
         end
+    elseif string.sub(msg:lower(), 0, 10) == "!unlisted1" then
+        wait(.9)
+        print("Join shield active")
+        if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y > 1.5 or game:GetService("Workspace").Terrain._Game.Workspace["Basic House"].SmoothBlockModel112.CFrame.Y > 15 then
+            game.Players:Chat("emr fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
+        end
+        local countdown = 5
+        while countdown > 0 do
+            local c = game.Players.LocalPlayer.Character
+            local h = c:FindFirstChild("Humanoid")
+            if h and h.Health > 0 then
+              countdown = countdown - 1
+              wait(1)
+            else
+                print("Dead")
+                game.Players:Chat("emr fuck")
+              break
+            end
+          end
+          if countdown == 0 then 
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Qltxi/scripts/main/Color%20API%202.0"))()
+            print("Safe joining countdown expired") end
     elseif string.sub(msg:lower(), 0, 9) == "sabotage/" then
         local player = string.sub(msg:lower(), 10)
         if shared.mod == true then
@@ -613,6 +637,7 @@ lplayer.Chatted:Connect(function(msg)
                     "!closemod",
                     "!crashonjoin",
                     "!lookforp299",
+                    "!crashifbrokenparts",
                     "!s" -- switch
                 }
             )
@@ -620,7 +645,7 @@ lplayer.Chatted:Connect(function(msg)
     end
 end)
 
-wait(1) if shared.padgrab then game.Players:Chat("!admin fuck");PadCheck = true end
+wait(.51) if shared.padgrab then game.Players:Chat("!admin fuck");PadCheck = true end
 -- You can create a start-up commands by editing bp299startups.txt in your workspace folder
 task.spawn(function()
     pcall(function()
@@ -631,4 +656,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.5
+-- Official BP299 Version 1.6
