@@ -28,7 +28,7 @@ local lplayer = game.Players.LocalPlayer
 local userId = game.Players.LocalPlayer.UserId
 local antivg = true
 local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
-local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","DaggerOfShatteredDimensions","Transmorpher"}
+local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","DaggerOfShatteredDimensions","Transmorpher","LaserFingerPointers"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
 
 -- CONFIGURE ANYTHING BELOW
 
@@ -36,6 +36,7 @@ shared.mod = true -- Turn this off and re-run the script to disable the mod (or 
 shared.gpcheck = true -- Only boot if you have the gamepass (recommended for autoexec). Cannot be altered after the script ran obviously
 shared.p2p = false -- This will enable perm to persons. Re-run the script and turn this off to disable the mod (or just use !s to switch)
 shared.padgrab = false -- Set this to true if your account has no perm
+shared.displayon = false -- Display name converter. It has downsides when it's active
 
 if p299running then
     return
@@ -65,6 +66,52 @@ if shared.gpcheck == true then
         return
     end
 end
+
+--// Display Name Converter \\--
+
+if displayrunning then
+    return
+end
+getgenv().displayrunning = true -- Don't touch
+
+local wordvar = nil
+
+table.insert(connections, lplayer.Chatted:Connect(function(message)
+    local words = message:split(" ")
+    local firstarg = words[2]
+    pcall(function()
+        local wordLength = firstarg:len()
+        wordvar = wordLength
+        local returnmsg = ""
+        for i, word in pairs(words) do
+            local search = word:sub(1, 2):lower()
+            local returnplr = nil
+            for _, v in pairs(game.Players:GetPlayers()) do
+                if v.DisplayName:lower():sub(1, 2) == search then
+                    returnplr = v
+                    break
+                end
+            end
+            if returnplr then
+                wait()
+                returnmsg = returnmsg .. returnplr.Name:sub(1, wordvar) .. " "
+            else
+                wait()
+                returnmsg = returnmsg .. word .. " "
+            end
+        end
+        if msgg then return end
+        msgg = true
+        if shared.displayon then
+            game.Players:Chat(returnmsg)
+            wait(0.35)
+        end
+        msgg = false
+    end)
+end))
+
+-- 2 words so the script does not return an error
+game.Players:Chat("# #")
 
 --// BetterPerson299 \\--
 
@@ -366,6 +413,27 @@ lplayer.Chatted:Connect(function(msg)
             wait(1.35)
             game.Players:Chat("fix")
         end
+    elseif string.sub(msg, 0, 14) == "!addunfiltered" then 
+        local mesg = string.sub(msg, 16)
+        if shared.mod == true then
+            writefile('letters.txt', mesg) 
+        end
+    elseif string.sub(msg, 0, 15) == "!showunfiltered" then 
+        if shared.mod == true then
+            loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/h%20chat%20bypasser'),true))() -- This script wasn't meant to be for BP299 at first.
+        end
+    elseif string.sub(msg, 0, 8) == "!biglogs" then 
+        if shared.mod == true then
+            game.Players:Chat("logs are spammed...");task.wait(.49)
+            pcall(function()
+                game.Players.LocalPlayer.PlayerGui.ScrollGui.TextButton.Frame.Size =  UDim2.new(3, t, 1000, j)
+            end)
+        end
+    elseif string.sub(msg, 0, 14) == "!shieldkickhop" then 
+        if shared.mod == true then
+            logn("Check clipboard")
+            setclipboard("https://raw.githubusercontent.com/Tech-187/Obfuscated-art/main/Shieldkickhop")
+        end
     elseif string.sub(msg, 0, 3) == "emr" then -- Emergency mode. Lag everyone without Perm/admin as long as you have persons
         if shared.mod == true then
             --logn("Press C (keybind) and zoom out cus it will lag")
@@ -419,7 +487,7 @@ lplayer.Chatted:Connect(function(msg)
         wait(.65)
         print("Join shield active")
         pcall(function()
-            if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") or game:GetService("Workspace").Terrain["_Game"].WorkspaceFindFirstChild("Baseplate") or game:GetService("Workspace").Terrain._Game.Workspace["Basic House"]:FindFirstChild("SmoothBlockModel112") then
+            if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") or not game:GetService("Workspace").Terrain["_Game"].WorkspaceFindFirstChild("Baseplate") or not game:GetService("Workspace").Terrain._Game.Workspace["Basic House"]:FindFirstChild("SmoothBlockModel112") then
                 print("Part missing")
                 game.Players:Chat("emr fuck")
             end
@@ -513,6 +581,26 @@ lplayer.Chatted:Connect(function(msg)
                 end
             end
 	  end
+    elseif string.sub(msg:lower(), 0, 4) == "!dis" then -- Switch admin basically for non-perm accounts with just Person299
+        if shared.mod == true then
+            if togg then return end
+                wait()
+                game.Players:Chat("# #")
+                if shared.displayon == true then
+                    wait()
+                    shared.displayon = false
+                    print("Display name support is now false")
+                    togg = true
+                    wait(1)
+                    togg = false
+                else
+                    shared.displayon = true
+                    print("Display name support is now true")
+                    togg = true
+                    wait(1)
+                    togg = false
+                end
+	    end
     elseif string.sub(msg:lower(), 0, 4) == "!666" then
         if shared.mod == true then
             game.Players:Chat("m Looks like the devil has taken over");wait(.49)
@@ -655,6 +743,18 @@ lplayer.Chatted:Connect(function(msg)
                     "!s" -- switch
                 }
             )
+
+            wait(5)
+
+            createKohlsUi(
+                {
+                    "!addunfiltered (text)",
+                    "!showunfiltered",
+                    "!biglogs",
+                    "!shieldkickhop",
+                    "!dis (Display name support)" -- switch
+                }
+            )
         end
     end
 end)
@@ -670,4 +770,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.6
+-- Official BP299 Version 1.7
