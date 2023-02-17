@@ -422,6 +422,19 @@ lplayer.Chatted:Connect(function(msg)
         if shared.mod == true then
             loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/h%20chat%20bypasser'),true))() -- This script wasn't meant to be for BP299 at first.
         end
+    elseif string.sub(msg, 0, 13) == "!csunfiltered" then 
+        if shared.mod == true then
+            pcall(function()
+                local file = readfile("letters.txt")
+                for command in file:gmatch("[^\r\n]+") do
+                    local h = Instance.new("Hint")
+                    h.Parent = Workspace
+                    h.Text = command
+                    wait(5)
+                    h:Remove()
+                end
+            end)
+        end
     elseif string.sub(msg, 0, 8) == "!biglogs" then 
         if shared.mod == true then
             game.Players:Chat("logs are spammed...");task.wait(.49)
@@ -487,7 +500,13 @@ lplayer.Chatted:Connect(function(msg)
         wait(.65)
         print("Join shield active")
         pcall(function()
-            if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") or not game:GetService("Workspace").Terrain["_Game"].WorkspaceFindFirstChild("Baseplate") or not game:GetService("Workspace").Terrain._Game.Workspace["Basic House"]:FindFirstChild("SmoothBlockModel112") then
+            if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") or game:GetService("Workspace").Terrain["_Game"].WorkspaceFindFirstChild("Baseplate") then
+                print("Part missing")
+                game.Players:Chat("emr fuck")
+            end
+        end)
+        pcall(function()
+            if not game:GetService("Workspace").Terrain._Game.Workspace["Basic House"]:FindFirstChild("SmoothBlockModel112") then
                 print("Part missing")
                 game.Players:Chat("emr fuck")
             end
@@ -750,6 +769,7 @@ lplayer.Chatted:Connect(function(msg)
                 {
                     "!addunfiltered (text)",
                     "!showunfiltered",
+                    "!csunfiltered (client sided)",
                     "!biglogs",
                     "!shieldkickhop",
                     "!dis (Display name support)" -- switch
