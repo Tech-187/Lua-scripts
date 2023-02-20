@@ -353,6 +353,19 @@ lplayer.Chatted:Connect(function(msg)
     elseif string.sub(msg:lower(), 0, 3) == "clr" then 
         if shared.mod == true then
             game.Players:Chat("clear")
+            for i, v in pairs(game:GetDescendants()) do
+                if v:IsA("Sound") then
+                    v:Stop()
+                end
+            end            
+        end
+    elseif string.sub(msg:lower(), 0, 9) == "stopmusic" then 
+        if shared.mod == true then
+            for i, v in pairs(game:GetDescendants()) do
+                if v:IsA("Sound") then
+                    v:Stop()
+                end
+            end            
         end
     elseif string.sub(msg:lower(), 0, 6) == "system" then 
         if shared.mod == true then
@@ -740,6 +753,7 @@ lplayer.Chatted:Connect(function(msg)
                     "control/plr (Removed cmd)",
                     "cmds (mod commands)",
                     "system (silent commands)",
+                    "stopmusic",
                     "!cmds (other commands)"
                 }
             )
@@ -790,4 +804,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.7
+-- Official BP299 Version 1.7.1
