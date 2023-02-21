@@ -350,6 +350,11 @@ lplayer.Chatted:Connect(function(msg)
             wait(.35)
             game.Players:Chat("tp/"..player.."/me")
         end
+    elseif string.sub(msg:lower(), 0, 8) == "unsize/" then 
+        local player = string.sub(msg:lower(), 9)
+        if shared.mod == true then
+            game.Players:Chat("unpaint/"..player)
+        end
     elseif string.sub(msg:lower(), 0, 3) == "clr" then 
         if shared.mod == true then
             game.Players:Chat("clear")
@@ -502,54 +507,79 @@ lplayer.Chatted:Connect(function(msg)
                 game.Players:Chat("clone others others others "..math.random(1,1000))
             end
             wait(1)
-		game.Players:Chat("ff/others/others/others/"..math.random(1,1000))
-		game.Players:Chat("trip/others/"..math.random(1,1000))
-		game.Players:Chat("explode/others/"..math.random(1,1000))
-	wait(3.5)
-	game.Players:Chat("!s")
-	loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Obfuscated-art/main/Basic%20antisilcrash.lua'),true))()
+            game.Players:Chat("ff/others/others/others/"..math.random(1,1000))
+            game.Players:Chat("trip/others/"..math.random(1,1000))
+            game.Players:Chat("explode/others/"..math.random(1,1000));wait(3.5)
+            game.Players:Chat("!s")
+            loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Obfuscated-art/main/Basic%20antisilcrash.lua'),true))();wait(1)
+            local playercount = game.Players:GetPlayers()
+            if #playercount == 5 or #playercount == 6 or #playercount == 7 then
+                for i = 1, 20 do
+                    for i = 1, 99 do
+                        game.Players:Chat("respawn/all all all "..math.random(1,1000))
+                    end
+                    wait(.51)
+                end
+            end
+        end
+    elseif string.sub(msg:lower(), 0, 10) == "!tempcrash" then
+        if shared.mod == true then
+            local playercount = game.Players:GetPlayers()
+            if #playercount == 5 or #playercount == 6 or #playercount == 7 then
+                for i = 1, 20 do
+                    for i = 1, 99 do
+                        game.Players:Chat("respawn/all all all "..math.random(1,1000))
+                    end
+                    wait(.51)
+                end
+            else
+                game.Players:Chat("h/ Tempcrash fail")
+            end
         end
     elseif string.sub(msg:lower(), 0, 10) == "!unlisted1" then
-        wait(.65)
-        print("Join shield active")
-        pcall(function()
-            if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") or game:GetService("Workspace").Terrain["_Game"].WorkspaceFindFirstChild("Baseplate") then
-                print("Part missing")
-                game.Players:Chat("emr fuck")
+        if shared.mod == true then
+            wait(.65)
+            print("Join shield active")
+            pcall(function()
+                if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") or game:GetService("Workspace").Terrain["_Game"].WorkspaceFindFirstChild("Baseplate") then
+                    print("Part missing")
+                    game.Players:Chat("emr fuck")
+                end
+            end)
+            pcall(function()
+                if not game:GetService("Workspace").Terrain._Game.Workspace["Basic House"]:FindFirstChild("SmoothBlockModel112") then
+                    print("Part missing")
+                    game.Players:Chat("emr fuck")
+                end
+            end)
+            pcall(function()
+                if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y > 1.5 or game:GetService("Workspace").Terrain._Game.Workspace["Basic House"].SmoothBlockModel112.CFrame.Y > 15 then
+                    game.Players:Chat("emr fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
+                end
+            end)
+            pcall(function()
+                if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y < 0 then
+                    game.Players:Chat("emr fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
+                end
+            end)
+            local countdown = 7
+            while countdown > 0 do
+                local c = game.Players.LocalPlayer.Character
+                local h = c:FindFirstChild("Humanoid")
+                if h and h.Health > 0 then
+                countdown = countdown - 1
+                wait(1)
+                else
+                    print("Dead")
+                    game.Players:Chat("emr fuck")
+                break
+                end
             end
-        end)
-        pcall(function()
-            if not game:GetService("Workspace").Terrain._Game.Workspace["Basic House"]:FindFirstChild("SmoothBlockModel112") then
-                print("Part missing")
-                game.Players:Chat("emr fuck")
+            if countdown == 0 then 
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Qltxi/scripts/main/Color%20API%202.0"))()
+                print("Safe joining countdown expired")
             end
-        end)
-        pcall(function()
-            if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y > 1.5 or game:GetService("Workspace").Terrain._Game.Workspace["Basic House"].SmoothBlockModel112.CFrame.Y > 15 then
-                game.Players:Chat("emr fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
-            end
-        end)
-        pcall(function()
-            if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y < 0 then
-                game.Players:Chat("emr fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
-            end
-        end)
-        local countdown = 7
-        while countdown > 0 do
-            local c = game.Players.LocalPlayer.Character
-            local h = c:FindFirstChild("Humanoid")
-            if h and h.Health > 0 then
-              countdown = countdown - 1
-              wait(1)
-            else
-                print("Dead")
-                game.Players:Chat("emr fuck")
-              break
-            end
-          end
-          if countdown == 0 then 
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Qltxi/scripts/main/Color%20API%202.0"))()
-            print("Safe joining countdown expired") end
+        end
     elseif string.sub(msg:lower(), 0, 9) == "sabotage/" then
         local player = string.sub(msg:lower(), 10)
         if shared.mod == true then
@@ -804,4 +834,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.7.1
+-- Official BP299 Version 1.7.2
