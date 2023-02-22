@@ -28,7 +28,7 @@ local lplayer = game.Players.LocalPlayer
 local userId = game.Players.LocalPlayer.UserId
 local antivg = true
 local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
-local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","DaggerOfShatteredDimensions","Transmorpher","LaserFingerPointers"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
+local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","Transmorpher","LaserFingerPointers"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
 
 -- CONFIGURE ANYTHING BELOW
 
@@ -109,9 +109,6 @@ table.insert(connections, lplayer.Chatted:Connect(function(message)
         msgg = false
     end)
 end))
-
--- 2 words so the script does not return an error
-game.Players:Chat("# #")
 
 --// BetterPerson299 \\--
 
@@ -350,10 +347,10 @@ lplayer.Chatted:Connect(function(msg)
             wait(.35)
             game.Players:Chat("tp/"..player.."/me")
         end
-    elseif string.sub(msg:lower(), 0, 8) == "unsize/" then 
-        local player = string.sub(msg:lower(), 9)
+    elseif string.sub(msg:lower(), 0, 7) == "unsize/" then 
+        local player = string.sub(msg:lower(), 8)
         if shared.mod == true then
-            game.Players:Chat("unpaint/"..player)
+            game.Players:Chat("undog/"..player)
         end
     elseif string.sub(msg:lower(), 0, 3) == "clr" then 
         if shared.mod == true then
@@ -816,6 +813,7 @@ lplayer.Chatted:Connect(function(msg)
                     "!csunfiltered (client sided)",
                     "!biglogs",
                     "!shieldkickhop",
+                    "!tempcrash (will ratelimit)",
                     "!dis (Display name support)" -- switch
                 }
             )
@@ -834,4 +832,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.7.2
+-- Official BP299 Version 1.7.3
