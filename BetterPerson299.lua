@@ -525,7 +525,7 @@ lplayer.Chatted:Connect(function(msg)
             if #playercount == 5 or #playercount == 6 or #playercount == 7 then
                 for i = 1, 20 do
                     for i = 1, 99 do
-                        game.Players:Chat("respawn/all all all "..math.random(1,1000))
+                        game.Players:Chat("respawn/                                                                                                                   all all all "..math.random(1,1000))
                     end
                     wait(.51)
                 end
