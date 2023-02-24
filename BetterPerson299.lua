@@ -311,7 +311,7 @@ lplayer.Chatted:Connect(function(msg)
             game.Players:Chat("respawn/"..uniquemodstring.."/me")
             game.Players:Chat("invis/"..uniquemodstring.."/me")
             for i = 1, 2 do
-                wait(.65)
+                wait()
                 lplayer.Character.HumanoidRootPart.CFrame = spos
             end
             game.Players:Chat("vis/"..uniquemodstring.."/me")
@@ -326,7 +326,7 @@ lplayer.Chatted:Connect(function(msg)
             game.Players:Chat("respawn/"..uniquemodstring.."/all")
             game.Players:Chat("invis/"..uniquemodstring.."/me")
             for i = 1, 2 do
-                wait(.65)
+                wait()
                 lplayer.Character.HumanoidRootPart.CFrame = spos
             end
             wait(1)
@@ -832,4 +832,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.7.3
+-- Official BP299 Version 1.7.4
