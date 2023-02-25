@@ -468,30 +468,30 @@ lplayer.Chatted:Connect(function(msg)
             loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/NoAdmin%20Lagger%20v2.3P'),true))()
             game.Players:Chat("!admin");wait(.35)
             game.Players:Chat("blind/others");wait(.65)
-		for i = 1, 99 do
-                game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
-            end;wait()
-		for i = 1, 99 do
-                game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
-            end;wait()
-		for i = 1, 99 do
-                game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
-            end;wait()
-		for i = 1, 99 do
-                game.Players:Chat("rocket/others/others/others/"..math.random(1,1000))
-            end;wait(.1)
-		for i = 1, 99 do
-                game.Players:Chat("rocket/others/others/others/"..math.random(1,1000))
-            end;wait()
-		for i = 1, 99 do
-                game.Players:Chat("rocket/others/others/others/"..math.random(1,1000))
-            end;wait()
-		for i = 1, 99 do
-                game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
-            end;wait(.1)
-		for i = 1, 99 do
-                game.Players:Chat("sparkles/others/others/others/"..math.random(1,1000))
-            end;wait(.1)
+            for i = 1, 99 do
+                    game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
+                end;wait()
+            for i = 1, 99 do
+                    game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
+                end;wait()
+            for i = 1, 99 do
+                    game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
+                end;wait()
+            for i = 1, 99 do
+                    game.Players:Chat("rocket/others/others/others/"..math.random(1,1000))
+                end;wait(.1)
+            for i = 1, 99 do
+                    game.Players:Chat("rocket/others/others/others/"..math.random(1,1000))
+                end;wait()
+            for i = 1, 99 do
+                    game.Players:Chat("rocket/others/others/others/"..math.random(1,1000))
+                end;wait()
+            for i = 1, 99 do
+                    game.Players:Chat("shield/others/others/others/"..math.random(1,1000))
+                end;wait(.1)
+            for i = 1, 99 do
+                    game.Players:Chat("sparkles/others/others/others/"..math.random(1,1000))
+                end;wait(.1)
             for i = 1, 99 do
                 game.Players:Chat("freeze/others/others/others/"..math.random(1,1000))
             end
@@ -510,6 +510,7 @@ lplayer.Chatted:Connect(function(msg)
             loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Obfuscated-art/main/Basic%20antisilcrash.lua'),true))();wait(2.5)
             game.Players:Chat("!s")
             game.Players:Chat("!tempcrash fuck")
+        end
     elseif string.sub(msg:lower(), 0, 10) == "!tempcrash" then
         if shared.mod == true then
             local playercount = game.Players:GetPlayers()
