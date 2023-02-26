@@ -323,7 +323,7 @@ lplayer.Chatted:Connect(function(msg)
             task.wait(.05)
             game.Players:Chat("respawn/"..uniquemodstring.."/me")
             game.Players:Chat("invis/"..uniquemodstring.."/me")
-            for i = 1, 2 do
+            for i = 1, 12 do
                 wait()
                 lplayer.Character.HumanoidRootPart.CFrame = spos
             end
