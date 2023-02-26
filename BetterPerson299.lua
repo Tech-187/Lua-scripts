@@ -37,6 +37,7 @@ shared.gpcheck = true -- Only boot if you have the gamepass (recommended for aut
 shared.p2p = false -- This will enable perm to persons. Re-run the script and turn this off to disable the mod (or just use !s to switch)
 shared.padgrab = false -- Set this to true if your account has no perm
 shared.displayon = false -- Display name converter. It has downsides when it's active
+shared.autoswitch = false -- This will automatically switch with !s if you can't get real admin in a server, use this if your acc only has Person299 and not perm
 
 if p299running then
     return
@@ -272,6 +273,9 @@ local function GetPad(msg)
     while PadCheck == true do
         task.wait(0)
         if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
+            if shared.autoswitch == true then
+                shared.p2p = true
+            end
             if game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin") then
                 local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
                 local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
@@ -282,8 +286,14 @@ local function GetPad(msg)
                 task.wait(0.125)
                 pad.CFrame = padCFrame
                 pad.CanCollide = true
+                if shared.autoswitch == true then
+                    shared.p2p = false
+                end
             else
                 fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
+                if shared.autoswitch == true then
+                    shared.p2p = false
+                end
             end
         end
     end
@@ -296,6 +306,9 @@ lplayer.Chatted:Connect(function(msg)
             loadstring(game:HttpGet(('https://pastebin.com/raw/EthjHsJ7'),true))()
             loadstring(game:HttpGet(('https://pastebin.com/raw/stggPUBM'),true))()
             loga = true
+            pcall(function()
+                execCmd("logs") -- if IY is loaded through this script (add IY loadstring at the very top)
+            end)
             -- https://v3rmillion.net/showthread.php?tid=709709
 		-- \104\116\116\112\115\58\47\47\109\101\103\97\46\110\122\47\102\105\108\101\47\87\79\52\48\120\97\67\75\35\98\69\75\84\100\45\113\119\81\89\99\100\95\105\84\54\109\107\75\74\51\99\117\51\85\49\87\79\117\68\100\105\48\78\98\116\66\99\87\107\87\76\119 also type "savetofile" to save the chatlogs to a file. Bypasses the full chat GUI limit
         end
@@ -855,4 +868,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.7.5
+-- Official BP299 Version 1.7.6
