@@ -430,13 +430,13 @@ lplayer.Chatted:Connect(function(msg)
     elseif string.sub(msg, 0, 2) == "m " then 
         local mesg = string.sub(msg, 3)
         if shared.mod == true then
-            wait(.35)
+            wait(.49)
             game.Players:Chat("clear the regular M moment");wait()
             game.Players:Chat("fogcolor 0 0 0")
             game.Players:Chat("outdoorambient/0/0/0")
             game.Players:Chat("fogend/150")
             for i = 1, 3 do
-                game.Players:Chat("h/\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n Message from "..lplayer.Name.." \n\n\n\n\n\n\n\n\n\n\n"..mesg);wait(1.8)
+                game.Players:Chat("h/ You know this command is called ''m'' and they say it stands for message but actually it stands for MOTHER BECAUSE CLEARLY YOU HAVE NO MOTHER or massage cus girls aka your mother\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n Message from "..lplayer.Name.." \n\n\n\n\n\n\n\n\n\n\n"..mesg);wait(1.8)
             end
             wait(1.35)
             game.Players:Chat("fix")
