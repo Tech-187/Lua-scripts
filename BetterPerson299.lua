@@ -29,6 +29,7 @@ local userId = game.Players.LocalPlayer.UserId
 local antivg = true
 local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
 local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","Transmorpher","LaserFingerPointers","SeaThemedCrossbow","RageTable","IceStaff"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
+local gearwhitelisted = {"Master0fSouIs","ScaleneSoap9803","TechnoSniperX","Humangas"} -- Players that are in this table won't get ungeared.
 
 -- CONFIGURE ANYTHING BELOW
 
@@ -117,7 +118,7 @@ connections[#connections + 1] = game:GetService("RunService").RenderStepped:Conn
     task.spawn(function()
         if antivg == true then
             for i, player in pairs(game:GetService("Players"):GetPlayers()) do
-                if player.Name ~= lplayer.Name then
+                if player.Name ~= lplayer.Name and not table.find(gearwhitelisted, player.Name) then
                 if player.Character then
 			for i, gear in ipairs(BlacklistedGear) do
   			   if player.Backpack:FindFirstChild(gear) or player.Character:FindFirstChild(gear) then
@@ -130,7 +131,7 @@ connections[#connections + 1] = game:GetService("RunService").RenderStepped:Conn
             end
         end
     end)
-end)
+end) -- My indenting is terrible here because I made many mistakes and I'm too lazy to fix the indenting
 
 function createKohlsUi(textTable)
 	local kohlsUI = Instance.new("ScreenGui")
@@ -714,6 +715,26 @@ lplayer.Chatted:Connect(function(msg)
             game.Players:Chat("emr");wait(1)
             game.Players:Chat("!closemod. Hey, where did the script go?")
         end
+    elseif string.sub(msg:lower(), 0, 9) == "!drawmode" then
+        if shared.mod == true then
+            local UserInputService = game:GetService("UserInputService")
+            UserInputService.InputBegan:Connect(function(input, gameProcessed)
+                if input.KeyCode == Enum.KeyCode.R then
+                    while true do
+                        game.Players:Chat("part/1/.1/1")
+                        local part = workspace.Terrain._Game.Folder:WaitForChild("Part")
+                        task.wait(0.024)
+                        if part.Size == Vector3.new(1, .1, 1) then
+                            game:GetService("TweenService"):Create(part, TweenInfo.new(.1), {CFrame = CFrame.new(game.Players.LocalPlayer:GetMouse().Hit.Position + Vector3.new(0, 1, 0))}):Play()
+                        end
+                        part.Name = "doneplacing"
+                        if not UserInputService:IsKeyDown(Enum.KeyCode.R) then
+                            break
+                        end
+                    end
+                end
+            end)
+        end
     elseif string.sub(msg:lower(), 0, 10) == "!findregen" then
         if shared.mod == true then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1000000, 1000000, 1000000));wait(.15)
@@ -850,6 +871,7 @@ lplayer.Chatted:Connect(function(msg)
                     "!biglogs",
                     "!shieldkickhop",
                     "!tempcrash (will ratelimit)",
+                    "!drawmode",
                     "!dis (Display name support)" -- switch
                 }
             )
@@ -868,4 +890,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.7.6
+-- Official BP299 Version 1.7.7
