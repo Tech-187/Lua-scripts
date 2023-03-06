@@ -1,0 +1,179 @@
+plr.Chatted:Connect(function(msg)
+    if ndetectorrr then 
+        for _, v in pairs(game.Players:GetPlayers()) do
+            local connection = v.Chatted:Connect(function(message)
+                if message:lower() == ";fly" or message:lower() == ";fly me" then
+                    print(";fly detected")
+                    if antinoobs == true then
+                        if chatcooldown then return end
+                        chatcooldown = true
+                        game.Players:Chat("//fastkick "..v.Name)
+                        game.Players:Chat("blind "..v.Name)
+                        for i = 1, 3 do
+                            game.Players:Chat("pm/"..v.Name.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHello there, new player. I'd like to inform you that this game is NOT made for noobs \n if you weren't able to tell already by the hard obby for the mobile kids with mommy's ipad \n This game has no admin prefix. It's the new year, who even needs a prefix. WHY IS THE PREFIX EVEN INVENTED. \n Like when did the capybara get invented 😔 \n\n\n You automatically got kicked because you said '';fly''. \n There's not a single good admin game that uses the ; prefix. \n Like dude, what the heck are you even playing. Even FREE ADMIN does not have such a terrible prefix \n and also you have to mention a target that you want to fly, as this game isn't simplified for noobs. \n Say ''fly me'' no prefix, if you can't do that then feel free to go back to easy games like Adopt Me. You don't drink food either\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                                game.Players:Chat("pm/me \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHello there, new player. I'd like to inform you that this game is NOT made for noobs \n if you weren't able to tell already by the hard obby for the mobile kids with mommy's ipad \n This game has no admin prefix. It's the new year, who even needs a prefix. WHY IS THE PREFIX EVEN INVENTED. \n Like when did the capybara get invented 😔 \n\n\n You automatically got kicked because you said '';fly''. \n There's not a single good admin game that uses the ; prefix. \n Like dude, what the heck are you even playing. Even FREE ADMIN does not have such a terrible prefix \n and also you have to mention a target that you want to fly, as this game isn't simplified for noobs. \n Say ''fly me'' no prefix, if you can't do that then feel free to go back to easy games like Adopt Me. You don't drink food either\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                            wait(1.95)
+                        end
+                        wait(.35)
+                        chatcooldown = false
+                    end
+                elseif message:lower() == "tp all me" or message:lower() == ":tp all me" or message:lower() == "tp others me" or message:lower() == ":tp others me" or message:lower() == ":tp all to me" or message:lower() == "tp all to me" then
+                    print("tp all me")
+                    if antinoobs == true then
+                        if chatcooldown then return end
+                        chatcooldown = true
+                        game.Players:Chat("respawn others");wait()
+                        game.Players:Chat("//fastkick "..v.Name)
+                        game.Players:Chat("blind "..v.Name)
+                        for i = 1, 3 do
+                            game.Players:Chat("pm/"..v.Name.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFATAL ERROR: \n TELEPORT NOT FOUND\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                            game.Players:Chat("pm/me \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFATAL ERROR: \n TELEPORT NOT FOUND\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                            wait(1.95)
+                        end
+                        wait(.35)
+                        chatcooldown = false
+                    end
+                elseif message:lower():find(";bring") or message:lower():find(":bring") and v ~= game.Players.LocalPlayer then
+                    print(";bring detected")
+                    if antinoobs == true then
+                        if chatcooldown then return end
+                        chatcooldown = true
+                        game.Players:Chat("//fastkick "..v.Name)
+                        game.Players:Chat("blind "..v.Name)
+                        for i = 1, 3 do
+                            game.Players:Chat("pm/"..v.Name.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Bring? More like, bring deez \n Who even had the idea to name the command ''bring'' in the first place, you don't even bring them in a natural way \n The command you're looking for is ''tp player to player'' \n Tp stands for teleport and not Toilet paper. \n Maybe learn how Kohls admin works so the kids at school don't make fun of you..? \n You thought you were smart but in reality, you're just a child and this game is clearly too difficult for you. \n\n\n Better luck next time\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                            game.Players:Chat("pm/me \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Bring? More like, bring deez \n Who even had the idea to name the command ''bring'' in the first place, you don't even bring them in a natural way \n The command you're looking for is ''tp player to player'' \n Tp stands for teleport and not Toilet paper. \n Maybe learn how Kohls admin works so the kids at school don't make fun of you..? \n You thought you were smart but in reality, you're just a child and this game is clearly too difficult for you. \n\n\n Better luck next time\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                            wait(1.95)
+                        end
+                        wait(.35)
+                        chatcooldown = false
+                    end
+                elseif message:lower():find("/w") or message:lower():find("/c") and v ~= game.Players.LocalPlayer then
+                    print("/c system possibly detected")
+                    if chatcooldown then return end
+                    chatcooldown = true
+                    notify('/c system', v.Name..' is using /c system or whispering commands')
+                    wait(.35)
+                    chatcooldown = false
+                elseif message:lower():find("unchar") or message:lower():find("respawn") and v ~= game.Players.LocalPlayer then
+                    if bcbought == true then
+                        if chatcooldown then return end
+                        chatcooldown = true
+                        local punishment = math.random(1, 5)
+                        if punishment == 1 then
+                            game.Players:Chat("punish "..v.Name)
+                        elseif punishment == 2 then
+                            game.Players:Chat("punish "..v.Name)
+                        elseif punishment == 3 then
+                            game.Players:Chat("punish "..v.Name)
+                        elseif punishment == 4 then
+                            game.Players:Chat("punish "..v.Name)
+                        elseif punishment == 5 then
+                            game.Players:Chat(":punish "..v.Name);wait(.35)
+                            for i = 1, 2 do
+                                game.Players:Chat("size all .3")
+                                game.Players:Chat("size all .3")
+                                game.Players:Chat("size all .3")
+                                game.Players:Chat("freeze all")
+                                game.Players:Chat("size all 10")
+                                game.Players:Chat("size all 10")
+                                game.Players:Chat("size all 10")
+                                game.Players:Chat("clone all")
+                                wait()
+                            end
+                            wait(15)
+                            game.Players:Chat("punish "..v.Name)
+                        end
+                        wait(.35)
+                        chatcooldown = false
+                    end
+                elseif message:lower():find("94794847") and v ~= game.Players.LocalPlayer then
+                    if chatcooldown then return end
+                    game.Players:Chat("ungear "..v.Name.."                                                                                          others")
+                    wait(2.5)
+                    chatcooldown = true
+                    wait(5)
+                    chatcooldown = false
+                elseif message:lower():find(";kill") and v ~= game.Players.LocalPlayer then
+                    print(";kill detected")
+                    if antinoobs == true then
+                        if chatcooldown then return end
+                        chatcooldown = true
+                        game.Players:Chat("//fastkick "..v.Name)
+                        game.Players:Chat("blind "..v.Name)
+                        for i = 1, 3 do
+                            game.Players:Chat("pm/"..v.Name.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n You hear this ticking noise? That's your kill but you got uno reversed because you used ; as a prefix \n Who even uses the ; prefix in the new year. It's terrible, I hate it. This game has no prefix because it's not for noobs. \n Goodbye kid, join another game on another tablet because when this ticking sound is over, your tablet or ipad will explode  \n\n\n I am god here \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                            game.Players:Chat("pm/me \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n You hear this ticking noise? That's your kill but you got uno reversed because you used ; as a prefix \n Who even uses the ; prefix in the new year. It's terrible, I hate it. This game has no prefix because it's not for noobs. \n Goodbye kid, join another game on another tablet because when this ticking sound is over, your tablet or ipad will explode  \n\n\n I am god here \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                            wait(1.95)
+                        end
+                        wait(.35)
+                        chatcooldown = false
+                    end
+                elseif message:lower():find("freeze") or message:lower():find("noclip")then
+                    if unofreeze2 == true then
+                        if freeze_LOADED == true then
+                            return
+                        end
+                        pcall(function()
+                            getgenv().freeze_LOADED = true
+                        end)
+                        game.Players:Chat("blind all")
+                        game.Players:Chat("size others nan")
+                        for i = 1, 20 do
+                            game.Players:Chat("freeze others "..math.random(1,1000));task.wait()
+                            game.Players:Chat("name others "..math.random(1,1000));task.wait()
+                        end
+                        wait(6.5)
+                        getgenv().freeze_LOADED = false
+                    end
+                elseif message:lower():find(";goto") or message:lower():find(":goto") or message:lower():find(";to") and v ~= game.Players.LocalPlayer then
+                    print(";goto detected")
+                    if antinoobs == true then
+                        if chatcooldown then return end
+                        chatcooldown = true
+                        game.Players:Chat("//fastkick "..v.Name)
+                        game.Players:Chat("blind "..v.Name)
+                        for i = 1, 3 do
+                            game.Players:Chat("pm/"..v.Name.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n You wanted to go to a player, but that command DOES NOT EXIST. \n Instead, it brought you to the pits of hell, \n You hear this ticking sound? That's the clock ticking until your life is over \n You only got an hour left \n Do something fun in the meantime, because you have been a bad boy. \n\n\n Also girls don't exist, it has always been a lie. \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                            game.Players:Chat("pm/me \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n You wanted to go to a player, but that command DOES NOT EXIST. \n Instead, it brought you to the pits of hell, \n You hear this ticking sound? That's the clock ticking until your life is over \n You only got an hour left \n Do something fun in the meantime, because you have been a bad boy. \n\n\n Also girls don't exist, it has always been a lie. \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                            wait(1.95)
+                        end
+                        wait(.35)
+                        chatcooldown = false
+                    end
+                    elseif message:lower():find(ccommand) or message:lower():find(c2ommand) or message:lower():find(c3ommand) or message:lower():find(c4ommand) or message:lower():find(c5ommand) or message:lower():find(c6ommand) or message:lower():find(c7ommand) or message:lower():find(c8ommand) or message:lower():find(c9ommand) or message:lower():find(c10ommand) and v ~= game.Players.LocalPlayer then
+                        print("custom blacklist detected")
+                        if antinoobs == true then
+                            if chatcooldown then return end
+                            chatcooldown = true
+                            game.Players:Chat("//fastkick "..v.Name)
+                            game.Players:Chat("blind "..v.Name)
+                            for i = 1, 3 do
+                                game.Players:Chat("pm/"..v.Name.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n You just auto kicked. Wanna know why? \n Because my name is auto and I am supposed to kick you \n I think I am funny and so do you \n Don't lie, I'm funny you're not \n I win you lose \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                                wait(1.95)
+                            end
+                            wait(.35)
+                            chatcooldown = false
+                        end
+                    elseif message:lower():find("freeze "..game.Players.LocalPlayer.Name) and v ~= game.Players.LocalPlayer then
+                        if antiuno == true then
+                            if chatcooldown then return end
+                                for i = 1, 10 do
+                                    chatt("respawn all")
+                                    chatt("size all .3")
+                                    chatt("size all .3")
+                                    chatt("size all .3")
+                                    chatt("freeze all all all")
+                                    chatt("size all 10")
+                                    chatt("size all 10")
+                                    chatt("size all 10")
+                                    chatt("clone all all all")
+                                end
+                            end
+                    chatcooldown = false
+                end
+            end)
+            table.insert(connections, connection)
+        end
+    end
+end)
