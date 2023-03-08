@@ -84,6 +84,7 @@ mousee.KeyDown:connect(function(key)
         padAbuse = true
         game.Players:Chat("ckick others")
     elseif key:lower() == switch_keybind then
+        shared.nocrash = true
         task.spawn(function()
             local gplayers = game:GetService("Players"):GetPlayers()
             local playercount = #gplayers
@@ -104,7 +105,7 @@ mousee.KeyDown:connect(function(key)
                 end
             end)
         end)
-        for i = 1, loopnum do
+        for i = 1, 3 do wait()
             if shared.nocrash == true then
                 game.Players:Chat("respawn all")
                 game.Players:Chat("clone all")
@@ -115,6 +116,13 @@ mousee.KeyDown:connect(function(key)
                 game.Players:Chat("setgrav all 15e15")
                 game.Players:Chat("setgrav all inf")
                 game.Players:Chat("setgrav all nan")
+                for i = 1, 9 do wait(.5)
+                    game.Players:Chat("setgrav all inf")
+                    game.Players:Chat("setgrav all nan")
+                    game.Players:Chat("setgrav all 15e15")
+                    game.Players:Chat("setgrav all inf")
+                    game.Players:Chat("setgrav all nan")
+                end
             end
         end
 	end
