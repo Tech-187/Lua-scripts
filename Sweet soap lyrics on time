@@ -1,0 +1,31 @@
+--[[
+Make sure your ping is somewhat good
+Others can clear the song so feel free to kick them or some shit
+
+Don't ask me why I made this xD
+]]
+
+game.Players:Chat("time -")
+game.Players:Chat("fogcolor 0 0 0")
+game.Players:Chat("fogend 500")
+game.Players:Chat("music 1839334310");wait(.49)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba ba baaaam");wait(1.49)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaam");wait(1.49)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaa");wait(1.9)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ woo woo woooooo                                        ");wait(2.1)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                           Wooooooowoooooooo");wait(.35)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaam");wait(1.49)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaam");wait(1.49)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba bah");wait(1.49)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Woo woo woo                                           ");wait(1.49)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                      WOO woo woo woo");wait(1)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Wa ba ba ba BAAAAAAAAA");wait(1.65)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaam");wait(1.49)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba bah");wait(1.9)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ woo woo wooo wooo                                        ");wait(2.1)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaaam                                                          ");wait(2)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                            Ba ba ba baaaaam");wait(2)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba");wait(1)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM");wait(2.5)
+game.Players:Chat("clr")
+game.Players:Chat("fix")
