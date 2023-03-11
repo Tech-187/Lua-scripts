@@ -1,18 +1,22 @@
---[[
-Make sure your ping is somewhat good
-Others can clear the song so feel free to kick them or some shit
-
-Don't ask me why I made this xD
-]]
-
+local folder = workspace.Terrain._Game.Folder
+game.Players:Chat("clr")
+repeat task.wait() until not folder:FindFirstChild("Sound")	
 game.Players:Chat("time -")
 game.Players:Chat("fogcolor 0 0 0")
 game.Players:Chat("fogend 500")
-game.Players:Chat("music 1839334310");wait(.49)
-game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba ba baaaam");wait(1.49)
+game.Players:Chat("music 1839334310");
+repeat task.wait() until folder:FindFirstChild("Sound") and folder:FindFirstChild("Sound").Playing
+local sound = folder:FindFirstChild("Sound")
+task.spawn(function() 
+if sound.TimePosition == 0 then repeat task.wait() until not sound.TimePosition == 0 end
+if sound.TimePosition ~= 0 then repeat task.wait() until not sound.TimePosition == 0 end
+game.Players:Chat("fix");
+game.Players:Chat("clr");
+end)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba ba baaaam");wait(1.6)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaam");wait(1.49)
-game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaa");wait(1.9)
-game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ woo woo woooooo                                        ");wait(2.1)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaa");wait(2.1)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ woo woo woooooo                                        ");wait(2.3) -- 2.1
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                           Wooooooowoooooooo");wait(.35)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaam");wait(1.49)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaam");wait(1.49)
@@ -24,8 +28,6 @@ game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaam
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba bah");wait(1.9)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ woo woo wooo wooo                                        ");wait(2.1)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaaam                                                          ");wait(2)
-game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                            Ba ba ba baaaaam");wait(2)
-game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba");wait(1)
-game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM");wait(2.5)
-game.Players:Chat("clr")
-game.Players:Chat("fix")
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                            Ba ba ba baaaaam");wait(1.8)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba");wait(1.85)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM");
