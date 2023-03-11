@@ -15,7 +15,7 @@ game.Players:Chat("clr");
 end)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba ba baaaam");wait(1.6)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaam");wait(1.49)
-game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaa");wait(2.1)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba bah");wait(2.1)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ woo woo woooooo                                        ");wait(2.3) -- 2.1
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                           Wooooooowoooooooo");wait(.35)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaam");wait(1.49)
