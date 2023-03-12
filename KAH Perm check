@@ -1,0 +1,57 @@
+local sprefix = "/"
+
+function getplayername(plr)
+    for i, v in pairs(game.Players:GetPlayers()) do
+        if string.sub(v.Name:lower(), 1, #plr) == plr then
+            playr = v.Name
+            playnl = v
+            end
+        end
+    end
+
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+if string.sub(msg, 1, #sprefix+2) == sprefix..'gp' then
+    if lockcontrols then return end
+    getplayername(string.sub(msg, #sprefix+4, #msg))
+    local id1 = 66254
+    local id2 = 64354
+    print(playnl)
+    task.wait()
+    if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. playnl.UserId .. "/items/GamePass/" .. id1), id1) then
+        permcheck1 = true
+        print('Perm', playr..' has perm in NBC')
+        permcheck1 = true
+        task.spawn(function()
+            wait(1.35)
+            permcheck1 = false
+        end)
+    end
+    if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. playnl.UserId .. "/items/GamePass/" .. id2), id2) then
+        print('Perm', playr..' has perm in BC')
+        game.Players:Chat("punish "..playr);wait(4.65)
+        bcbought = true
+        local file = "Dumbass fag bought perm in BC"
+        local a = {}
+
+        for letter in file:gmatch(".") do
+        if letter ~= "\r" and letter ~= "\n" then
+            table.insert(a, letter)
+        end
+        end
+
+        for i, v in ipairs(a) do
+        print(i, v)
+        end
+
+        for b, c in ipairs(a) do
+            local d = "variable_" .. tostring(b)
+            _G[d] = c
+        end
+        for b, c in ipairs(a) do
+            local e = string.rep("  ", 2 * (b - 1))
+            game.Players:Chat("h lol look\n\n\n\n\n\n\n" .. e .. _G["variable_" .. tostring(b)])
+        end
+    else 
+        if permcheck1 == true then return end
+        print('Perm', playr..' does not have Perm')
+    end
