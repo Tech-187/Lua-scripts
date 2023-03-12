@@ -55,3 +55,5 @@ if string.sub(msg, 1, #sprefix+2) == sprefix..'gp' then
         if permcheck1 == true then return end
         print('Perm', playr..' does not have Perm')
     end
+end
+end)
