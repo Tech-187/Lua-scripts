@@ -29,5 +29,5 @@ game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba ba
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ woo woo wooo wooo                                        ");wait(2.1)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba baaaaam                                                          ");wait(2)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                            Ba ba ba baaaaam");wait(1.8)
-game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba");wait(1.85)
+game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n Ba ba ba");wait(1)
 game.Players:Chat("h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM");
