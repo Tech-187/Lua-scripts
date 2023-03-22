@@ -204,24 +204,11 @@ task.spawn(function()
     end
 end)
 
-wait(.51)
+wait(.15)
 
 gravspam = false
 
 task.wait()
-
-for i = 1, 2 do
-    game.Players:Chat(":refresh all "..math.random(1,1000))
-    game.Players:Chat(":kill all "..math.random(1,1000))
-    game.Players:Chat(":trip all "..math.random(1,1000))
-    game.Players:Chat(":setgrav all" .. " -1000000000000000000000000000000000000000000000000000000000000000000000000000000000000");wait(.1)
-    game.Players:Chat(":unpunish all "..math.random(1,1000));wait()
-    game.Players:Chat(":unpunish all "..math.random(1,1000));wait()
-    game.Players:Chat(":unpunish all "..math.random(1,1000));wait()
-    game.Players:Chat("invis all "..math.random(1,1000));wait()
-    game.Players:Chat(":reset all "..math.random(1,1000));wait()
-    game.Players:Chat(":punish me                                                                       all "..math.random(1,1000));wait(.65)
-end
 
 padAbuse = true
 
