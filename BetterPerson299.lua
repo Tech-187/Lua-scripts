@@ -844,7 +844,7 @@ lplayer.Chatted:Connect(function(msg)
                     "skydive/plr",
                     "house/plr",
                     "m message (no /)",
-                    "emr (use if people abuse)",
+                    "emr (crasher)",
                     "sabotage/plr (lags and blinds them)",
                     "control/plr (Removed cmd)",
                     "cmds (mod commands)",
@@ -864,7 +864,7 @@ lplayer.Chatted:Connect(function(msg)
                     "!admin",
                     "!findregen",
                     "!findpads",
-                    "!666",
+                    "!666 (crasher)",
                     "!closemod",
                     "!crashonjoin",
                     "!lookforp299",
@@ -902,4 +902,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.7.8
+-- Official BP299 Version 1.7.9
