@@ -528,8 +528,8 @@ lplayer.Chatted:Connect(function(msg)
     elseif string.sub(msg:lower(), 0, 10) == "!tempcrash" then
         if shared.mod == true then
             local playercount = game.Players:GetPlayers()
-            if #playercount == 5 or #playercount == 6 or #playercount == 7 then
-                task.spawn(function()
+            if #playercount > 3 then
+                --[[task.spawn(function()
                     wait(.1)
                     for i = 1, 12 do
                         local table1 = {}
@@ -559,12 +559,16 @@ lplayer.Chatted:Connect(function(msg)
                         crash(250)
                         wait(2.51)
                     end
-                end)
-                for i = 1, 20 do
-                    for i = 1, 99 do
+                end)]]
+                for i = 1, 7 do
+                    for i = 1, 149 do
                         game.Players:Chat("respawn/                                                                                                                   all all all "..math.random(1,1000))
                     end
                     wait(.51)
+                end
+                shared.spam2 = true
+                while shared.spam2 do task.wait(nil)
+                    game.Players:Chat("shield/                                                                                                                      all all all")
                 end
             else
                 game.Players:Chat("h/ Could not initiate, not enough players.")
