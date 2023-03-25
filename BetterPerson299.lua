@@ -36,9 +36,9 @@ local gearwhitelisted = {"Master0fSouIs","ScaleneSoap9803","TechnoSniperX","Huma
 shared.mod = true -- Turn this off and re-run the script to disable the mod (or just use !closemod)
 shared.gpcheck = true -- Only boot if you have the gamepass (recommended for autoexec). Cannot be altered after the script ran obviously
 shared.p2p = false -- This will enable perm to persons. Re-run the script and turn this off to disable the mod (or just use !s to switch)
-shared.padgrab = false -- Set this to true if your account has no perm
+shared.padgrab = true -- Set this to true if your account has no perm
 shared.displayon = false -- Display name converter. It has downsides when it's active
-shared.autoswitch = false -- This will automatically switch with !s if you can't get real admin in a server, use this if your acc only has Person299 and not perm
+shared.autoswitch = true -- This will automatically switch with !s if you can't get real admin in a server, use this if your acc only has Person299 and not perm
 
 if p299running then
     return
@@ -620,13 +620,25 @@ lplayer.Chatted:Connect(function(msg)
             game.Players:Chat("punish/all")
             game.Players:Chat("blind/others")
             game.Players:Chat("invis/all")
+            task.spawn(function()
+                shared.spam1 = true
+                wait(10)
+                shared.spam2 = true
+                wait(5)
+                game.Players:Chat("vis/ all all all")
+            end)
             pcall(function()
                 fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
             end)
-            while task.wait() do
-                for i = 1, 9 do
-                    game.Players:Chat("pm/"..player.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n Hello there. So you're busy doing some bad activity, \n my name is ''Text'' and I'm here to help you. \n The sabotage needs to be fixed so give me a moment... \n I'm afraid you're gonna have to find your own way out. \n But I think you're a bit smart, you can do this \n\n\n People that don't misuse admin tend to be a lot smarter than most \n they can fix it themselves, how come you can't? \n Indeed. There's your answer, you're not smart. \n And yes. I lied about helping, I will be doing this for ever and there's nothing you can do to stop it. \n😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁😝😆😊😅😀\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            task.spawn(function()
+                while shared.spam1 do task.wait(nil)
+                    for i = 1, 9 do
+                        game.Players:Chat("pm/"..player.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n Hello there. So you're busy doing some bad activity, \n my name is ''Text'' and I'm here to help you. \n The sabotage needs to be fixed so give me a moment... \n I'm afraid you're gonna have to find your own way out. \n But I think you're a bit smart, you can do this \n\n\n People that don't misuse admin tend to be a lot smarter than most \n they can fix it themselves, how come you can't? \n Indeed. There's your answer, you're not smart. \n And yes. I lied about helping, I will be doing this for ever and there's nothing you can do to stop it. \n😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁😝😆😊😅😀\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                    end
                 end
+            end)
+            while shared.spam2 do task.wait(nil)
+                game.Players:Chat("shield/                                                                                                                      all all all")
             end
         end
     elseif string.sub(msg:lower(), 0, 8) == "control/" then
@@ -890,4 +902,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.7.7
+-- Official BP299 Version 1.7.8
