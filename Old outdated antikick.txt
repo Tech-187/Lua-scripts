@@ -1,0 +1,21 @@
+--[[
+    Get those first
+    https://www.roblox.com/bundles/337/City-Life-Woman
+    https://www.roblox.com/catalog/2492667589/City-Life-Woman-Left-Arm
+    https://www.roblox.com/catalog/2492669375/City-Life-Woman-Right-Arm
+    It's prefered to make an outfit that has both arms equipped and then run this script, or else it will look more obvious you're using this
+]]
+
+repeat
+    task.wait()
+until game:IsLoaded()
+
+shared.anti = true
+task.spawn(function()
+while shared.anti do task.wait()
+pcall(function()
+    game.Players.LocalPlayer.Character:FindFirstChild("Right Arm"):Destroy()
+    game.Players.LocalPlayer.Character:FindFirstChild("Left Arm"):Destroy()
+end)
+end
+end)
