@@ -30,6 +30,7 @@ local antivg = true
 local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
 local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","Transmorpher","LaserFingerPointers","SeaThemedCrossbow","RageTable","IceStaff"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
 local gearwhitelisted = {"Master0fSouIs","ScaleneSoap9803","TechnoSniperX","Humangas"} -- Players that are in this table won't get ungeared.
+local mousee = game.Players.LocalPlayer:GetMouse()
 
 -- CONFIGURE ANYTHING BELOW
 
@@ -39,11 +40,59 @@ shared.p2p = false -- This will enable perm to persons. Re-run the script and tu
 shared.padgrab = true -- Set this to true if your account has no perm
 shared.displayon = false -- Display name converter. It has downsides when it's active
 shared.autoswitch = true -- This will automatically switch with !s if you can't get real admin in a server, use this if your acc only has Person299 and not perm
+local allowkeybinds = true
+local displaynameswitch_keybind = "v"
+local person299switch_keybind = "b" -- Remove this one if you have both perm and person299 on ur acc instead of just person299
 
 if p299running then
     return
 end
 getgenv().p299running = true -- Don't touch
+
+mousee.KeyDown:connect(function(key)
+    if key:lower() == displaynameswitch_keybind then
+    if not allowkeybinds then return end
+        if shared.mod == true then
+            if togg then return end
+                wait()
+                game.Players:Chat("# #")
+                if shared.displayon == true then
+                    wait()
+                    shared.displayon = false
+                    print("Display name support is now false")
+                    togg = true
+                    wait(1)
+                    togg = false
+                else
+                    shared.displayon = true
+                    print("Display name support is now true")
+                    togg = true
+                    wait(1)
+                    togg = false
+                end
+	    end
+    elseif key:lower() == person299switch_keybind then
+        if not allowkeybinds then return end
+        if shared.mod == true then
+            if togg then return end
+                if shared.p2p == true then
+                    wait()
+                    shared.p2p = false
+                    print("Perm to person is now false")
+                    togg = true
+                    wait(1)
+                    togg = false
+                else
+                    shared.p2p = true
+                    print("Perm to person is now true")
+                    togg = true
+                    wait(1)
+                    togg = false
+                    -- It has a cooldown system because of p2p overlapping commands
+                end
+            end
+    end
+end)
 
 --// Perm to Persons \\--
 
@@ -123,7 +172,7 @@ connections[#connections + 1] = game:GetService("RunService").RenderStepped:Conn
 			for i, gear in ipairs(BlacklistedGear) do
   			   if player.Backpack:FindFirstChild(gear) or player.Character:FindFirstChild(gear) then
                         local plrname = player.Name
-                        game.Players:Chat("ungear/"..plrname.."                                                                     others "..math.random(1,1000));wait(.35)
+                        game.Players:Chat("ungear/"..plrname.."                                                                                                                                                                                                                                others fuck "..math.random(1,1000));wait(.35)
                      end
 		     end
                 end
@@ -417,7 +466,7 @@ lplayer.Chatted:Connect(function(msg)
             lplayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-28.6829948, 8.2299995, 66.4913253));task.wait(.65)
             wait(.35)
             game.Players:Chat("tp/"..player.."/me")
-            --game.Players:Chat("vis/"..uniquemodstring.."/me")
+            game.Players:Chat("vis/"..uniquemodstring.."/me")
         end
     elseif string.sub(msg, 0, 12) == "!crashonjoin" then
 		writefile('bp299startups.txt', 'emr\nhop')
@@ -906,4 +955,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.7.9
+-- Official BP299 Version 1.8.0
