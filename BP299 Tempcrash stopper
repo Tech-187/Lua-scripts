@@ -1,0 +1,6 @@
+shared.spam2 = false
+shared.spam = false
+shared.spam1 = false
+for i = 1, 350 do
+	game.Players:Chat(":gear all 253519495")
+end
