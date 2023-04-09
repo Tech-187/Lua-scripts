@@ -82,7 +82,7 @@ mousee.KeyDown:connect(function(key)
         shared.nocrash = false
         gravspam = false
         padAbuse = true
-        game.Players:Chat("ckick others")
+        game.Players:Chat("okick others")
     elseif key:lower() == switch_keybind then
         shared.nocrash = true
         task.spawn(function()
