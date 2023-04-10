@@ -414,12 +414,80 @@ lplayer.Chatted:Connect(function(msg)
         shared.spam2 = false
         shared.spam = false
         shared.spam1 = false
-        local player = string.sub(msg:lower(), 7)
+        local player = string.sub(msg:lower(), 6)
         logn("Enter shiftlock and make your rocket touch the target's")
+        game.Players:Chat("invis/"..uniquemodstring.." me")
         game.Players:Chat("tp/ "..player.." me");wait(.35)
+        game.Players:Chat("speed/"..player.." 0")
         for i = 1, 350 do
             game.Players:Chat("rocket/all all all")
         end
+        wait(1)
+        for i = 1, 350 do
+            game.Players:Chat("rocket/all all all")
+        end
+        -- chat gpt generated the code below lol. I did not add it because it's not my way of doing it but this also works
+--[[
+if shared.mod == true then
+    game.Players:Chat("tp me player")
+    local players = game:GetService("Players")
+    local localPlayer = players.LocalPlayer
+    local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+
+    local function findNearestPlayer()
+        local nearestPlayer, nearestDistance
+        for _, player in pairs(players:GetPlayers()) do
+            if player ~= localPlayer then
+                local playerCharacter = player.Character
+                if playerCharacter then
+                    local playerHumanoidRootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
+                    if playerHumanoidRootPart then
+                        local distance = (playerHumanoidRootPart.Position - character.HumanoidRootPart.Position).magnitude
+                        if not nearestDistance or distance < nearestDistance then
+                            nearestPlayer = player
+                            nearestDistance = distance
+                        end
+                    end
+                end
+            end
+        end
+        return nearestPlayer
+    end
+
+    while true do
+        local nearestPlayer = findNearestPlayer()
+        if nearestPlayer then
+            local rootPart = nearestPlayer.Character.HumanoidRootPart
+            humanoid:MoveTo(rootPart.Position)
+            wait(1.5)
+            for i = 1, 350 do
+                game.Players:Chat("rocket/me player player")
+            end
+            wait(1)
+            for i = 1, 350 do
+                game.Players:Chat("rocket/me player player")
+            end
+            wait(1)
+            for i = 1, 350 do
+                game.Players:Chat("rocket/me player player")
+            end
+            wait(1)
+            for i = 1, 350 do
+                game.Players:Chat("rocket/me player player")
+            end
+            local master = game.Players:FindFirstChild("player")
+            while true do
+                local direction = (lplayer.Character.HumanoidRootPart.Position - master.Character.HumanoidRootPart.Position).unit
+                local newLookVector = Vector3.new(-direction.X, 0, -direction.Z)
+                lplayer.Character.HumanoidRootPart.CFrame = CFrame.new(lplayer.Character.HumanoidRootPart.Position, lplayer.Character.HumanoidRootPart.Position - newLookVector)
+                wait(0.1)
+            end
+            break
+        end
+        wait(1)
+    end
+end]]
     elseif string.sub(msg:lower(), 0, 7) == "unsize/" then 
         local player = string.sub(msg:lower(), 8)
         if shared.mod == true then
@@ -620,11 +688,15 @@ lplayer.Chatted:Connect(function(msg)
                     end
                 end)]]
                 for i = 1, 7 do
-                    for i = 1, 149 do
+                    for i = 1, 350 do
                         game.Players:Chat("respawn/                                                                                                                   all all all "..math.random(1,1000))
                     end
-                    wait(.51)
+                    wait(1)
                 end
+                for i = 1, 350 do
+                    game.Players:Chat("shield/                                                                                                                   all all all "..math.random(1,1000))
+                end
+                wait(1)
                 shared.spam2 = true
                 while shared.spam2 do task.wait(nil)
                     game.Players:Chat("shield/                                                                                                                      all all all")
@@ -912,7 +984,7 @@ lplayer.Chatted:Connect(function(msg)
                     "control/bp299 (Removed p299 cmd)",
                     "system (silent commands)",
                     "stopmusic",
-                    "rlag/plr",
+                    "rlag/bp299",
                     "!cmds (other commands)"
                 }
             )
