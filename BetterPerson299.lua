@@ -410,6 +410,16 @@ lplayer.Chatted:Connect(function(msg)
             wait(.35)
             game.Players:Chat("tp/"..player.."/me")
         end
+    elseif string.sub(msg:lower(), 0, 5) == "rlag/" then -- Discovered by Antedx
+        shared.spam2 = false
+        shared.spam = false
+        shared.spam1 = false
+        local player = string.sub(msg:lower(), 7)
+        logn("Enter shiftlock and make your rocket touch the target's")
+        game.Players:Chat("tp/ "..player.." me");wait(.35)
+        for i = 1, 350 do
+            game.Players:Chat("rocket/all all all")
+        end
     elseif string.sub(msg:lower(), 0, 7) == "unsize/" then 
         local player = string.sub(msg:lower(), 8)
         if shared.mod == true then
@@ -891,18 +901,18 @@ lplayer.Chatted:Connect(function(msg)
             createKohlsUi(
                 {
                     "Thank you for using BetterPerson299\nCreated by Tech",
-                    "",
+                    "Commands with an M tag use Kohls commands",
                     "logs/",
                     "reset/me or all",
-                    "skydive/plr",
-                    "house/plr",
-                    "m message (no /)",
-                    "emr (crasher)",
-                    "sabotage/plr (lags and blinds them)",
-                    "control/plr (Removed cmd)",
-                    "cmds (mod commands)",
+                    "skydive/bp299",
+                    "house/bp299",
+                    "m message (bp299)",
+                    "emr (crasher)(K)",
+                    "sabotage/bp299 (lags and blinds them)",
+                    "control/bp299 (Removed p299 cmd)",
                     "system (silent commands)",
                     "stopmusic",
+                    "rlag/plr",
                     "!cmds (other commands)"
                 }
             )
@@ -917,11 +927,11 @@ lplayer.Chatted:Connect(function(msg)
                     "!admin",
                     "!findregen",
                     "!findpads",
-                    "!666 (crasher)",
+                    "!666 (crasher)(K)",
                     "!closemod",
                     "!crashonjoin",
                     "!lookforp299",
-                    "!crashifbrokenparts",
+                    "!crashifbrokenparts (K)",
                     "!s" -- switch
                 }
             )
@@ -955,4 +965,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.8.0
+-- Official BP299 Version 1.8.1
