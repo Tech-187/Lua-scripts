@@ -935,7 +935,8 @@ end]]
 		wait(2.5)
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/FindVerticalRegen"), true))()
     end
-    elseif string.sub(msg:lower(), 0, 4) == "!rej" or string.sub(msg:lower(), 0, 3) == "!rj" then
+    elseif string.sub(msg:lower(), 0, 4) == "!rej" or string.sub(msg:lower(), 0, 3) == "rj" then
+        if not shared.mod then return end
         game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer);wait()
     elseif string.sub(msg:lower(), 0, 4) == "!hop" or string.sub(msg:lower(), 0, 4) == "!ser" then -- Some people type !serverhop lol
         if shared.mod == true then
@@ -1025,4 +1026,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.8.2
+-- Official BP299 Version 1.8.3
