@@ -52,7 +52,7 @@ getgenv().p299running = true -- Don't touch
 mousee.KeyDown:connect(function(key)
     if key:lower() == displaynameswitch_keybind then
     if not allowkeybinds then return end
-        if shared.mod == true then
+        if not shared.mod then return end
             if togg then return end
                 wait()
                 game.Players:Chat("# #")
@@ -70,10 +70,9 @@ mousee.KeyDown:connect(function(key)
                     wait(1)
                     togg = false
                 end
-	    end
     elseif key:lower() == person299switch_keybind then
         if not allowkeybinds then return end
-        if shared.mod == true then
+        if not shared.mod then return end
             if togg then return end
                 if shared.p2p == true then
                     wait()
@@ -91,7 +90,6 @@ mousee.KeyDown:connect(function(key)
                     -- It has a cooldown system because of p2p overlapping commands
                 end
             end
-    end
 end)
 
 --// Perm to Persons \\--
@@ -351,7 +349,7 @@ end
 
 lplayer.Chatted:Connect(function(msg)
     if string.sub(msg:lower(), 0, 5) == "logs/" then -- Renamed from logs to logs/ because it kept interfering
-        if shared.mod == true then
+        if not shared.mod then return end
             if loga then return end
             loadstring(game:HttpGet(('https://pastebin.com/raw/EthjHsJ7'),true))()
             loadstring(game:HttpGet(('https://pastebin.com/raw/stggPUBM'),true))()
@@ -361,14 +359,12 @@ lplayer.Chatted:Connect(function(msg)
             end)
             -- https://v3rmillion.net/showthread.php?tid=709709
 		-- \104\116\116\112\115\58\47\47\109\101\103\97\46\110\122\47\102\105\108\101\47\87\79\52\48\120\97\67\75\35\98\69\75\84\100\45\113\119\81\89\99\100\95\105\84\54\109\107\75\74\51\99\117\51\85\49\87\79\117\68\100\105\48\78\98\116\66\99\87\107\87\76\119 also type "savetofile" to save the chatlogs to a file. Bypasses the full chat GUI limit
-        end
     elseif string.sub(msg:lower(), 0, 0) == "foryou" then 
         local player = string.sub(msg:lower(), 1)
-        if shared.mod == true then
+        if not shared.mod then return end
             -- Hey there. So if you're gonna edit this and add your own commands then copy this area pretty much.
-        end
     elseif string.sub(msg:lower(), 0, 8) == "reset/me" or string.sub(msg:lower(), 0, 9) == "reload/me" or string.sub(msg:lower(), 0, 10) == "refresh/me" then 
-        if shared.mod == true then
+        if not shared.mod then return end
             local spos = lplayer.Character.HumanoidRootPart.CFrame -- Creds. Vecko
             task.wait(.05)
             game.Players:Chat("respawn/"..uniquemodstring.."/me")
@@ -380,10 +376,9 @@ lplayer.Chatted:Connect(function(msg)
             game.Players:Chat("vis/"..uniquemodstring.."/me")
             wait(.75) -- High ping affects this command, making it nil too fast will simply not make it teleport :/
             local spos = nil
-        end
     elseif string.sub(msg:lower(), 0, 9) == "reset/all" or string.sub(msg:lower(), 0, 10) == "reload/all" or string.sub(msg:lower(), 0, 11) == "refresh/all" then 
         -- This will obviously only teleport you back. But people do this cus it's faster to type than respawn
-        if shared.mod == true then
+        if not shared.mod then return end
             local spos = lplayer.Character.HumanoidRootPart.CFrame -- Creds. Vecko
             task.wait(.05)
             game.Players:Chat("respawn/"..uniquemodstring.."/all")
@@ -394,23 +389,21 @@ lplayer.Chatted:Connect(function(msg)
             end
             wait(1)
             local spos = nil
-        end
     elseif string.sub(msg:lower(), 0, 12) == "reset/others" or string.sub(msg:lower(), 0, 13) == "reload/others" or string.sub(msg:lower(), 0, 14) == "refresh/others" then
         -- Faster to type than respawn
-        if shared.mod == true then
+        if not shared.mod then return end
             game.Players:Chat("respawn/"..uniquemodstring.."/others")
-        end
     elseif string.sub(msg:lower(), 0, 8) == "skydive/" then 
         local player = string.sub(msg:lower(), 9)
-        if shared.mod == true then
+        if not shared.mod then return end
             lplayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(
             lplayer.Character.HumanoidRootPart.CFrame.X,
             lplayer.Character.HumanoidRootPart.CFrame.Y + 2500,
             lplayer.Character.HumanoidRootPart.CFrame.Z))
             wait(.35)
             game.Players:Chat("tp/"..player.."/me")
-        end
     elseif string.sub(msg:lower(), 0, 5) == "rlag/" then -- Discovered by Antedx
+        if not shared.mod then return end
         shared.spam2 = false
         shared.spam = false
         shared.spam1 = false
@@ -428,8 +421,9 @@ lplayer.Chatted:Connect(function(msg)
         end
         -- chat gpt generated the code below lol. I did not add it because it's not my way of doing it but this also works
 --[[
+local lplayer = game.Players.LocalPlayer
 if shared.mod == true then
-    game.Players:Chat("tp me player")
+    game.Players:Chat("tp me fuckingtarget")
     local players = game:GetService("Players")
     local localPlayer = players.LocalPlayer
     local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
@@ -460,23 +454,26 @@ if shared.mod == true then
         if nearestPlayer then
             local rootPart = nearestPlayer.Character.HumanoidRootPart
             humanoid:MoveTo(rootPart.Position)
+            game.Players:Chat("invis/me")
+            game.Players:Chat("speed/others 0")
+            game.Players:Chat("setgrav/all 1000")
             wait(1.5)
             for i = 1, 350 do
-                game.Players:Chat("rocket/me player player")
+                game.Players:Chat("rocket/all all all")
             end
             wait(1)
             for i = 1, 350 do
-                game.Players:Chat("rocket/me player player")
+                game.Players:Chat("rocket/all all all")
             end
             wait(1)
             for i = 1, 350 do
-                game.Players:Chat("rocket/me player player")
+                game.Players:Chat("rocket/all all all")
             end
             wait(1)
             for i = 1, 350 do
-                game.Players:Chat("rocket/me player player")
+                game.Players:Chat("rocket/all all all")
             end
-            local master = game.Players:FindFirstChild("player")
+            local master = game.Players:FindFirstChild("fuckingtarget")
             while true do
                 local direction = (lplayer.Character.HumanoidRootPart.Position - master.Character.HumanoidRootPart.Position).unit
                 local newLookVector = Vector3.new(-direction.X, 0, -direction.Z)
@@ -490,28 +487,25 @@ if shared.mod == true then
 end]]
     elseif string.sub(msg:lower(), 0, 7) == "unsize/" then 
         local player = string.sub(msg:lower(), 8)
-        if shared.mod == true then
+        if not shared.mod then return end
             game.Players:Chat("undog/"..player)
-        end
     elseif string.sub(msg:lower(), 0, 3) == "clr" then 
-        if shared.mod == true then
+        if not shared.mod then return end
             game.Players:Chat("clear")
             for i, v in pairs(game:GetDescendants()) do
                 if v:IsA("Sound") then
                     v:Stop()
                 end
             end            
-        end
     elseif string.sub(msg:lower(), 0, 9) == "stopmusic" then 
-        if shared.mod == true then
+        if not shared.mod then return end
             for i, v in pairs(game:GetDescendants()) do
                 if v:IsA("Sound") then
                     v:Stop()
                 end
             end            
-        end
     elseif string.sub(msg:lower(), 0, 6) == "system" then 
-        if shared.mod == true then
+        if not shared.mod then return end
             logn("This stays, even after you close the script")
             local invisGUIS = {} --- From IY, ty LegHat for actually making it readable ffs
             Players = game:GetService("Players")
@@ -536,28 +530,30 @@ end]]
                     end
                 end
             end
-        end
     elseif string.sub(msg:lower(), 0, 6) == "house/" then 
         local player = string.sub(msg:lower(), 7)
-        if shared.mod == true then
+        if not shared.mod then return end
             game.Players:Chat("invis/"..uniquemodstring.."/me");task.wait(.35)
             lplayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-28.6829948, 8.2299995, 66.4913253));task.wait(.65)
             wait(.35)
             game.Players:Chat("tp/"..player.."/me")
             game.Players:Chat("vis/"..uniquemodstring.."/me")
-        end
     elseif string.sub(msg, 0, 12) == "!crashonjoin" then
+        if not shared.mod then return end
 		writefile('bp299startups.txt', 'emr\nhop')
     elseif string.sub(msg, 0, 19) == "!crashifbrokenparts" then
+        if not shared.mod then return end
 		writefile('bp299startups.txt', '!unlisted1\n') -- This command will shield you from servers with no baseplate and abuse on join. It will immediately try to shield crash the server if someone did abuse in those few seconds 
     elseif string.sub(msg, 0, 9) == "!findpads" then
+        if not shared.mod then return end
 	    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y + 6500, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z))
     elseif string.sub(msg, 0, 12) == "!lookforp299" then
+        if not shared.mod then return end
         wait(10) -- Delay just for start-up commands/autoexec so newmode's perm playerlist loads up faster (https://pastebin.com/raw/1XZ8wHaY)
         loadstring(game:HttpGet("https://pastebin.com/raw/4dn91uQa"))()
     elseif string.sub(msg, 0, 2) == "m " then 
         local mesg = string.sub(msg, 3)
-        if shared.mod == true then
+        if not shared.mod then return end
             wait(.49)
             game.Players:Chat("clear the regular M moment");wait()
             game.Players:Chat("fogcolor 0 0 0")
@@ -568,18 +564,15 @@ end]]
             end
             wait(1.35)
             game.Players:Chat("fix")
-        end
     elseif string.sub(msg, 0, 14) == "!addunfiltered" then 
         local mesg = string.sub(msg, 16)
-        if shared.mod == true then
+        if not shared.mod then return end
             writefile('letters.txt', mesg) 
-        end
     elseif string.sub(msg, 0, 15) == "!showunfiltered" then 
-        if shared.mod == true then
+        if not shared.mod then return end
             loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/h%20chat%20bypasser'),true))() -- This script wasn't meant to be for BP299 at first.
-        end
     elseif string.sub(msg, 0, 13) == "!csunfiltered" then 
-        if shared.mod == true then
+        if not shared.mod then return end
             pcall(function()
                 local file = readfile("letters.txt")
                 for command in file:gmatch("[^\r\n]+") do
@@ -590,21 +583,18 @@ end]]
                     h:Remove()
                 end
             end)
-        end
     elseif string.sub(msg, 0, 8) == "!biglogs" then 
-        if shared.mod == true then
+        if not shared.mod then return end
             game.Players:Chat("logs are spammed...");task.wait(.49)
             pcall(function()
                 game.Players.LocalPlayer.PlayerGui.ScrollGui.TextButton.Frame.Size =  UDim2.new(3, t, 1000, j)
             end)
-        end
     elseif string.sub(msg, 0, 14) == "!shieldkickhop" then 
-        if shared.mod == true then
+        if not shared.mod then return end
             logn("Check clipboard")
             setclipboard("https://raw.githubusercontent.com/Tech-187/Obfuscated-art/main/Shieldkickhop")
-        end
     elseif string.sub(msg, 0, 3) == "emr" then -- Emergency mode. Lag everyone without Perm/admin as long as you have persons
-        if shared.mod == true then
+        if not shared.mod then return end
             --logn("Press C (keybind) and zoom out cus it will lag")
             loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/NoAdmin%20Lagger%20v2.3P'),true))()
             game.Players:Chat("!admin");wait(.35)
@@ -651,9 +641,8 @@ end]]
             loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Obfuscated-art/main/Basic%20antisilcrash.lua'),true))();wait(2.5)
             game.Players:Chat("!s")
             game.Players:Chat("!tempcrash fuck")
-        end
     elseif string.sub(msg:lower(), 0, 10) == "!tempcrash" then
-        if shared.mod == true then
+        if not shared.mod then return end
             local playercount = game.Players:GetPlayers()
             if #playercount > 3 then
                 --[[task.spawn(function()
@@ -704,7 +693,6 @@ end]]
             else
                 game.Players:Chat("h/ Could not initiate, not enough players.")
             end
-        end
     elseif string.sub(msg:lower(), 0, 10) == "!unlisted1" then
         if shared.mod == true then
             wait(.65)
@@ -1037,4 +1025,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.8.1
+-- Official BP299 Version 1.8.2
