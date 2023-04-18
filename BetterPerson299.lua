@@ -40,7 +40,7 @@ shared.p2p = false -- This will enable perm to persons. Re-run the script and tu
 shared.padgrab = true -- Set this to true if your account has no perm
 shared.displayon = false -- Display name converter. It has downsides when it's active
 shared.autoswitch = true -- This will automatically switch with !s if you can't get real admin in a server, use this if your acc only has Person299 and not perm
-local allowkeybinds = true
+local allowkeybinds = false
 local displaynameswitch_keybind = "v"
 local person299switch_keybind = "b" -- Remove this one if you have both perm and person299 on ur acc instead of just person299
 
@@ -408,16 +408,14 @@ lplayer.Chatted:Connect(function(msg)
         shared.spam = false
         shared.spam1 = false
         local player = string.sub(msg:lower(), 6)
-        logn("Enter shiftlock and make your rocket touch the target's")
-        game.Players:Chat("invis/"..uniquemodstring.." me")
-        game.Players:Chat("tp/ "..player.." me");wait(.35)
+        logn("Enter shiftlock and make your rocket touch the target(s)")
+        game.Players:Chat("invis/"..uniquemodstring.." me");wait(.35)
         game.Players:Chat("speed/"..player.." 0")
-        for i = 1, 350 do
-            game.Players:Chat("rocket/all all all")
-        end
-        wait(1)
-        for i = 1, 350 do
-            game.Players:Chat("rocket/all all all")
+        for i = 1, 5 do
+            for i = 1, 350 do
+                game.Players:Chat("rocket/all all all")
+            end
+            wait(1.35)
         end
         -- chat gpt generated the code below lol. I did not add it because it's not my way of doing it but this also works
 --[[
@@ -740,8 +738,9 @@ end]]
     elseif string.sub(msg:lower(), 0, 9) == "sabotage/" then
         local player = string.sub(msg:lower(), 10)
         if shared.mod == true then
-            game.Players:Chat("punish/all")
-            game.Players:Chat("blind/others")
+            game.Players:Chat("nodetector fuck")
+            game.Players:Chat("punish/"..player)
+            game.Players:Chat("blind/"..player)
             game.Players:Chat("invis/all")
             task.spawn(function()
                 shared.spam1 = true
@@ -753,16 +752,17 @@ end]]
             pcall(function()
                 fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
             end)
+            for i = 1, 350 do
+                game.Players:Chat("pm/"..player.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁😝😆😊😅😀😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁😝😆😊😅😀😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁🤪😜😁🤪🤪\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+            end
+            wait(.75)
             task.spawn(function()
                 while shared.spam1 do task.wait(nil)
                     for i = 1, 9 do
-                        game.Players:Chat("pm/"..player.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n Hello there. So you're busy doing some bad activity, \n my name is ''Text'' and I'm here to help you. \n The sabotage needs to be fixed so give me a moment... \n I'm afraid you're gonna have to find your own way out. \n But I think you're a bit smart, you can do this \n\n\n People that don't misuse admin tend to be a lot smarter than most \n they can fix it themselves, how come you can't? \n Indeed. There's your answer, you're not smart. \n And yes. I lied about helping, I will be doing this for ever and there's nothing you can do to stop it. \n😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁😝😆😊😅😀\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                        game.Players:Chat("pm/"..player.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁😝😆😊😅😀😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁😝😆😊😅😀😆😊😅😀🙃😝😇😇😇🙃😇🙂🤣🤣😆😆😇😃😜😀😝🤪😀😝😄😉😅🤪\n🤪😀😆🤪😆😇😅😉🤣🤪🤣🙂😅😅😁😄😉😀😊🤪😇😄😇😀😝😀😊\n😇😝🤪😜😊😆🙂🤪🤣😜😅😀🙂😀😃🤪😜😁🤪😜😁🤪🤪\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
                     end
                 end
             end)
-            while shared.spam2 do task.wait(nil)
-                game.Players:Chat("shield/                                                                                                                      all all all")
-            end
         end
     elseif string.sub(msg:lower(), 0, 8) == "control/" then
         local player = string.sub(msg:lower(), 9)
@@ -1026,4 +1026,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.8.3
+-- Official BP299 Version 1.8.4
