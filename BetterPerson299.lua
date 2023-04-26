@@ -29,7 +29,7 @@ local userId = game.Players.LocalPlayer.UserId
 local antivg = true
 local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
 local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","Transmorpher","LaserFingerPointers","SeaThemedCrossbow","RageTable","IceStaff"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
-local gearwhitelisted = {"Master0fSouIs","ScaleneSoap9803","TechnoSniperX","Humangas"} -- Players that are in this table won't get ungeared.
+local gearwhitelisted = {"Master0fSouIs","ScaleneSoap9803","t_echr","Humangas","ovicaI"} -- Players that are in this table won't get ungeared.
 local mousee = game.Players.LocalPlayer:GetMouse()
 
 -- CONFIGURE ANYTHING BELOW
@@ -691,6 +691,19 @@ end]]
             else
                 game.Players:Chat("h/ Could not initiate, not enough players.")
             end
+        elseif string.sub(msg:lower(), 0, 7) == "!rcrash" then -- Found by quiving
+            if not shared.mod then return end
+                    for i = 1,100 do
+                    task.wait()
+                    game.Players:Chat("rocket/                                                                                                                                       me me me fuck")
+                end
+
+                task.wait(.5)
+
+                for i = 1,500 do
+                    task.wait()
+                    game.Players:Chat("unpunish/                                                                                                                                     me me me fuck")
+                end
     elseif string.sub(msg:lower(), 0, 10) == "!unlisted1" then
         if shared.mod == true then
             wait(.65)
@@ -1026,4 +1039,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.8.4
+-- Official BP299 Version 1.8.5
