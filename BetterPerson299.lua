@@ -1,3 +1,5 @@
+-- JUST HAVING PERSON299'S ADMIN IS WAY BETTER THAN JUST HAVING PERM
+
 repeat task.wait() until game:IsLoaded()
 
 --[[
@@ -711,23 +713,27 @@ end]]
             pcall(function()
                 if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") or game:GetService("Workspace").Terrain["_Game"].WorkspaceFindFirstChild("Baseplate") then
                     print("Part missing")
-                    game.Players:Chat("emr fuck")
+                    game.Players:Chat("!rcrash fuck");wait(20)
+                    game.Players:Chat("!rcrash fuck")
                 end
             end)
             pcall(function()
                 if not game:GetService("Workspace").Terrain._Game.Workspace["Basic House"]:FindFirstChild("SmoothBlockModel112") then
                     print("Part missing")
-                    game.Players:Chat("emr fuck")
+                    game.Players:Chat("!rcrash fuck");wait(20)
+                    game.Players:Chat("!rcrash fuck")
                 end
             end)
             pcall(function()
                 if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y > 1.5 or game:GetService("Workspace").Terrain._Game.Workspace["Basic House"].SmoothBlockModel112.CFrame.Y > 15 then
-                    game.Players:Chat("emr fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
+                    game.Players:Chat("!rcrash fuck");wait(20)
+                    game.Players:Chat("!rcrash fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
                 end
             end)
             pcall(function()
                 if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y < 0 then
-                    game.Players:Chat("emr fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
+                    game.Players:Chat("!rcrash fuck");wait(20)
+                    game.Players:Chat("!rcrash fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
                 end
             end)
             local countdown = 7
@@ -739,6 +745,7 @@ end]]
                 wait(1)
                 else
                     print("Dead")
+                    game.Players:Chat("h/ Abusing on join is a rookie mistake")
                     game.Players:Chat("emr fuck")
                 break
                 end
@@ -748,7 +755,7 @@ end]]
                 print("Safe joining countdown expired")
             end
         end
-    elseif string.sub(msg:lower(), 0, 9) == "sabotage/" then
+    elseif string.sub(msg:lower(), 0, 9) == "sabotage/" then -- Attempt to kinda kick someone
         local player = string.sub(msg:lower(), 10)
         if shared.mod == true then
             game.Players:Chat("nodetector fuck")
@@ -1021,6 +1028,7 @@ end]]
                     "!shieldkickhop",
                     "!tempcrash (will ratelimit)",
                     "!drawmode",
+                    "!rcrash (Crash using just P299 commands)",
                     "!dis (Display name support)" -- switch
                 }
             )
