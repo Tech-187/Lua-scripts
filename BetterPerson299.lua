@@ -33,6 +33,7 @@ local connections = {} -- If you're gonna alter the script then please add any c
 local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","Transmorpher","LaserFingerPointers","SeaThemedCrossbow","RageTable","IceStaff"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
 local gearwhitelisted = {"Master0fSouIs","ScaleneSoap9803","t_echr","Humangas","ovicaI"} -- Players that are in this table won't get ungeared.
 local mousee = game.Players.LocalPlayer:GetMouse()
+local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function() end
 
 -- CONFIGURE ANYTHING BELOW
 
@@ -160,6 +161,9 @@ table.insert(connections, lplayer.Chatted:Connect(function(message)
         msgg = false
     end)
 end))
+
+--// Anti rejoin crash for crashifbrokenparts --\\
+queueteleport("getgenv().cibp = true")
 
 --// BetterPerson299 \\--
 
@@ -708,6 +712,7 @@ end]]
                 end
     elseif string.sub(msg:lower(), 0, 10) == "!unlisted1" then
         if shared.mod == true then
+            if cibp then return end
             wait(.65)
             print("Join shield active")
             pcall(function()
@@ -1047,4 +1052,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.8.5
+-- Official BP299 Version 1.8.6
