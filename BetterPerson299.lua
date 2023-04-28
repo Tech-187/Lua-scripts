@@ -699,6 +699,7 @@ end]]
             end
         elseif string.sub(msg:lower(), 0, 7) == "!rcrash" then -- Found by quiving
             if not shared.mod then return end
+            game.Players:Chat(":punish me");wait(.51)
                     for i = 1,100 do
                     task.wait()
                     game.Players:Chat("rocket/                                                                                                                                       me me me fuck")
@@ -719,6 +720,8 @@ end]]
                 if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") or game:GetService("Workspace").Terrain["_Game"].WorkspaceFindFirstChild("Baseplate") then
                     print("Part missing")
                     game.Players:Chat("!rcrash fuck");wait(20)
+                    game.Players:Chat("!rcrash fuck");wait(20)
+                    game.Players:Chat("!rcrash fuck");wait(20)
                     game.Players:Chat("!rcrash fuck")
                 end
             end)
@@ -726,17 +729,23 @@ end]]
                 if not game:GetService("Workspace").Terrain._Game.Workspace["Basic House"]:FindFirstChild("SmoothBlockModel112") then
                     print("Part missing")
                     game.Players:Chat("!rcrash fuck");wait(20)
+                    game.Players:Chat("!rcrash fuck");wait(20)
+                    game.Players:Chat("!rcrash fuck");wait(20)
                     game.Players:Chat("!rcrash fuck")
                 end
             end)
             pcall(function()
                 if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y > 1.5 or game:GetService("Workspace").Terrain._Game.Workspace["Basic House"].SmoothBlockModel112.CFrame.Y > 15 then
                     game.Players:Chat("!rcrash fuck");wait(20)
+                    game.Players:Chat("!rcrash fuck");wait(20)
+                    game.Players:Chat("!rcrash fuck");wait(20)
                     game.Players:Chat("!rcrash fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
                 end
             end)
             pcall(function()
                 if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y < 0 then
+                    game.Players:Chat("!rcrash fuck");wait(20)
+                    game.Players:Chat("!rcrash fuck");wait(20)
                     game.Players:Chat("!rcrash fuck");wait(20)
                     game.Players:Chat("!rcrash fuck") -- The f word would make it all tag out so other peoples chatted scripts cannot detect it
                 end
@@ -750,8 +759,8 @@ end]]
                 wait(1)
                 else
                     print("Dead")
-                    game.Players:Chat("h/ Abusing on join is a rookie mistake")
-                    game.Players:Chat("emr fuck")
+                    game.Players:Chat("emr fuck");wait(.35)
+                    game.Players:Chat("h/ Abusing when I join is a rookie mistake, bucko")
                 break
                 end
             end
@@ -1052,4 +1061,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.8.6
+-- Official BP299 Version 1.8.7
