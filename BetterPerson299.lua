@@ -408,7 +408,7 @@ lplayer.Chatted:Connect(function(msg)
             lplayer.Character.HumanoidRootPart.CFrame.Z))
             wait(.35)
             game.Players:Chat("tp/"..player.."/me")
-    elseif string.sub(msg:lower(), 0, 5) == "rlag/" then -- Discovered by Antedx
+    elseif string.sub(msg:lower(), 0, 5) == "rlag/" then -- Discovered by Antedx. Buy SCV3-NM and use "rkick plr" for a way better version
         if not shared.mod then return end
         shared.spam2 = false
         shared.spam = false
@@ -423,78 +423,14 @@ lplayer.Chatted:Connect(function(msg)
             end
             wait(1.35)
         end
-        -- chat gpt generated the code below lol. I did not add it because it's not my way of doing it but this also works
---[[
-local lplayer = game.Players.LocalPlayer
-if shared.mod == true then
-    game.Players:Chat("tp me fuckingtarget")
-    local players = game:GetService("Players")
-    local localPlayer = players.LocalPlayer
-    local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
-    local humanoid = character:WaitForChild("Humanoid")
-
-    local function findNearestPlayer()
-        local nearestPlayer, nearestDistance
-        for _, player in pairs(players:GetPlayers()) do
-            if player ~= localPlayer then
-                local playerCharacter = player.Character
-                if playerCharacter then
-                    local playerHumanoidRootPart = playerCharacter:FindFirstChild("HumanoidRootPart")
-                    if playerHumanoidRootPart then
-                        local distance = (playerHumanoidRootPart.Position - character.HumanoidRootPart.Position).magnitude
-                        if not nearestDistance or distance < nearestDistance then
-                            nearestPlayer = player
-                            nearestDistance = distance
-                        end
-                    end
-                end
-            end
-        end
-        return nearestPlayer
-    end
-
-    while true do
-        local nearestPlayer = findNearestPlayer()
-        if nearestPlayer then
-            local rootPart = nearestPlayer.Character.HumanoidRootPart
-            humanoid:MoveTo(rootPart.Position)
-            game.Players:Chat("invis/me")
-            game.Players:Chat("speed/others 0")
-            game.Players:Chat("setgrav/all 1000")
-            wait(1.5)
-            for i = 1, 350 do
-                game.Players:Chat("rocket/all all all")
-            end
-            wait(1)
-            for i = 1, 350 do
-                game.Players:Chat("rocket/all all all")
-            end
-            wait(1)
-            for i = 1, 350 do
-                game.Players:Chat("rocket/all all all")
-            end
-            wait(1)
-            for i = 1, 350 do
-                game.Players:Chat("rocket/all all all")
-            end
-            local master = game.Players:FindFirstChild("fuckingtarget")
-            while true do
-                local direction = (lplayer.Character.HumanoidRootPart.Position - master.Character.HumanoidRootPart.Position).unit
-                local newLookVector = Vector3.new(-direction.X, 0, -direction.Z)
-                lplayer.Character.HumanoidRootPart.CFrame = CFrame.new(lplayer.Character.HumanoidRootPart.Position, lplayer.Character.HumanoidRootPart.Position - newLookVector)
-                wait(0.1)
-            end
-            break
-        end
-        wait(1)
-    end
-end]]
     elseif string.sub(msg:lower(), 0, 7) == "unsize/" then 
         local player = string.sub(msg:lower(), 8)
         if not shared.mod then return end
             game.Players:Chat("undog/"..player)
     elseif string.sub(msg:lower(), 0, 3) == "clr" then 
         if not shared.mod then return end
+            game.Players:Chat("removejails")
+            game.Players:Chat("removeclones")
             game.Players:Chat("clear")
             for i, v in pairs(game:GetDescendants()) do
                 if v:IsA("Sound") then
@@ -996,7 +932,8 @@ end]]
             createKohlsUi(
                 {
                     "Thank you for using BetterPerson299\nCreated by Tech",
-                    "Commands with an M tag use Kohls commands",
+                    "Commands with a K tag use Kohls commands",
+                    "",
                     "logs/",
                     "reset/me or all",
                     "skydive/bp299",
