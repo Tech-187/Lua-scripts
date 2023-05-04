@@ -176,7 +176,7 @@ connections[#connections + 1] = game:GetService("RunService").RenderStepped:Conn
 			for i, gear in ipairs(BlacklistedGear) do
   			   if player.Backpack:FindFirstChild(gear) or player.Character:FindFirstChild(gear) then
                         local plrname = player.Name
-                        game.Players:Chat("ungear/"..plrname.."                                                                                                                                                                                                                                others fuck "..math.random(1,1000));wait(.35)
+                        game.Players:Chat("ungear/"..plrname.."                                                                                                                                                                                                                                                                                                                            others fuck "..math.random(1,1000));wait(.35)
                      end
 		     end
                 end
@@ -431,7 +431,7 @@ lplayer.Chatted:Connect(function(msg)
         if not shared.mod then return end
             game.Players:Chat("removejails")
             game.Players:Chat("removeclones")
-            game.Players:Chat("clear")
+            game.Players:Chat("clean it up")
             for i, v in pairs(game:GetDescendants()) do
                 if v:IsA("Sound") then
                     v:Stop()
