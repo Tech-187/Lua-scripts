@@ -1,7 +1,7 @@
 local root = game.Players.LocalPlayer.Character.HumanoidRootPart
 root.Anchored = true
 repeat
-	task.wait()
+	wait(.15)
 	root.CFrame = CFrame.new(-7.165, root.Position.Y + 2500 , 94.743)
 until workspace.Terrain._Game.Admin:FindFirstChild("Regen")
 root.Anchored = false
