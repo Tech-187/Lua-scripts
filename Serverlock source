@@ -1,6 +1,11 @@
 MS_WATERMARK("Type _cmds for a list of commands. Edit the table above. Also remove this line and the script should work")
 
--- Credit to DIY scripts for base. Idfk who made this at first but I got it from Damix and I just needed the wl bit cus lazy
+--[[
+Slock Version 1.2
+Credit to DIY scripts for base. Idfk who made this at first but I got it from Damix and I just needed the wl bit cus lazy
+
+c(prefix.."spam rocket/ all all all");wait(60)
+c(prefix.."stop") Ignore this, it's for a kick slock which requires all spawns to be moved and 2 alts + invis]]
 
 getgenv().prefix = "_"
 local wl = {}
@@ -12,7 +17,7 @@ local nosounds = true
 local player
 
 local sl = false
-local tl = false -- Treehouselock
+local tl = false -- Treehouselock (UNUSED, I WAS GONNA MAKE THIS BUT DECIDED NOT TO)
 local blindfinished = true
 
 local Admin = game:GetService("Workspace").Terrain["_Game"].Admin
