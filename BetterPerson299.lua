@@ -30,7 +30,7 @@ local lplayer = game.Players.LocalPlayer
 local userId = game.Players.LocalPlayer.UserId
 local antivg = true
 local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
-local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","Transmorpher","LaserFingerPointers","SeaThemedCrossbow","RageTable","IceStaff"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
+local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","Transmorpher","LaserFingerPointers","SeaThemedCrossbow","RageTable","IceStaff","BlackHoleSword","ViridianThrowingKnives"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
 local gearwhitelisted = {"Master0fSouIs","ScaleneSoap9803","t_echr","Humangas","ovicaI"} -- Players that are in this table won't get ungeared.
 local mousee = game.Players.LocalPlayer:GetMouse()
 local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function() end
@@ -802,24 +802,6 @@ lplayer.Chatted:Connect(function(msg)
                     togg = false
                 end
 	    end
-    elseif string.sub(msg:lower(), 0, 4) == "!666" then
-        if shared.mod == true then
-            game.Players:Chat("m Looks like the devil has taken over");wait(.49)
-            game.Players:Chat("!admin");wait(.49)
-            for i = 1, 99 do
-                game.Players:Chat("size all .3")
-                game.Players:Chat("size all .3")
-                game.Players:Chat("size all .3")
-                game.Players:Chat("freeze all")
-                game.Players:Chat("size all 10")
-                game.Players:Chat("size all 10")
-                game.Players:Chat("size all 10")
-                game.Players:Chat("clone all")
-                wait()
-            end
-            game.Players:Chat("emr");wait(1)
-            game.Players:Chat("!closemod. Hey, where did the script go?")
-        end
     elseif string.sub(msg:lower(), 0, 9) == "!drawmode" then
         if shared.mod == true then
             local UserInputService = game:GetService("UserInputService")
@@ -932,8 +914,8 @@ lplayer.Chatted:Connect(function(msg)
             createKohlsUi(
                 {
                     "Thank you for using BetterPerson299\nCreated by Tech",
-                    "Commands with a K tag use Kohls commands",
                     "",
+                    "Commands with a K tag use Kohls commands",
                     "logs/",
                     "reset/me or all",
                     "skydive/bp299",
@@ -959,7 +941,6 @@ lplayer.Chatted:Connect(function(msg)
                     "!admin",
                     "!findregen",
                     "!findpads",
-                    "!666 (crasher)(K)",
                     "!closemod",
                     "!crashonjoin",
                     "!lookforp299",
@@ -998,4 +979,4 @@ task.spawn(function()
         end
     end)
 end)
--- Official BP299 Version 1.8.7
+-- Official BP299 Version 1.8.8
