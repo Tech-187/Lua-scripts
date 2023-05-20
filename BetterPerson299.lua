@@ -168,23 +168,38 @@ queueteleport("getgenv().cibp = true")
 --// BetterPerson299 \\--
 
 connections[#connections + 1] = game:GetService("RunService").RenderStepped:Connect(function()
-    task.spawn(function()
+task.spawn(function()
         if antivg == true then
             for i, player in pairs(game:GetService("Players"):GetPlayers()) do
                 if player.Name ~= lplayer.Name and not table.find(gearwhitelisted, player.Name) then
-                if player.Character then
-			for i, gear in ipairs(BlacklistedGear) do
-  			   if player.Backpack:FindFirstChild(gear) or player.Character:FindFirstChild(gear) then
-                        local plrname = player.Name
-                        game.Players:Chat("ungear/"..plrname.."                                                                                                                                                                                                                                                                                                                            others fuck "..math.random(1,1000));wait(.35)
-                     end
-		     end
-                end
+                    if player.Character then
+                        for i, gear in ipairs(BlacklistedGear) do
+                            if player.Backpack:FindFirstChild(gear) or player.Character:FindFirstChild(gear) then
+                                local plrname = player.Name
+                                game.Players:Chat("ungear/"..plrname .."                                                                                                                                                                                                                                                                                                                            others fuck " ..math.random(1, 1000))
+                                wait(3.5)
+                                if not spammedlol then
+                                    for i = 1, 3 do
+                                        game.Players:Chat(
+                                            "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n No need to be a naughty boy " ..
+                                                plrname ..
+                                                    " !!! \n\n\n\n\n\n " ..
+                                                        gear ..
+                                                            " is blacklisted in this server. \n Try it in another server or use another tool")
+                                        wait(1.8)
+                                        spammedlol = true
+                                    end
+                                end
+                                wait(3.5)
+                                spammedlol = false
+                            end
+                        end
+                    end
                 end
             end
         end
     end)
-end) -- My indenting is terrible here because I made many mistakes and I'm too lazy to fix the indenting
+end)
 
 function createKohlsUi(textTable)
 	local kohlsUI = Instance.new("ScreenGui")
