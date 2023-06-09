@@ -83,11 +83,11 @@ local Utils = {
 }
 
 local function trueblind()
-    game.Players:Chat(":blind all")
-    game.Players:Chat("fogcolor 0 0 0")
-    game.Players:Chat("fogend nil")
-    game.Players:Chat("brightness nan")
-    game.Players:Chat("time -")
+    chatt(":blind all")
+    chatt("fogcolor 0 0 0")
+    chatt("fogend nil")
+    chatt("brightness nan")
+    chatt("time -")
 end
 
 local sg = game:GetService("StarterGui")
@@ -450,7 +450,7 @@ local function dumbrobloxupdate(character)
             pcall(function()
                 game:GetService("Players").LocalPlayer.Character.Head:Destroy()
             end)
-            game.Players:Chat(":punish                                                                                                                                others fuck "..math.random(1,1000))
+            chatt(":punish                                                                                                                                others fuck "..math.random(1,1000))
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(0, -499.4, 0))
             task.wait()
         end)
@@ -462,8 +462,8 @@ game:GetService("Players").LocalPlayer.Character.Head:Destroy()
 ]])
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
 else
-game.Players:Chat("unpunish me")
-game.Players:Chat("punish others")
+chatt("unpunish me")
+chatt("punish others")
 end
 end
 end
@@ -489,32 +489,32 @@ function()
             logn("The altered punish has been disabled")
             return
         end
-        game.Players:Chat("unpunish "..Target.Name.." "..math.random(1,1000));task.wait()
-        game.Players:Chat("invis "..Target.Name.." "..math.random(1,1000))
-        game.Players:Chat(":refresh "..Target.Name.." "..math.random(1,1000))
-        game.Players:Chat("invis "..Target.Name.." "..math.random(1,1000))
-        game.Players:Chat(":kill "..Target.Name.." "..math.random(1,1000))
-        game.Players:Chat("invis "..Target.Name.." "..math.random(1,1000))
-        game.Players:Chat(":trip "..Target.Name.." "..math.random(1,1000))
-        game.Players:Chat("invis "..Target.Name.." "..math.random(1,1000))
-        game.Players:Chat("speed "..Target.Name.." 00000000000000000000000000000000000000000000")
-        game.Players:Chat(":setgrav "..Target.Name.." -1000000000000000000000000000000000000000000000000000000000000000000000000000000000000");wait(.1)
-        game.Players:Chat("speed "..Target.Name.." 00000000000000000000000000000000000000000000")
-        game.Players:Chat("invis "..Target.Name.." "..Target.Name..""..Target.Name.." "..math.random(1,1000))
-        game.Players:Chat(":unpunish "..Target.Name.." "..Target.Name.." "..Target.Name.." "..math.random(1,1000));task.wait(.2)
-        game.Players:Chat("invis "..Target.Name.." "..math.random(1,1000));wait(.2)
-        game.Players:Chat(":reset "..Target.Name.." "..math.random(1,1000));wait(.15)
+        chatt("unpunish "..Target.Name.." "..math.random(1,1000));task.wait()
+        chatt("invis "..Target.Name.." "..math.random(1,1000))
+        chatt(":refresh "..Target.Name.." "..math.random(1,1000))
+        chatt("invis "..Target.Name.." "..math.random(1,1000))
+        chatt(":kill "..Target.Name.." "..math.random(1,1000))
+        chatt("invis "..Target.Name.." "..math.random(1,1000))
+        chatt(":trip "..Target.Name.." "..math.random(1,1000))
+        chatt("invis "..Target.Name.." "..math.random(1,1000))
+        chatt("speed "..Target.Name.." 00000000000000000000000000000000000000000000")
+        chatt(":setgrav "..Target.Name.." -1000000000000000000000000000000000000000000000000000000000000000000000000000000000000");wait(.1)
+        chatt("speed "..Target.Name.." 00000000000000000000000000000000000000000000")
+        chatt("invis "..Target.Name.." "..Target.Name..""..Target.Name.." "..math.random(1,1000))
+        chatt(":unpunish "..Target.Name.." "..Target.Name.." "..Target.Name.." "..math.random(1,1000));task.wait(.2)
+        chatt("invis "..Target.Name.." "..math.random(1,1000));wait(.2)
+        chatt(":reset "..Target.Name.." "..math.random(1,1000));wait(.15)
         pcall(function()
             fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
             chatt("iyc firecd")
         end)
         for i = 1, 20 do
-        game.Players:Chat(":punish "..Target.Name.."                                                                                                 "..Target.Name.." "..Target.Name.."                                                                       "..math.random(1,1000))
+        chatt(":punish "..Target.Name.."                                                                                                 "..Target.Name.." "..Target.Name.."                                                                       "..math.random(1,1000))
         end
-        game.Players:Chat("speed "..Target.Name.." 00000000000000000000000000000000000000000000")
+        chatt("speed "..Target.Name.." 00000000000000000000000000000000000000000000")
         wait(1)
-        game.Players:Chat("invis                                                                                                                                                 "..Target.Name.." "..math.random(1,1000));wait(.2)
-        game.Players:Chat("removehats                                                                                                                                                 "..Target.Name.." "..math.random(1,1000));wait(.2)
+        chatt("invis                                                                                                                                                 "..Target.Name.." "..math.random(1,1000));wait(.2)
+        chatt("removehats                                                                                                                                                 "..Target.Name.." "..math.random(1,1000));wait(.2)
     end
 end)
 
@@ -536,7 +536,7 @@ function()
     end
     if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id2), id2) then
         logn(Target.Name..' has perm in BC')
-        game.Players:Chat("punish "..Target.Name);wait(4.65)
+        chatt("punish "..Target.Name);wait(4.65)
         bcbought = true
         local file = "fuck and cum"
         local a = {}
@@ -557,7 +557,7 @@ function()
         end
         for b, c in ipairs(a) do
             local e = string.rep("  ", 2 * (b - 1))
-            game.Players:Chat("h/ lol look\n\n\n\n\n\n\n" .. e .. _G["variable_" .. tostring(b)])
+            chatt("h/ lol look\n\n\n\n\n\n\n" .. e .. _G["variable_" .. tostring(b)])
         end
     else 
         if permcheck1 == true then return end
@@ -590,7 +590,7 @@ function()
             -- pass
         else
             notify('r', 'Teleporting you to your profile coords instead')
-            game.Players:Chat(prefix3.."profilepos")
+            chatt(prefix3.."profilepos")
             return notify('r', 'Regen profile has already been created')
         end
     end
@@ -647,7 +647,7 @@ function()
             if not ExistingFile then
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(math.random(-37876, 853406), math.random(-37876, 42407), math.random(-37876, 4359)))
             else
-                game.Players:Chat(prefix3.."profilepos")
+                chatt(prefix3.."profilepos")
             end
         end
     end)
@@ -788,8 +788,8 @@ end)
 addcommand("tempcrash",
 "No description",
 function()
-    game.Players:Chat("god all")
-    game.Players:Chat("gear me 92628079");wait(.35)
+    chatt("god all")
+    chatt("gear me 92628079");wait(.35)
     for i,v in pairs(game.Players.LocalPlayer:FindFirstChildOfClass("Backpack"):GetChildren()) do
         if v:IsA("Tool") or v:IsA("HopperBin") then
             v.Parent = game.Players.LocalPlayer.Character
@@ -807,7 +807,7 @@ function()
     VirtualUser:ClickButton1(Vector2.new())
     wait(.39)
     for i = 1, 5 do
-    game.Players:Chat("unsize me me me "..math.random(1,1000))
+    chatt("unsize me me me "..math.random(1,1000))
     end
     wait(1)
     finished = true
@@ -816,7 +816,7 @@ function()
     game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):UnequipTools()
     wait(5)
     finished = false
-    game.Players:Chat("ungear me")
+    chatt("ungear me")
     end)
     task.spawn(function()			
     local StatsService = game:GetService("Stats")
@@ -829,7 +829,7 @@ function()
             ratelimit3 = true
             for i = 1, 5 do
             if not finished then return end
-            game.Players:Chat("unsize me me me "..math.random(1,1000))
+            chatt("unsize me me me "..math.random(1,1000))
             end
             wait(2.51)
             ratelimit3 = false
@@ -891,14 +891,14 @@ function()
 trueblind()
 wait(.49)
 for i = 1, 350 do
-    game.Players:Chat("unchar all all all")
+    chatt("unchar all all all")
 end
 wait(5.01)
 for i = 1, 350 do
-	game.Players:Chat(":gear all 253519495")
+	chatt(":gear all 253519495")
 end
 while task.wait() do
-    game.Players:Chat(":gear all 253519495")
+    chatt(":gear all 253519495")
 end
 end)
 
@@ -1068,12 +1068,12 @@ addcommand("silcrash",
 function()
     getgenv().nonpermantipunish = false
     for i = 1, 40 do
-        game.Players:Chat(":punish/                                                                                                                                       me fuck")
+        chatt(":punish/                                                                                                                                       me fuck")
         wait(.51)
-        game.Players:Chat("h/ \n\n\n\n\n\n Slight change of plan. The server has closed, no more playing here \n\n\n\n\n\n")
+        chatt("h/ \n\n\n\n\n\n Slight change of plan. The server has closed, no more playing here \n\n\n\n\n\n")
         for i = 1, 128 do
             --task.wait()
-            game.Players:Chat(
+            chatt(
                 "rocket/                                                                                                                                       me me me fuck"
             )
         end
@@ -1082,23 +1082,23 @@ function()
     
         for i = 1, 500 do
             task.wait()
-            game.Players:Chat(
+            chatt(
                 "unpunish/                                                                                                                                     me me me fuck"
             )
         end
         wait(1)
-        game.Players:Chat("clone me me me")
+        chatt("clone me me me")
         task.spawn(function()
             if alreadyspammed then return end
             alreadyspammed = true
             for i = 1, 350 do
-                game.Players:Chat("respawn/                                                                                                                                       others others others fuck")
+                chatt("respawn/                                                                                                                                       others others others fuck")
             end
         end)
         wait(.49)
         for i = 1, 128 do
             task.wait()
-            game.Players:Chat(
+            chatt(
                 "rocket/                                                                                                                                       all all all fuck"
             )
         end
@@ -1107,7 +1107,7 @@ function()
     
         for i = 1, 500 do
             task.wait()
-            game.Players:Chat(
+            chatt(
                 "unpunish/                                                                                                                                     all all all fuck"
             )
         end
@@ -1243,10 +1243,10 @@ connections[#connections + 1] = game.Players.LocalPlayer.Chatted:Connect(functio
         loadstring(code)()
     elseif string.sub(msg:lower(), 0, 5 + #prefix3) == prefix3.."unban" then
         local player = string.sub(msg:lower(), 7 + #prefix3)
-        game.Players:Chat("-unlock "..player)
+        chatt("-unlock "..player)
         wait(1.5)
-        game.Players:Chat("respawn "..player)
-        game.Players:Chat("tp "..player.." me")
+        chatt("respawn "..player)
+        chatt("tp "..player.." me")
     elseif string.sub(msg:lower(), 0, 4 + #prefix3) == prefix3.."spam" then
         local msggg = string.sub(msg:lower(), 6 + #prefix3)
         spam = true
@@ -1822,8 +1822,8 @@ local function QIQVS_fake_script() -- CloseUI.LocalScript
 
 	script.Parent.MouseButton1Click:Connect(function()
 		scriptrunning = false
-        game.Players:Chat("v!noeditor")
-        game.Players:Chat(prefix3.."noplayerlist");wait(.35)
+        chatt("v!noeditor")
+        chatt(prefix3.."noplayerlist");wait(.35)
         pcall(function()
             script.Parent.Parent.Parent:Destroy()
             game:GetService("StarterGui"):SetCoreGuiEnabled("PlayerList", true)
