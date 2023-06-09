@@ -1659,6 +1659,7 @@ local function NKEI_fake_script() -- ScrollingFrame.LocalScript
 	
 	addTlg("ClickAnnoy", function()
 		clickAnnoy = true
+        logn("Type //stop to stop it")
 	end, function()
 		clickAnnoy = false
 	end)
@@ -1667,6 +1668,16 @@ local function NKEI_fake_script() -- ScrollingFrame.LocalScript
 		clickFard = true
 	end, function()
 		clickFard = false
+	end)
+
+    addBtn("Stop spam", function(v)
+		spam = false
+        colors = false
+        shared.spam = false
+        shared.spam1 = false
+        shared.spam2 = false
+        getgenv().spamm = false
+        getgenv().spamm2 = false
 	end)
 	
 	addBtn("DeleteResetPad", function(v)
