@@ -2,25 +2,6 @@ local AllowMessages = true -- This cant be toggled when injected!
 local ShortcutProtectedMSG = false -- EPIC custom GUI! (SERVER SIDED)
 local Rank = "Oldschool User" -- Your shortcut custom rank
 local allowads = false -- Let us put our discord in some commands (Clearlogs, Anticrash msg, etc)
---local AllowTeleportsToShortcutHub = false -- Lol yeemi I seriously want to know why this exists - Tech
-
---[[ 
-	discord.io/shortcut
-    Shortcut v1 was made by Yeemi originally before she gave Mia ownership.
-
-    This license thing is complete and utter crap and let me explain this right now.
-
-    In this case I'm gonna use a company as an example.
-    You know Microsoft bought Minecraft from Mojang. 
-    Does this mean that Mojang can sue Microsoft after fully agreeing with all the contracts and everything?
-
-    Tbh this is just a response to someones retarded reddit post about me skidding because we never had the rights
-    Even though we do
-    Please don't fall for such bogus
-
-
-    Thanks in advance
-]]
 
 local prefix = ";"
 local lockprefix = "-"
@@ -56,11 +37,8 @@ local antivoid = true -- Teleport back up when you hit -7 or under.
 -- ANTIS!
 
 -- // Stinky chat bypass \\ --
-local ChatBar = game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar
 local function coht(massage)
-    ChatBar:SetTextFromInput(massage)
     game.Players:Chat(massage)
-    ChatBar.Text = ""
 end
 
 shared.banana = {"Username","ChineseKeemstar"} -- Add people to your blacklist 
@@ -127,7 +105,7 @@ mousee.KeyDown:connect(function(key)
 			function movepart()
 				local cf = game.Players.LocalPlayer.Character.HumanoidRootPart
 				local looping = true
-				spawn(function()
+				task.spawn(function()
 					while true do
 						game:GetService('RunService').Heartbeat:Wait()
 						game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -135,7 +113,7 @@ mousee.KeyDown:connect(function(key)
 						if not looping then break end
 					end
 				end)
-				spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+				task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
 				wait(0.25)
 				looping = false
 			end
@@ -150,7 +128,7 @@ mousee.KeyDown:connect(function(key)
 			function movepart()
 				local cf = game.Players.LocalPlayer.Character.HumanoidRootPart
 				local looping = true
-				spawn(function()
+				task.spawn(function()
 					while true do
 						game:GetService('RunService').Heartbeat:Wait()
 						game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -158,12 +136,12 @@ mousee.KeyDown:connect(function(key)
 						if not looping then break end
 					end
 				end)
-				spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+				task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
 				wait(0.25)
 				looping = false
 				coht(prefix..'super skydive me')
 				wait(1)
-				coht(prefix..'spam tp me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me,me')
+				coht(prefix..'spam tp me,me,me')
 				wait(5)
 				coht(prefix..'stop')
 				wait(0.25)
@@ -233,7 +211,7 @@ end
 
 Players.PlayerAdded:Connect(function(player)
 	start(player)
-	spawn(function()
+	task.spawn(function()
 		if player.Name == "SnowClan_8342" then
 			say("Shortcut v1's creator has joined (SnowClan_8342)")
 		elseif player.Name == "An0rdinaryGirl_Mia" then
@@ -324,7 +302,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 		wait(0.25)
 		local remote = game:GetService("Workspace")[game:GetService("Players").LocalPlayer.Name].PaintBucket:WaitForChild("Remotes").ServerControls
 		for i,v in pairs(game.Workspace.Terrain["_Game"].Workspace:GetChildren()) do
-			spawn(function()
+			task.spawn(function()
 				if v:IsA("Part") then
 					local v4 =
 						{
@@ -341,7 +319,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 
 
 		for i,v in pairs(game.Workspace.Terrain["_Game"].Workspace["Admin Dividers"]:GetChildren()) do
-			spawn(function()
+			task.spawn(function()
 				if v:IsA("Part") then
 					local v5 =
 						{
@@ -359,7 +337,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 
 		for i,v in pairs(game.Workspace.Terrain["_Game"].Workspace["Basic House"]:GetDescendants()) do
 			if v:IsA("Part") then
-				spawn(function()
+				task.spawn(function()
 					if v.Name == "SmoothBlockModel103" or v.Name == "SmoothBlockModel105" or v.Name == "SmoothBlockModel106" or v.Name == "SmoothBlockModel108" or v.Name == "SmoothBlockModel11" or v.Name == "SmoothBlockModel113" or v.Name == "SmoothBlockModel114" or v.Name == "SmoothBlockModel115" or v.Name == "SmoothBlockModel116" or v.Name == "SmoothBlockModel118" or v.Name == "SmoothBlockModel122" or v.Name == "SmoothBlockModel126" or v.Name == "SmoothBlockModel129" or v.Name == "SmoothBlockModel13" or v.Name == "SmoothBlockModel130" or v.Name == "SmoothBlockModel131" or v.Name == "SmoothBlockModel132" or v.Name == "SmoothBlockModel134" or v.Name == "SmoothBlockModel135" or v.Name == "SmoothBlockModel14" or v.Name == "SmoothBlockModel140" or v.Name == "SmoothBlockModel142" or v.Name == "SmoothBlockModel147" or v.Name == "SmoothBlockModel15" or v.Name == "SmoothBlockModel154" or v.Name == "SmoothBlockModel155" or v.Name == "SmoothBlockModel164" or v.Name == "SmoothBlockModel166" or v.Name == "SmoothBlockModel173" or v.Name == "SmoothBlockModel176" or v.Name == "SmoothBlockModel179" or v.Name == "SmoothBlockModel185" or v.Name == "SmoothBlockModel186" or v.Name == "SmoothBlockModel190" or v.Name == "SmoothBlockModel191" or v.Name == "SmoothBlockModel196" or v.Name == "SmoothBlockModel197" or v.Name == "SmoothBlockModel198" or v.Name == "SmoothBlockModel20" or v.Name == "SmoothBlockModel201" or v.Name == "SmoothBlockModel203" or v.Name == "SmoothBlockModel205" or v.Name == "SmoothBlockModel207" or v.Name == "SmoothBlockModel208" or v.Name == "SmoothBlockModel209" or v.Name == "SmoothBlockModel210" or v.Name == "SmoothBlockModel211" or v.Name == "SmoothBlockModel213" or v.Name == "SmoothBlockModel218" or v.Name == "SmoothBlockModel22" or v.Name == "SmoothBlockModel223" or v.Name == "SmoothBlockModel224" or v.Name == "SmoothBlockModel226" or v.Name == "SmoothBlockModel26" or v.Name == "SmoothBlockModel29" or v.Name == "SmoothBlockModel30" or v.Name == "SmoothBlockModel31" or v.Name == "SmoothBlockModel36" or v.Name == "SmoothBlockModel37" or v.Name == "SmoothBlockModel38" or v.Name == "SmoothBlockModel39" or v.Name == "SmoothBlockModel41" or v.Name == "SmoothBlockModel48" or v.Name == "SmoothBlockModel49" or v.Name == "SmoothBlockModel51" or v.Name == "SmoothBlockModel56" or v.Name == "SmoothBlockModel67" or v.Name == "SmoothBlockModel68" or v.Name == "SmoothBlockModel69" or v.Name == "SmoothBlockModel70" or v.Name == "SmoothBlockModel72" or v.Name == "SmoothBlockModel75" or v.Name == "SmoothBlockModel8" or v.Name == "SmoothBlockModel81" or v.Name == "SmoothBlockModel85" or v.Name == "SmoothBlockModel93" or v.Name == "SmoothBlockModel98" then
 						local v6 =
 							{
@@ -441,7 +419,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 
 		for i,v in pairs(game.Workspace.Terrain["_Game"].Workspace["Building Bricks"]:GetDescendants()) do
 			if v:IsA("Part") then
-				spawn(function()
+				task.spawn(function()
 					if v.Name == "Part29" or v.Name == "Part31" or v.Name == "Part55" then
 						local v14 =
 						{
@@ -531,7 +509,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 
 
 		for i,v in pairs(game.Workspace.Terrain["_Game"].Workspace.Obby:GetChildren()) do
-			spawn(function()
+			task.spawn(function()
 				if v:IsA("Part") then
 					local v23 =
 						{
@@ -599,7 +577,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 		function movepart()
 			local cf = game.Players.LocalPlayer.Character.HumanoidRootPart
 			local looping = true
-			spawn(function()
+			task.spawn(function()
 				while true do
 					game:GetService('RunService').Heartbeat:Wait()
 					game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -607,7 +585,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 					if not looping then break end
 				end
 			end)
-			spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+			task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
 			wait(0.25)
 			looping = false
 		end
@@ -785,35 +763,52 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 	
 	if string.sub(msg:lower(), 0, 9) == prefix.."shutdown" then
 		logn("Shuting down server...")
-		coht("h Shutting down server.")
-		wait(0.75)
-		coht("size all 0.3")
-		coht("size all 0.3")
-		coht("size all 0.3")
-		coht("freeze all")
-		coht("size all 10")
-		coht("size all 10")
-		coht("size all 10")
-		coht("clone all")
-		coht("size all 0.3")
-		coht("size all 0.3")
-		coht("size all 0.3")
-		coht("freeze all")
-		coht("size all 10")
-		coht("size all 10")
-		coht("size all 10")
-		coht("clone all")
-		coht("size all 0.3")
-		coht("size all 0.3")
-		coht("size all 0.3")
-		coht("freeze all")
-		coht("size all 10")
-		coht("size all 10")
-		coht("size all 10")
-		coht("clone all")
-		wait(10)
-		logn("I know this only crashes temporarily, blame Laamy for that lmfao")
-		-- gotoShortcutHub("Server shutdown", 10) -- Go to shortcuts main hub for rejoining
+        coht(";toggle anticrashvg")
+        coht(":gear me 000000000000000000000000000000000094794847")
+        local Backpack = game.Players.LocalPlayer:FindFirstChildOfClass("Backpack")
+        game.Players.LocalPlayer.Backpack:WaitForChild("VampireVanquisher")
+        for _, v in ipairs(Backpack:GetChildren()) do
+            v.Parent = game.Players.LocalPlayer.Character
+            v:Activate()
+        end
+
+        wait(.15)
+        task.spawn(function()
+            while true do
+                coht("unsize me me me");task.wait()
+            end
+        end)
+
+        wait(1.01)
+
+        for i = 1, 12 do
+            local table1 = {}
+            local table2 = {}
+
+            local function loop(v1, v2)
+                for i = v1, v2 do
+                    table.insert(table1, table2)
+                end
+            end
+
+            local function crash(v1)
+                for i = 1, v1 do
+                    table.insert(table2[1], {})
+                end
+
+                if 4999999 / (v1 + 2) then
+                    loop(1, 4999999 / (v1 + 2))
+                else
+                    loop(1, 4999999)
+                end
+                game:GetService("RobloxReplicatedStorage").SetPlayerBlockList:FireServer(table1)
+            end
+
+            table.insert(table2, {})
+            game:GetService("NetworkClient"):SetOutgoingKBPSLimit(math.huge)
+            crash(250)
+            wait(3.51)
+        end
 	end
 	
 	if string.sub(msg:lower(), 0, 4) == prefix.."fps" then
@@ -827,7 +822,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 			logn("Just hold the tool your given xd (Expires in 10 seconds.)")
 			coht("gear me 00000000000000000094794847")
 			allowcrash = true
-			Spawn(function()
+			task.spawn(function()
 				wait(10)
 				allowcrash = false
 				logn("VampireVanquisher Expired.")
@@ -940,7 +935,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 	end
 
 	if string.sub(msg:lower(), 0, 10) == prefix.."blacklist" then
-		coht(lockprefix.."lock "..string.sub(msg:lower(), 12))
+		coht("-lock "..string.sub(msg:lower(), 12))
 	end
 	
 	if string.sub(msg:lower(), 0, 3) == prefix.."ds" then
@@ -967,7 +962,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                     local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
                     local looping = true
 
-                    spawn(function()
+                    task.spawn(function()
                         while true do
                             game:GetService('RunService').Heartbeat:Wait()
                             game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -975,7 +970,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                             if not looping then break end
                         end
                     end)
-                    spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+                    task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
                     wait(0.3)
                     looping = false
                     coht("skydive me")
@@ -1005,7 +1000,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                     local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
                     local looping = true
 
-                    spawn(function()
+                    task.spawn(function()
                         while true do
                             game:GetService('RunService').Heartbeat:Wait()
                             game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1013,7 +1008,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                             if not looping then break end
                         end
                     end)
-                    spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+                    task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
                     wait(0.3)
                     looping = false
                     coht("skydive me")
@@ -1041,7 +1036,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                     local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
                     local looping = true
 
-                    spawn(function()
+                    task.spawn(function()
                         while true do
                             game:GetService('RunService').Heartbeat:Wait()
                             game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1049,7 +1044,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                             if not looping then break end
                         end
                     end)
-                    spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+                    task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
                     wait(0.30)
                     looping = false
                     coht("skydive me")
@@ -1077,7 +1072,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                     local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
                     local looping = true
 
-                    spawn(function()
+                    task.spawn(function()
                         while true do
                             game:GetService('RunService').Heartbeat:Wait()
                             game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1085,7 +1080,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                             if not looping then break end
                         end
                     end)
-                    spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+                    task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
                     wait(0.3)
                     looping = false
                     coht("skydive me")
@@ -1125,7 +1120,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                     local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
                     local looping = true
 
-                    spawn(function()
+                    task.spawn(function()
                         while true do
                             game:GetService('RunService').Heartbeat:Wait()
                             game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1133,7 +1128,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                             if not looping then break end
                         end
                     end)
-                    spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+                    task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
                     wait(0.3)
                     looping = false
                     coht("skydive me")
@@ -1162,7 +1157,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                         local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
                         local looping = true
 
-                        spawn(function()
+                        task.spawn(function()
                             while true do
                                 game:GetService('RunService').Heartbeat:Wait()
                                 game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1170,7 +1165,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
                                 if not looping then break end
                             end
                         end)
-                        spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+                        task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
                         wait(0.3)
                         looping = false
                         coht("skydive me")
@@ -1196,7 +1191,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 				repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 				local looping = true
-				spawn(function()
+				task.spawn(function()
 				    while true do
 				        game:GetService('RunService').Heartbeat:Wait()
 						game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1204,7 +1199,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 						if not looping then break end
 				    end
 				end)
-				spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+				task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
 				wait(0.3)
 				looping = false
 				coht("skydive me")
@@ -1233,7 +1228,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 				repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 				local looping = true
-				spawn(function()
+				task.spawn(function()
 				    while true do
 				        game:GetService('RunService').Heartbeat:Wait()
 						game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1241,7 +1236,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 						if not looping then break end
 				    end
 				end)
-				spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+				task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
 				wait(0.3)
 				looping = false
 				coht("skydive me")
@@ -1267,7 +1262,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 				repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 				local looping = true
-				spawn(function()
+				task.spawn(function()
 				    while true do
 				        game:GetService('RunService').Heartbeat:Wait()
 						game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1275,7 +1270,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 						if not looping then break end
 				    end
 				end)
-				spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+				task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
 				wait(0.3)
 				looping = false
 				coht("tp me "..playername)
@@ -1296,7 +1291,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 				repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 				local looping = true
-				spawn(function()
+				task.spawn(function()
 				    while true do
 				        game:GetService('RunService').Heartbeat:Wait()
 						game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1304,7 +1299,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 						if not looping then break end
 				    end
 				end)
-				spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+				task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
 				wait(0.3)
 				looping = false
 				coht("tp me "..playername)
@@ -1325,7 +1320,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 				repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 				local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 				local looping = true
-				spawn(function()
+				task.spawn(function()
 				    while true do
 				        game:GetService('RunService').Heartbeat:Wait()
 						game.Players.LocalPlayer.Character['Humanoid']:ChangeState(11)
@@ -1333,7 +1328,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 						if not looping then break end
 				    end
 				end)
-				spawn(function() while looping do wait(.1) coht('unpunish me') end end)
+				task.spawn(function() while looping do wait(.1) coht('unpunish me') end end)
 				wait(0.3)
 				looping = false
 				coht("tp me "..playername)
@@ -1350,21 +1345,18 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 	end
 	
 	if string.sub(msg:lower(), 0, 13) == prefix.."findresetpad" then
-		local cf = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-		cf.CFrame = Admin_Folder.Regen.CFrame
+		loadstring(game:HttpGet(("https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/FindVerticalRegen"), true))()
 	end
 	
 	if string.sub(msg:lower(), 0, 4) == prefix.."nok" then
-		game:GetService("Workspace").Terrain["_Game"].Workspace.Obby.Jump.TouchInterest:destroy()
-		game:GetService("Workspace").Terrain["_Game"].Workspace.Obby.Jump1.TouchInterest:destroy()
-		game:GetService("Workspace").Terrain["_Game"].Workspace.Obby.Jump2.TouchInterest:destroy()
-		game:GetService("Workspace").Terrain["_Game"].Workspace.Obby.Jump3.TouchInterest:destroy()
-		game:GetService("Workspace").Terrain["_Game"].Workspace.Obby.Jump4.TouchInterest:destroy()
-		game:GetService("Workspace").Terrain["_Game"].Workspace.Obby.Jump5.TouchInterest:destroy()
-		game:GetService("Workspace").Terrain["_Game"].Workspace.Obby.Jump6.TouchInterest:destroy()
-		game:GetService("Workspace").Terrain["_Game"].Workspace.Obby.Jump7.TouchInterest:destroy()
-		game:GetService("Workspace").Terrain["_Game"].Workspace.Obby.Jump8.TouchInterest:destroy()
-		game:GetService("Workspace").Terrain["_Game"].Workspace.Obby.Jump9.TouchInterest:destroy()
+		local objs = game:GetService("Workspace").Terrain._Game.Workspace.Obby:GetChildren()
+        for i, obj in pairs(objs) do
+            coroutine.wrap(function()
+                pcall(function()
+                    obj.TouchInterest:Destroy()
+                end)
+            end)()
+        end
 	end
 	
 	if string.sub(msg:lower(), 0, 6) == prefix.."wkick" then
@@ -1477,7 +1469,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 	if string.sub(msg:lower(), 0, 8) == prefix.."allpads" then
 		local pads = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:GetChildren("Head")
 		for i, pad in pairs(pads) do
-			Spawn(function()
+			task.spawn(function()
 				pad.PrimaryPart = pad:FindFirstChild("Head")
 				local pos = pad.PrimaryPart.CFrame
 				wait(0)
@@ -1492,7 +1484,6 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 	
 	if string.sub(msg:lower(), 0, 5) == prefix.."cmds" then
 		logn("Click F9 for the commands list")
-		print(prefix.."tesk (plr) -- Crash/lag someone (recmed to use with bok)")
 		print(prefix.."stop -- Stop tesk spammer/normal spammer xd")
 		print(prefix.."clearlogs -- Spam logs")
 		print(prefix.."super (cmd) -- Spams a command until logs is filled")
@@ -1500,11 +1491,11 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 		print(prefix.."pads -- Teleport to the pads")
 		print(prefix.."prefix (char) -- Change your script prefix and not its self so it will always be ;prefix")
 		print(prefix.."crash --gets you the vampire tool and waits until you hold it to spam size me 0.3 xd")
-		print(prefix.."reg -- Regen the pads (I think it broke xd)")
+		print(prefix.."reg -- Regen the pads")
 		print(prefix.."bind (module) (key) -- Rebind a modules keybind")
 		print(prefix.."bok (plr) -- Stop someone from dying from obby bricks AND from getting admin from admin pads for 5-10 minutes :)")
 		print(prefix.."trap (plr) -- Stop someone from moving")
-		print(prefix.."perm -- (Ex_/AdminJoy Owner gave me dis) grab one pad if you dont have admin and resets pads and grbs one if its full so its like perm xd")
+		print(prefix.."perm -- (Ex_/AdminJoy Owner gave me dis) grab one pad if you dont have admin and resets pads and grabs one if its full so its like perm xd")
 		print(prefix.."nonperm -- (Ex_/AdminJoy Owner gave me dis) Undo the perm effect")
 		print(prefix.."clicktp -- Click tp tool")
 		print(prefix.."attach -- Attach to objects glitch (PS: Doesnt do your camera for you)")
@@ -1519,7 +1510,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 		print(prefix.."moveobbybricks -- Remove the obby kill bricks")
 		print(prefix.."nok -- Learned something today, they remove the touch.")
 		print(prefix.."movebuildingbricks -- move the building bricks")
-		print(prefix.."wkick (plr) -- Knock someones internet connection to roblox offline for 1-5minutes maybe longer")
+		print(prefix.."wkick (plr) -- Car spam")
 		print(prefix.."disablerc -- Disable everyones shiftlock and rightclick xd (UNDOABLE!)")
 		print(prefix.."setspawnpoints (plr)-- Set the world spawn!")
 		print(prefix.."cmds -- Print all commands to console")
@@ -1644,7 +1635,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 	if string.sub(msg:lower(), 0, 14) == prefix.."color all all" then
 		local Num = tonumber(string.sub(msg:lower(), 16))
 		for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-			Spawn(function()
+			task.spawn(function()
 				if v:IsA("Part") then
 					local Partse =
 					{
@@ -1660,7 +1651,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 	if string.sub(msg:lower(), 0, 14) == prefix.."color all red" then
 		local Num = tonumber(string.sub(msg:lower(), 16))
 		for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-			Spawn(function()
+			task.spawn(function()
 				if v:IsA("Part") then
 					local Partse =
 					{
@@ -1676,7 +1667,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 	if string.sub(msg:lower(), 0, 17) == prefix.."color all green" then
 		local Num = tonumber(string.sub(msg:lower(), 18))
 		for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-			Spawn(function()
+			task.spawn(function()
 				if v:IsA("Part") then
 					local Partse =
 					{
@@ -1692,7 +1683,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 	if string.sub(msg:lower(), 0, 15) == prefix.."color all blue" then
 		local Num = tonumber(string.sub(msg:lower(), 17))
 		for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-			Spawn(function()
+			task.spawn(function()
 				if v:IsA("Part") then
 					local Partse =
 					{
@@ -1712,7 +1703,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 		game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.PaintBucket)
 		wait(0.25)
 		for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-			Spawn(function()
+			spawn(function()
 				if v:IsA("Part") then
 					local Partse =
 					{
@@ -1732,7 +1723,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 		game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.PaintBucket)
 		wait(0.25)
 		for i,v in pairs(Workspace_Folder["Basic House"]:GetChildren()) do
-			Spawn(function()
+			task.spawn(function()
 				if v:IsA("Part") then
 					local Partse =
 					{
@@ -1752,7 +1743,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 		game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.PaintBucket)
 		wait(0.25)
         for i, v in pairs(Workspace_Folder["Obby"]:GetChildren()) do
-			Spawn(function()
+			task.spawn(function()
 				if v:IsA("Part") then
 					local Partse =
 					{
@@ -1772,7 +1763,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 		game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.PaintBucket)
 		wait(0.25)
         for i, v in pairs(Workspace_Folder["Obby Box"]:GetChildren()) do
-			Spawn(function()
+			task.spawn(function()
 				if v:IsA("Part") then
 					local Partse =
 					{
@@ -1876,7 +1867,7 @@ Players.LocalPlayer.Chatted:Connect(function(msg)
 	
 	if string.sub(msg:lower(), 0, 9) == prefix.."alltools" then
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
-			Spawn(function()
+			task.spawn(function()
 				if v:IsA'Tool' then
 					v.Parent = game.Players.LocalPlayer.Character
 				end
@@ -2189,7 +2180,7 @@ function transformToColor3(col) -- Oofkohls
 	return Color3.new(r,g,b);
 end
 
-Spawn(function()
+task.spawn(function()
 	while true do
 		wait(0.05)
 		if teskking == true then
@@ -2295,7 +2286,7 @@ ID #0011 (4-bit Binary Number)
 	end
 end
 
-spawn(function()
+task.spawn(function()
 	function Backup() -- In work
 		data = ""
 		if antijailgearban == true then
@@ -2360,7 +2351,7 @@ apis_Credits = {}
 apis_Version = {}
 apis_EncryptionKeys = {}
 
-spawn(function()
+task.spawn(function()
 	-- Mods
 	-- Mods
 	
@@ -2443,7 +2434,7 @@ ID #0001 (4-bit Binary Number)
 	local API = "Shortcut"
 	local data = {tobinary(0), tobinary(1), tobinary(2), tobinary(3), tobinary(4), tobinary(5), tobinary(6), tobinary(7), tobinary(8), tobinary(9), tobinary(10), tobinary(11), tobinary(12), tobinary(13), tobinary(14), tobinary(15)}
 	
-	spawn(function() -- Default mod library for testing
+	task.spawn(function() -- Default mod library for testing
 		CreateAPI(API, "sch", "SnowClan_8342, for Shortcut!", "v0.1")
 		CreateCommand(API, "modlist", true, function() -- ;sch modlist
 			print("----- API list (Info) -----")
@@ -2464,7 +2455,7 @@ ID #0001 (4-bit Binary Number)
 	end)
 end)
 
-spawn(function()
+task.spawn(function()
 	while true do
 		wait(5)
 		for i, player in pairs(game:GetService("Players"):GetPlayers()) do
@@ -2477,7 +2468,7 @@ spawn(function()
 	end
 end)
 
-Spawn(function()
+task.spawn(function()
 	while true do
 		wait(0.05)
 		if antigrayscale == true then
@@ -2551,9 +2542,7 @@ local chatEvents = game:GetService("ReplicatedStorage"):WaitForChild("DefaultCha
 local messageDoneFiltering = chatEvents:WaitForChild("OnMessageDoneFiltering")
 
 function start(plr)
-	messageDoneFiltering.OnClientEvent:Connect(function(msg)
-		local plr = game.Players:FindFirstChild(message.FromSpeaker)
-		local msg = message.Message or ""
+	plr.Chatted:Connect(function(msg)
 		task.spawn(function()
 			for i,player in pairs(Admin) do
 				if plr.Name == player then
@@ -2594,7 +2583,7 @@ function start(plr)
 			end
 		end)
 		
-		Spawn(function()
+		task.spawn(function()
 			for i,player in pairs(Whitelist) do
 				if plr.Name == player then
 					local command = string.gsub(msg:lower(), "me", plr.Name)
@@ -2609,7 +2598,7 @@ function start(plr)
 			end
 		end)
 	
-		Spawn(function()
+		task.spawn(function()
 			if string.sub(msg:lower(),0,8) == "unpunish" or string.sub(msg:lower(),0,9) == ":unpunish" or string.sub(msg:lower(),0,3) == "sit" or string.sub(msg:lower(),0,4) == ":sit" or string.sub(msg:lower(),0,4) == "stun" or string.sub(msg:lower(),0,5) == ":stun" then
 				if antiattach == true then
 					local killoff = true
@@ -2628,7 +2617,7 @@ function start(plr)
 			end
 		end)
 		
-		Spawn(function()
+		task.spawn(function()
 			if Superlogs == true then
 				print("["..plr.Name.."]: "..msg)
 			end
@@ -2737,7 +2726,7 @@ function say(msg)
 	game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")
 end
 
-Spawn(function()
+task.spawn(function()
 	while true do
 		for i,v in pairs(MPS_Users) do
 			if MPS[i] >= MPS_Max[i] then
@@ -2749,7 +2738,7 @@ Spawn(function()
 	end
 end)
 
-Spawn(function()
+task.spawn(function()
 	while true do
 		wait(0.003)
 		local CF = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -2778,7 +2767,7 @@ function gotoShortcutHub(reason, delay)
 	end
 end
 
-Spawn(function()
+task.spawn(function()
 	while true do
 		
 		for i,player in pairs(Pad_Ban) do
@@ -2810,7 +2799,7 @@ Spawn(function()
 	end
 end)
 
-spawn(function()
+task.spawn(function()
 	while true do
 		wait(1)
 		if ShortcutProtectedMSG == true then
@@ -2825,7 +2814,7 @@ Any abuse of sir will result in a padban or worse.]])
 	end
 end)
 
-spawn(function()
+task.spawn(function()
 	game.StarterGui.ResetPlayerGuiOnSpawn = false
 
 	-- Gui to Lua
@@ -2979,7 +2968,7 @@ spawn(function()
 	TextLabel.Position = UDim2.new(0, 25, 0, 100)
 	TextLabel.Size = UDim2.new(0, 340, 0, 202)
 	TextLabel.Font = Enum.Font.SourceSans
-	TextLabel.Text = "v1 has not been made by the current owners. Full credit goes to yeemi.\r\nApparently this was GNU licensed but we have full ownership\r\n Shouldn't have said yes in the first place."
+	TextLabel.Text = "v1 has not been made by the current owners. Full credit goes to yeemi.\n It's not recommended but some still like it. \n Please keep in mind this script has been altered \n it's not exactly how it was"
 	TextLabel.TextColor3 = Color3.fromRGB(171, 171, 171)
 	TextLabel.TextSize = 18.000
 	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -4222,7 +4211,7 @@ spawn(function()
 
 end)
 
-Spawn(function()
+task.spawn(function()
 	mods()
 end)
 
@@ -4230,7 +4219,7 @@ logn("Code fully executed!")
 
 wait(0.25)
 
-Spawn(function()
+task.spawn(function()
 	wait(.65)
 	startupScripts()
 end)
