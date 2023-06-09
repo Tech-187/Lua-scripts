@@ -4,14 +4,13 @@ local Rank = "Oldschool User" -- Your shortcut custom rank
 local allowads = false -- Let us put our discord in some commands (Clearlogs, Anticrash msg, etc)
 
 local prefix = ";"
-local lockprefix = "-"
 
 function startupScripts() -- Everything in here will be ran LAST!(Great for your after inject scripts idk xd)
 	game.Players:Chat(prefix.."perm")
 end
 
 function mods() -- Everything in here will be ran BEFORE finishing code (For mods)
-	-- Why does this exist? It's not even properly made :skull:
+	
 end
 
 -- CONFIG THIS BEFORE INJECTING!
