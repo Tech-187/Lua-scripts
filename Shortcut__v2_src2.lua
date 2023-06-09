@@ -806,7 +806,6 @@ function()
     VirtualUser:CaptureController()
     VirtualUser:ClickButton1(Vector2.new())
     wait(.39)
-    chatt("pm/"..Target.Name.." \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n You have been kicked from the game. \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n We have also attempted a hack on you by using a vulnerability to our advantage \n If you see ''Same account launched from different device'' then the hack has been successful \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     for i = 1, 5 do
     game.Players:Chat("unsize me me me "..math.random(1,1000))
     end
@@ -1040,6 +1039,7 @@ nopadgrabber - Disable the padgrabber that will automatically get a pad if your 
 permcheck (player) - Check if a player has perm
 punish (Player) - Altered punish, it's buffed and can only be bypassed using respawn or unchar
 forcelag - Use this command in emergencies. To stop it, you have to rejoin entirely (Requires admin of course)
+tempcrash - Temporarily crash the server using the blue tempcrash sword
 kick (Player) - Kick a player using the shitty dog method (scv3-var has a way better method)
 
 classicmode - Run old SCV2 instead. This script is very outdated and poorly put together and also very memory heavy, but some people still like it because it more commands (no wonder). Keep in mind that old v2 is over a year old by now
