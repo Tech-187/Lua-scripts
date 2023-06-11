@@ -1,5 +1,4 @@
 local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function() end
-getgenv().scriptrunning = true
 getgenv().autoexecute = true
 
 if autoexecute then
@@ -63,6 +62,7 @@ local Plrname = plr.Name
 local userId = game.Players.LocalPlayer.UserId
 getgenv().house_keybind = "n"
 getgenv().reset_keybind = "c" -- This also shares with VAR
+getgenv().scriptrunning = true -- Do not touch this please, for the love of god
 
 local Game_Folder = game:GetService("Workspace").Terrain["_Game"]
 local Workspace_Folder = Game_Folder.Workspace
@@ -949,6 +949,19 @@ function()
     end)
 end)
 
+addcommand("antigear",
+"No description",
+function()
+    antiGear = true
+end)
+
+addcommand("unantigear",
+"No description",
+function()
+    antiGear = false
+end)
+
+
 addcommand("toregen",
 "No description",
 function()
@@ -1023,7 +1036,7 @@ annoy (player) - Spam respawn a player
 stop - stop spamming 
 toregen - Teleport to the regen pad
 vgcrash - Crash the server using the vampire gear
-silcrash - (REQUIRES PERSON299'S ADMIN) Silently crash the server
+silcrash - (REQUIRES PERSON299'S ADMIN) Silently crash the server. Keep in mind that SCV3-Var has a way better silcrash
 fixpaint - Restore the map colors to how it originally was (we were the first to have this fully fixed with credit to siyamicik and boomanoid)
 messpaint - Mess up the map paint instead by painting everything random
 breakcam - Break the server camera
@@ -1044,7 +1057,7 @@ kick (Player) - Kick a player using the shitty dog method (scv3-var has a way be
 
 classicmode - Run old SCV2 instead. This script is very outdated and poorly put together and also very memory heavy, but some people still like it because it more commands (no wonder). Keep in mind that old v2 is over a year old by now
 
-
+Since some features are still missing, I may recommend you to use classic SCV2 as the script itself isn't bad, it's just the coding that's bad and it's very heavy unlike this remake (the remake also loads instantly lmao)
 
 
 
@@ -1063,7 +1076,7 @@ Shade4Real - Additional code
 This project is still alive and well as of 6/9/2023 so you can contribute as well, and your name will appear in the credits]])
 end)
 
-addcommand("silcrash",
+addcommand("silcrash", -- You don't want to immediately leave after doing this, or else the crash will be temp
 "Silent crash",
 function()
     getgenv().nonpermantipunish = false
@@ -1100,6 +1113,13 @@ function()
             task.wait()
             chatt(
                 "rocket/                                                                                                                                       all all all fuck"
+            )
+        end
+
+        for i = 1, 128 do
+            task.wait()
+            chatt(
+                "shield/                                                                                                                                       all all all fuck"
             )
         end
     
@@ -1236,6 +1256,53 @@ function()
     chatt("vis                                                                                                                                                               me "..math.random(1,1000).." fuck")
 end
 )
+
+task.spawn(function()
+	for i, Plr in pairs(game.Players:GetChildren()) do
+		if Plr.Name ~= game.Players.LocalPlayer.Name then
+			connections[#connections + 1] = Plr.CharacterAdded:Connect(function()
+				connections[#connections + 1] = game.Players[Plr.Name].Backpack.ChildAdded:connect(function()
+					if antiGear == true then
+						chatt("ungear " .. Plr.Name .. "                                                                                                                                                                                                                                                                                                                            others fuck " ..math.random(1, 1000))
+                        chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Gears have been disabled for now \n cry about it if you have any complaints \n and no we don't care about your hurt feelings")
+                        chatt("trip " .. Plr.Name);wait(.51)
+                        chatt("noclip                                                                                                                        " .. Plr.Name)
+                    end
+				end)
+			end)
+			connections[#connections + 1] = game.Players[Plr.Name].Backpack.ChildAdded:connect(function()
+				if antiGear == true then
+					chatt("ungear " .. Plr.Name .. "                                                                                                                                                                                                                                                                                                                            others fuck " ..math.random(1, 1000))
+                    chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Gears have been disabled for now \n cry about it if you have any complaints \n and no we don't care about your hurt feelings")
+                    chatt("trip " .. Plr.Name);wait(.51)
+                    chatt("noclip                                                                                                                        " .. Plr.Name)
+                end
+			end)
+		end
+	end
+	connections[#connections + 1] = game.Players.PlayerAdded:Connect(function(Plr)
+		if Plr.Name ~= game.Players.LocalPlayer.Name then
+			connections[#connections + 1] = Plr.CharacterAdded:Connect(function()
+				connections[#connections + 1] = game.Players[Plr.Name].Backpack.ChildAdded:connect(function()
+					if antiGear == true then
+						chatt("ungear " .. Plr.Name .. "                                                                                                                                                                                                                                                                                                                            others fuck " ..math.random(1, 1000))
+                        chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Gears have been disabled for now \n cry about it if you have any complaints \n and no we don't care about your hurt feelings")
+                        chatt("trip " .. Plr.Name);wait(.51)
+                        chatt("noclip                                                                                                                        " .. Plr.Name)
+                    end
+				end)
+			end)
+			connections[#connections + 1] = game.Players[Plr.Name].Backpack.ChildAdded:connect(function()
+				if antiGear == true then
+					chatt("ungear " .. Plr.Name .. "                                                                                                                                                                                                                                                                                                                            others fuck " ..math.random(1, 1000))
+                    chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Gears have been disabled for now \n cry about it if you have any complaints \n and no we don't care about your hurt feelings")
+                    chatt("trip " .. Plr.Name);wait(.51)
+                    chatt("noclip                                                                                                                        " .. Plr.Name)
+                end
+			end)
+		end
+	end)
+end)
 
 connections[#connections + 1] = game.Players.LocalPlayer.Chatted:Connect(function(msg)
     if string.sub(msg, 0, 3 + #prefix3) == prefix3.."lua" then
@@ -1800,11 +1867,16 @@ local function NKEI_fake_script() -- ScrollingFrame.LocalScript
 		chatt(prefix3.."unantikill")
 	end)
 
-    local ELFRGD = false
 	addTlg("AntiBlind", function()
 		antiBlind = true
 	end, function()
 		antiBlind = false
+	end)
+
+	addTlg("AntiGear", function()
+		antiGear = true
+	end, function()
+		antiGear = false
 	end)
 	
 	local OELRDC = false
