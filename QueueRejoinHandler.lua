@@ -3,9 +3,9 @@ local tps = game:GetService("TeleportService")
 local plr = game:GetService("Players").LocalPlayer
 getgenv().on = false
 getgenv().on2 = true
+getgenv().searching = false
 
 local prefix4 = "/"
-local wrdcheck = 3 -- Minimum number of repeats required
 local cons = {}
 local lastplayer
 
@@ -19,6 +19,15 @@ local function forcerj()
     end
 end
 
+local function sfx(id)
+	local ClientSound = Instance.new("Sound")
+	ClientSound.SoundId = "http://www.roblox.com/asset/?id="..id
+	ClientSound.Volume = 1.5
+	ClientSound.Parent = workspace
+	ClientSound.PlaybackSpeed = 1
+	ClientSound:Play()
+end
+
 pcall(function()rconsolecreate()end) -- Not all execs have this
 rconsoleprint("Use the following commands in the rconsole\n\nType /host to host a rejoin session\nType /search to search for a host\nType /finish to accept all the people trying to connect as the host\n and /off IN THE CHAT (not in the rconsole) to unload this script early (It unloads after rejoin anyway so it ain't necessary)\n\n")
 
@@ -26,6 +35,10 @@ cons[#cons + 1] = game.Players.LocalPlayer.Chatted:Connect(function(msg)
     if string.sub(msg, 0, 3 + #prefix4) == prefix4.."off" then
         print("Turned it off")
         getgenv().on = false
+        getgenv().on2 = false
+        searching = false
+        connectedd = false
+        pcall(function()rconsoleclear()end)
         for _, connection in ipairs(cons) do
             connection:Disconnect()
         end
@@ -39,10 +52,17 @@ coroutine.wrap(function()
         typee = rconsoleinput()
         if typee == "/host" then
             rconsoleprint("Opening a connection\n")
+            searching = true
             task.spawn(function()
-                while on2 do wait(1)
+                while searching do wait(1)
                     chatt("TOKEN! ESTABLISHMENT")
                 end
+            end)
+            task.spawn(function()
+                wait(300)
+                searching = false
+                chatt("STOPPED SEARCHING FOR PEOPLE SEARCHING")
+                rconsoleprint("STOPPED SEARCHING FOR PEOPLE SEARCHING\n")
             end)
             cons[#cons + 1] = plr.Chatted:Connect(function(msg)
                 if on2 then 
@@ -52,7 +72,9 @@ coroutine.wrap(function()
                                 if finished then return end
                                 if lastplayer ~= v then
                                     lastplayer = v
-                                    rconsoleprint(v.Name.." has connected!\n");wait(5)
+                                    rconsoleprint(v.Name.." has connected!\n")
+                                    sfx(7433801607)
+                                    chatt("TOKEN! CONNECT 2");wait(5)
                                     if not message1 then
                                         message1 = true
                                         rconsoleprint("\nIf this is everyone then type /finish\n")
@@ -69,6 +91,7 @@ coroutine.wrap(function()
                                             rconsoleprint("Rejoining everyone in a bit...\n")
                                             print("finish")
                                             wait(1)
+                                            pcall(function()rconsoleclear()end)
                                             forcerj()
                                         end
                                     end
@@ -94,8 +117,14 @@ coroutine.wrap(function()
                     elseif msg:lower():find("token! ending connection") then
                         finished = true
                         rconsoleprint("Host has accepted!\nRejoining everyone in a bit...\n\n")
-                        wait(.65)
+                        wait(.75)
+                        pcall(function()rconsoleclear()end)
                         forcerj()
+                    elseif msg:lower():find("token! connect 2") then
+                        if connectedd then return end
+                        connectedd = true
+                        rconsoleprint("\n\nConnected!")
+                        sfx(3725080645)
                     end
                 end)
                 table.insert(cons, connection)
