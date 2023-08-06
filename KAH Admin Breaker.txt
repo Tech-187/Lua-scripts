@@ -28,7 +28,7 @@ getgenv().on = true
 for i = 1, 103 do
     game.Players:Chat("gear all 253519495")
 end
-task.delay(10.5, function()
+task.delay(10.5, function() -- Change the number from 10.5 to 100 if you want to use this on one client (works well against autocrashers when you can't join a server)
     on = false
 end)
 while on do 
