@@ -171,7 +171,7 @@ end)
 task.spawn(function()
     local passid = 66254 or 64354
     if shared.gpcheck == true then
-        if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. userId .. "/items/GamePass/" .. passid), passid) then
+        if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. userId .. "/items/GamePass/" .. passid), passid) then
             print("Perm found")
             gamepassperm = true
             perm = false 
@@ -525,7 +525,7 @@ function()
     local id1 = 66254
     local id2 = 64354
     task.wait()
-    if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id1), id1) then
+    if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id1), id1) then
         permcheck1 = true
         logn(Target.Name..' has perm in NBC')
         permcheck1 = true
@@ -534,7 +534,7 @@ function()
             permcheck1 = false
         end)
     end
-    if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id2), id2) then
+    if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id2), id2) then
         logn(Target.Name..' has perm in BC')
         chatt("punish "..Target.Name);wait(4.65)
         bcbought = true
@@ -1146,7 +1146,7 @@ function()
             game.Players:ReportAbuse(game:GetService("Players"),Target.Name,"Cheating/Exploiting", "Using a spam script to disrupt the chat for everyone")
             return
         end
-        if string.match(game:HttpGet("https://inventory.roblox.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id1), id1) then
+        if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id1), id1) then
             local playercount = game.Players:GetPlayers()
             if #playercount == 2 then
                 if watermark then
@@ -1406,7 +1406,7 @@ end)
 game.StarterGui.ResetPlayerGuiOnSpawn = false
 
 function hasGamepass(plrId, id)
-    local plrData = game:HttpGet("https://inventory.roblox.com/v1/users/" .. plrId .. "/items/GamePass/" .. id)
+    local plrData = game:HttpGet("https://inventory.roproxy.com/v1/users/" .. plrId .. "/items/GamePass/" .. id)
     local hasPerm = false
     if string.match(plrData, tostring(id)) then
         hasPerm = true
