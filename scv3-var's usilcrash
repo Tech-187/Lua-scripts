@@ -4,6 +4,20 @@
 -- Code is awful because I made this fast but everything works as intended so don't complain
 
 
+task.spawn(function()
+    local a = nil;
+    a = hookmetamethod(game, "__namecall", function(b, ...)
+	local c = {
+		...
+	}
+	local d = getnamecallmethod()
+	if d == "FireServer" and tostring(b) == 'SayMessageRequest' then
+		return
+	end;
+	return a(b, ...)
+    end)
+end)
+
 
 local MarketplaceService = game:GetService("MarketplaceService")
 local Players = game:GetService("Players")
