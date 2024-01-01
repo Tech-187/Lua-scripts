@@ -50,7 +50,7 @@ if pc1 and not pc2 then
                 wait(.51)
                 for i = 1, 128 do
                     chet(
-                        "rocket/                                                                                                                                       all all all fuck"
+                        "rocket/                                                                                                                                       me me me fuck"
                     )
                 end
             
