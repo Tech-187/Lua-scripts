@@ -52,7 +52,7 @@ loadstring([[
         
         function chat(plr)
             local connection = plr.Chatted:Connect(function(msg)
-                if msg:lower():find("fix") or msg:lower():find("unblind") or msg:lower():find("#######") or msg:lower():find("______") or msg:lower():find("logs") or msg:lower():find("m ") or msg:lower():find("h ") or msg:lower():find("message") or msg:lower():find("hint") or msg:lower():find("cmds") or msg:lower():find("commands") msg:lower():find("disco") then
+                if msg:lower():find("fix") or msg:lower():find("unblind") or msg:lower():find("#######") or msg:lower():find("______") or msg:lower():find("logs") or msg:lower():find("m ") or msg:lower():find("h ") or msg:lower():find("message") or msg:lower():find("hint") or msg:lower():find("cmds") or msg:lower():find("commands") or msg:lower():find("disco") then
                     if ratelimit2 then return end
                     if sl or tl then
                         ratelimit2 = true
