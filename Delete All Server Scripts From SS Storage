@@ -1,0 +1,42 @@
+-- This deletes all scripts from SS Storage except for the chat as that script also counts.
+-- I had no idea what all of them were called so I mainly just looked for keywords with literally everything
+-- killer is the script name for the obby in KAH so executing this just breaks the admin without breaking the obby
+
+
+local a = {
+	"TextLabel",
+	"TextBox",
+	"ImageButton",
+	"ImageLabel",
+	"Frame",
+	"ScrollingFrame",
+	"ViewportFrame"
+}
+for b, c in ipairs(game.ServerScriptService:GetChildren()) do
+	local d = false
+	for b, e in ipairs(a) do
+		if c:IsA(e) or string.find(c.Name:lower(), "chat") or string.find(c.Name:lower(), "bubble") or string.find(c.Name:lower(), "killer") then
+			d = true
+			break
+		end
+	end
+	if not d then
+		pcall(function()
+			c:Destroy()
+		end)
+	end
+end
+for b, c in ipairs(game.ServerScriptService.ServerScriptStorage:GetChildren()) do
+	local d = false
+	for b, e in ipairs(a) do
+		if c:IsA(e) or string.find(c.Name:lower(), "chat") or string.find(c.Name:lower(), "bubble") or string.find(c.Name:lower(), "killer") then
+			d = true
+			break
+		end
+	end
+	if not d then
+		pcall(function()
+			c:Destroy()
+		end)
+	end
+end
