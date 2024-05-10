@@ -1,3 +1,5 @@
+getgenv().nperm = false -- Turn this off by hand if you find the regen tp annoying or unnecessary (like when the admin is already deleted.)
+
 local pserver = false
 local toggles = {
 	perm = false,
@@ -8,6 +10,18 @@ local toggles = {
 }
 
 local Connections = {}
+
+Connections[#Connections + 1] = game:GetService("UserInputService").InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.LeftShift then
+        game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").WalkSpeed = 24
+    end
+end)
+
+Connections[#Connections + 1] = game:GetService("UserInputService").InputEnded:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.LeftShift then
+        game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").WalkSpeed = 16
+    end
+end)
 
 local function isParent(Object)
 	local success = pcall(function()
@@ -104,7 +118,7 @@ if gpcheck == true then
     end
 end
 
-coroutine.wrap(function()while task.wait()do if nperm then if game.Workspace.SecureParts.AdminPads:FindFirstChild(game.Players.LocalPlayer.Name.."'s admin")then task.wait(.40)else local a=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame;task.wait(0.05)game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(14,28,106)task.wait(1)game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(10,28,107)task.wait(1)game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(5,28,107)task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(2,28,107)task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-2,28,107)task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-6,28,107)task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-10,28,107)game.Players:Chat(":invisible")task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-14,28,107)task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-18,28,107)game.Players:Chat(":invisible")task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=a;game.Players:Chat(":invisible")end end end end)()
+coroutine.wrap(function()while task.wait()do if nperm then if game.Workspace.SecureParts.AdminPads:FindFirstChild(game.Players.LocalPlayer.Name.."'s admin")then task.wait(.40)else local a=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame;task.wait(0.05)game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(14,28,106)task.wait(1)game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(10,28,107)task.wait(1)game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(5,28,107)task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(2,28,107)task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-2,28,107)task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-6,28,107)task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-10,28,107)game.Players:Chat(":invisible")task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-14,28,107)task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-18,28,107)game.Players:Chat(":invisible")task.wait()game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=a;game.Players:Chat(":invisible");game.Players:Chat("#lregenv2 fuck");game.Players:Chat("#lregen fuck")end end end end)()
 
 if nperm then
 wait(2)
@@ -1804,8 +1818,14 @@ addCommand('quit', {'exit'}, 'Clear connections and loops', function(args)
     end
 end)
 
+addCommand('clean', {'fullclear'}, 'AH has way too many clr commands, instead of just fix and clr like KAH.', function(args)
+    runCmd(":music 0 | :setmessage off | :fix | :clearterrain | :clrguis all true | :re all | :clr |")
+	runCmd(pf.."clrparts fuck")
+end)
+
 addCommand('test', {'atest'}, 'remove test', function(args)
     RemoveInstance(ReplicatedStorage.Network)
+	runCmd(pf.."lpadsv2 fuck")
 end)
 
 addCommand('test2', {'btest'}, 'remove test', function(args)
