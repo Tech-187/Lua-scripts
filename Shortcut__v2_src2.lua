@@ -1,5 +1,5 @@
 local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function() end
-getgenv().autoexecute = true
+getgenv().autoexecute = false -- This annoys me, no more of this.
 
 if autoexecute then
     queueteleport([[
@@ -35,7 +35,7 @@ local uis = game:GetService("UserInputService")
 
 shared.gpcheck = true
 
-shared.banana = {} -- For non-perms
+shared.banana = {} -- Ban for non-perms
 
 -- ALL OF THE FOLLOWING ARE UNUSED
 task.spawn(function()
@@ -48,7 +48,6 @@ end)
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-_G.antiseiz = true
 local Stable_Check = false
 local rotation = Instance.new("BodyGyro")
 local plrs = game:GetService("Players") -- I know they're like two of those but I imported this
@@ -62,12 +61,10 @@ local Plrname = plr.Name
 local userId = game.Players.LocalPlayer.UserId
 getgenv().house_keybind = "n"
 getgenv().reset_keybind = "c" -- This also shares with VAR
-getgenv().scriptrunning = true -- Do not touch this please, for the love of god
+getgenv().scriptrunning = true -- keep on
 
 local Game_Folder = game:GetService("Workspace").Terrain["_Game"]
 local Workspace_Folder = Game_Folder.Workspace
-
-local customcmdstable = {}
 
 game:GetService("Workspace").FallenPartsDestroyHeight = 0/0
 
@@ -424,6 +421,7 @@ function chat(plr)
     local connection = plr.Chatted:Connect(function(msg)
         if msg:lower():find("punish") or msg:lower():find("########") then
             if game.Lighting:FindFirstChild(game.Players.LocalPlayer.Name) then
+                game.Players.LocalPlayer.Character.Humanoid.Health = 0
                 game:GetService("Players").LocalPlayer.Character.Head:Destroy()
             end
         end
@@ -446,6 +444,7 @@ local function dumbrobloxupdate(character)
             pcall(function()
                 game:GetService("Players").LocalPlayer.Character.Head:Destroy()
             end)
+            game.Players.LocalPlayer.Character.Humanoid.Health = 0
             task.wait()
             pcall(function()
                 game:GetService("Players").LocalPlayer.Character.Head:Destroy()
@@ -458,6 +457,7 @@ local function dumbrobloxupdate(character)
 end
 
 lc[#lc+1] = game.Players.LocalPlayer.CharacterAdded:Connect(dumbrobloxupdate)
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
 game:GetService("Players").LocalPlayer.Character.Head:Destroy()
 ]])
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
@@ -839,6 +839,20 @@ function()
 end)
 end)
 
+addcommand("chatbypass",
+"Load up the chat bypass",
+function()
+    logn("Press ' to access the command bar")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tech-187/Temp/main/cb"))()
+end
+)
+
+addcommand("chatcontrol",
+"No description",
+function()
+    loadstring(game:HttpGet(('https://pastebin.com/raw/dSyLsh7s'),true))()
+end)
+
 addcommand("ivory",
 "No description",
 function()
@@ -971,45 +985,25 @@ end)
 addcommand("kick",
 "Kick a player",
 function()
-    -- This kick is nerfed. Var has way better kicks
-    local playercount = game.Players:GetPlayers()
-    if #playercount == 2 then
-        trueblind()
-        chatt("skydive                                                                                                                                  me me me")
-        chatt("skydive                                                                                                                                  me me me")
-        chatt("skydive                                                                                                                                  me me me");wait(.51)
-        chatt(prefix3.."vgcrash");wait(.51)
-        chatt(prefix3.."migrate")
-        return 
+    for _Index, Target in pairs(GetPlayer(args[2])) do
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Temp/main/pm%20stuff'),true))()
+        chatt("respawn "..Target.Name)
+        task.wait(0.005)
+        chatt("blind "..Target.Name)
+        chatt("freeze "..Target.Name)
+        chatt("vis "..Target.Name)
+        chatt("rainbowify "..Target.Name)
+        chatt("ff "..Target.Name)
+        for i = 1, 103 do
+            game.Players:Chat("pm "..Target.Name.." "..shared.pmstuff)
+        end
+        task.spawn(function()
+            while scriptrunning and spam do 
+                game.Players:Chat("pm "..Target.Name.." "..shared.pmstuff)
+                task.wait()
+            end
+        end)
     end
-    if #playercount == 3 then
-        logn("Not enough players")
-        return
-    end
-    trueblind()
-    for i = 1, 128 do
-        chatt("dog                                                                                                          others others others fuck "..math.random(1,1000))
-    end;task.wait(.39)
-    for i = 1, 128 do
-        chatt("dog                                                                                                          others others others fuck "..math.random(1,1000))
-    end;task.wait(.39)
-    for i = 1, 90 do
-        chatt("dog                                                                                                          others others others fuck "..math.random(1,1000))
-    end;task.wait(.56)
-    chatt("tp                                                                                                          others others");wait(.49)
-    chatt("tp "..Target.Name.." others");wait(.51)
-    chatt("tp "..Target.Name.." others");wait(.51)
-    chatt("tp "..Target.Name.." others")
-    chatt("sit "..player);wait(.51)
-    chatt("kill "..Target.Name.." "..math.random(1,1000));wait(2.5)
-    chatt("respawn others");wait()
-    pcall(function()
-        execCmd("nofog")
-        execCmd("day")
-        execCmd("brightness 1")
-    end)
-    chatt("unblind                                                                                    me")
-    chatt("jump others")
 end
 )
 
@@ -1036,7 +1030,7 @@ annoy (player) - Spam respawn a player
 stop - stop spamming 
 toregen - Teleport to the regen pad
 vgcrash - Crash the server using the vampire gear
-silcrash - (REQUIRES PERSON299'S ADMIN) Silently crash the server. Keep in mind that SCV3-Var has a way better silcrash
+silcrash - silent crash
 fixpaint - Restore the map colors to how it originally was (we were the first to have this fully fixed with credit to siyamicik and boomanoid)
 messpaint - Mess up the map paint instead by painting everything random
 breakcam - Break the server camera
@@ -1054,6 +1048,8 @@ punish (Player) - Altered punish, it's buffed and can only be bypassed using res
 forcelag - Use this command in emergencies. To stop it, you have to rejoin entirely (Requires admin of course)
 tempcrash - Temporarily crash the server using the blue tempcrash sword
 kick (Player) - Kick a player using the shitty dog method (scv3-var has a way better method)
+chatcontrol - Funny chat control GUI, made by DIY Scripts.
+chatbypass - Loads the best working FE chat bypass script, at the moment.
 
 classicmode - Run old SCV2 instead. This script is very outdated and poorly put together and also very memory heavy, but some people still like it because it more commands (no wonder). Keep in mind that old v2 is over a year old by now
 
@@ -1062,77 +1058,16 @@ Since some features are still missing, I may recommend you to use classic SCV2 a
 
 
 
-Shortcut v2, mostly scripted by Tech
-with help from
 
-Yeemi - Made most of base SCV2 and some of it has been re-used in the remake
-Miia - Made some of base SCV2 and owns the project
-Jotunn - Made the command handler
-Vecko - Additional code
-Whatjg - Additional code
-Quiving - Additional code
-Shade4Real - Additional code
 
-This project is still alive and well as of 6/9/2023 so you can contribute as well, and your name will appear in the credits]])
+lol.]])
 end)
 
-addcommand("silcrash", -- You don't want to immediately leave after doing this, or else the crash will be temp
+addcommand("silcrash", -- You don't want to immediately leave after doing this, or else the crash could be temp
 "Silent crash",
 function()
     getgenv().nonpermantipunish = false
-    for i = 1, 40 do
-        chatt(":punish/                                                                                                                                       me fuck")
-        wait(.51)
-        chatt("h/ \n\n\n\n\n\n Slight change of plan. The server has closed, no more playing here \n\n\n\n\n\n")
-        for i = 1, 128 do
-            --task.wait()
-            chatt(
-                "rocket/                                                                                                                                       me me me fuck"
-            )
-        end
-    
-        --task.wait(.5)
-    
-        for i = 1, 500 do
-            task.wait()
-            chatt(
-                "unpunish/                                                                                                                                     me me me fuck"
-            )
-        end
-        wait(1)
-        chatt("clone me me me")
-        task.spawn(function()
-            if alreadyspammed then return end
-            alreadyspammed = true
-            for i = 1, 350 do
-                chatt("respawn/                                                                                                                                       others others others fuck")
-            end
-        end)
-        wait(.49)
-        for i = 1, 128 do
-            task.wait()
-            chatt(
-                "rocket/                                                                                                                                       all all all fuck"
-            )
-        end
-
-        for i = 1, 128 do
-            task.wait()
-            chatt(
-                "shield/                                                                                                                                       all all all fuck"
-            )
-        end
-    
-        --task.wait(.5)
-    
-        for i = 1, 500 do
-            task.wait()
-            chatt(
-                "unpunish/                                                                                                                                     all all all fuck"
-            )
-        end
-        chatt("clone all all all")
-    end
+    loadstring(game:HttpGet(("https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/scv3-var's%20usilcrash"),true))()
 end)
 
 addcommand("ban",
@@ -1149,9 +1084,6 @@ function()
         if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id1), id1) then
             local playercount = game.Players:GetPlayers()
             if #playercount == 2 then
-                if watermark then
-                    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(watermarkmsg.." "..banwatermark.." "..Target.Name,"all")
-                end
                 trueblind()
                 chatt("skydive                                                                                                                                  me me me")
                 chatt("skydive                                                                                                                                  me me me")
@@ -1160,8 +1092,8 @@ function()
                 chatt(prefix3.."migrate")
                 return 
             end
-            chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Failed to ban "..Target.Name.." \n Try a different method instead")
-            print('Perm', Target.Name..' has perm in NBC')
+            --chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Failed to ban "..Target.Name.." \n Try a different method instead")
+            chatt(prefix3.."kick "..Target.Name.." fuck")
             game.Players:ReportAbuse(game:GetService("Players"),Target.Name,"Cheating/Exploiting", "Spamming in the chat")
             return
         else
@@ -1405,203 +1337,206 @@ end)
 
 game.StarterGui.ResetPlayerGuiOnSpawn = false
 
-function hasGamepass(plrId, id)
-    local plrData = game:HttpGet("https://inventory.roproxy.com/v1/users/" .. plrId .. "/items/GamePass/" .. id)
-    local hasPerm = false
-    if string.match(plrData, tostring(id)) then
-        hasPerm = true
-    end
-    return hasPerm
-end
+pcall(function() -- I have to pcall this for better executor support lol
 
-PlayerList = Instance.new("ScreenGui")
-
-coroutine.wrap(function()
-        -- Instances:
-
-        local PlayerListMaster = Instance.new("Frame")
-        local SizeOffsetFrame = Instance.new("Frame")
-        local UIListLayout = Instance.new("UIListLayout")
-        local ScrollingFrameContainer = Instance.new("Frame")
-        local UIListLayout_2 = Instance.new("UIListLayout")
-
-        --Properties:
-
-        PlayerList.Name = "PlayerList"
-        PlayerList.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-        PlayerList.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-        PlayerList.DisplayOrder = 1
-
-        PlayerListMaster.Name = "PlayerListMaster"
-        PlayerListMaster.Parent = PlayerList
-        PlayerListMaster.AnchorPoint = Vector2.new(1, 0)
-        PlayerListMaster.BackgroundTransparency = 1.000
-        PlayerListMaster.Position = UDim2.new(1, -4, 0, 40)
-        PlayerListMaster.Size = UDim2.new(0, 166, 0.1, 0)
-
-        SizeOffsetFrame.Name = "SizeOffsetFrame"
-        SizeOffsetFrame.Parent = PlayerListMaster
-        SizeOffsetFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-        SizeOffsetFrame.BackgroundTransparency = 1.000
-        SizeOffsetFrame.Position = UDim2.new(0.5, 0, 0.881410241, 0)
-        SizeOffsetFrame.Size = UDim2.new(1, 0, 2.5, 0) -- {1, 0},{3.003, 0}
-
-        UIListLayout.Parent = SizeOffsetFrame
-        UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-
-        ScrollingFrameContainer.Name = "ScrollingFrameContainer"
-        ScrollingFrameContainer.Parent = SizeOffsetFrame
-        ScrollingFrameContainer.BackgroundColor3 = Color3.fromRGB(31, 33, 35)
-        ScrollingFrameContainer.BackgroundTransparency = 0.300
-        ScrollingFrameContainer.BorderSizePixel = 0
-        ScrollingFrameContainer.LayoutOrder = 3
-        ScrollingFrameContainer.Position = UDim2.new(0, 0, 0.0145454546, 0)
-        ScrollingFrameContainer.Size = UDim2.new(1, 0, 0.883456707, 40)
-
-        UIListLayout_2.Parent = ScrollingFrameContainer
-        UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
-
-        -- Scripts:
-
-        local function KTJYHGG_fake_script()
-            local script = Instance.new("LocalScript", ScrollingFrameContainer)
-
-            function addBox(isPerm, plrName, plrDisplay)
-                local PlayerHere = Instance.new("Frame")
-                local ChildrenFrame = Instance.new("Frame")
-                local NameFrame = Instance.new("Frame")
-                local DisplayName = Instance.new("Frame")
-                local PlayerName = Instance.new("TextLabel")
-                local SizeConstraint = Instance.new("UITextSizeConstraint")
-                local PermUI = Instance.new("Frame")
-                local PlayerName_2 = Instance.new("TextLabel")
-                local SizeConstraint_2 = Instance.new("UITextSizeConstraint")
-                local PlayerName_3 = Instance.new("Frame")
-                local PlayerName_4 = Instance.new("TextLabel")
-                local SizeConstraint_3 = Instance.new("UITextSizeConstraint")
-                local Layout = Instance.new("UIListLayout")
-
-                PlayerHere.Name = plrName
-                PlayerHere.Parent = script.Parent
-                PlayerHere.BackgroundTransparency = 1.000
-                PlayerHere.ClipsDescendants = true
-                PlayerHere.Size = UDim2.new(1, 0, 0.158816129, 0)
-
-                ChildrenFrame.Name = "ChildrenFrame"
-                ChildrenFrame.Parent = PlayerHere
-                ChildrenFrame.BackgroundTransparency = 1.000
-                ChildrenFrame.Size = UDim2.new(1, 0, 0, 40)
-
-                NameFrame.Name = "NameFrame"
-                NameFrame.Parent = ChildrenFrame
-                NameFrame.BackgroundTransparency = 1.000
-                NameFrame.Size = UDim2.new(0, 150, 0, 40)
-
-                DisplayName.Name = "DisplayName"
-                DisplayName.Parent = NameFrame
-                DisplayName.BackgroundTransparency = 1.000
-                DisplayName.LayoutOrder = 3
-                DisplayName.Position = UDim2.new(0.0799999982, 0, 0, 0)
-                DisplayName.Size = UDim2.new(0.639999986, -34, 1, 0)
-
-                PlayerName.Name = "PlayerName"
-                PlayerName.Parent = DisplayName
-                PlayerName.BackgroundTransparency = 1.000
-                PlayerName.Position = UDim2.new(0.439606011, 0, 0.704999983, 0)
-                PlayerName.Size = UDim2.new(1, 0, 0.439999998, 0)
-                PlayerName.Font = Enum.Font.GothamSemibold
-                PlayerName.Text = plrDisplay
-                PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
-                PlayerName.TextScaled = true
-                PlayerName.TextSize = 14.000
-                PlayerName.TextWrapped = true
-                PlayerName.TextXAlignment = Enum.TextXAlignment.Left
-
-                SizeConstraint.Name = "SizeConstraint"
-                SizeConstraint.Parent = PlayerName
-                SizeConstraint.MaxTextSize = 14
-                SizeConstraint.MinTextSize = 9
-
-                PermUI.Name = "PermUI"
-                PermUI.Parent = NameFrame
-                PermUI.BackgroundTransparency = 1.000
-                PermUI.LayoutOrder = 3
-                PermUI.Position = UDim2.new(0.0799999982, 0, 0, 0)
-                PermUI.Size = UDim2.new(0.446666658, -34, 1, 0)
-
-                PlayerName_2.Name = "PlayerName"
-                PlayerName_2.Parent = PermUI
-                PlayerName_2.BackgroundTransparency = 1.000
-                PlayerName_2.Position = UDim2.new(0, 0, 0.280000001, 0)
-                PlayerName_2.Size = UDim2.new(1, 0, 0.439999998, 0)
-                PlayerName_2.Font = Enum.Font.GothamSemibold
-                PlayerName_2.Text = "    "
-                if isPerm then
-                    PlayerName_2.Text = "Perm"
-                end
-                PlayerName_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-                PlayerName_2.TextScaled = true
-                PlayerName_2.TextSize = 14.000
-                PlayerName_2.TextWrapped = true
-                PlayerName_2.TextXAlignment = Enum.TextXAlignment.Left
-
-                SizeConstraint_2.Name = "SizeConstraint"
-                SizeConstraint_2.Parent = PlayerName_2
-                SizeConstraint_2.MaxTextSize = 14
-                SizeConstraint_2.MinTextSize = 9
-
-                PlayerName_3.Name = "PlayerName"
-                PlayerName_3.Parent = NameFrame
-                PlayerName_3.BackgroundTransparency = 1.000
-                PlayerName_3.LayoutOrder = 3
-                PlayerName_3.Size = UDim2.new(1, -34, 1, 0)
-
-                PlayerName_4.Name = "PlayerName"
-                PlayerName_4.Parent = PlayerName_3
-                PlayerName_4.BackgroundTransparency = 1.000
-                PlayerName_4.Position = UDim2.new(0.422413796, 0, 0.280000001, 0)
-                PlayerName_4.Size = UDim2.new(1, 0, 0.439999998, 0)
-                PlayerName_4.Font = Enum.Font.GothamSemibold
-                PlayerName_4.Text = plrName
-                PlayerName_4.TextColor3 = Color3.fromRGB(255, 255, 255)
-                PlayerName_4.TextScaled = true
-                PlayerName_4.TextSize = 14.000
-                PlayerName_4.TextWrapped = true
-                PlayerName_4.TextXAlignment = Enum.TextXAlignment.Left
-
-                SizeConstraint_3.Name = "SizeConstraint"
-                SizeConstraint_3.Parent = PlayerName_4
-                SizeConstraint_3.MaxTextSize = 14
-                SizeConstraint_3.MinTextSize = 9
-
-                Layout.Name = "Layout"
-                Layout.Parent = ChildrenFrame
-                Layout.FillDirection = Enum.FillDirection.Horizontal
-                Layout.SortOrder = Enum.SortOrder.Name
-                Layout.VerticalAlignment = Enum.VerticalAlignment.Center
-            end
-
-            game.StarterGui:SetCoreGuiEnabled("PlayerList", false)
-
-            connections[#connections + 1] = game.Players.ChildRemoved:Connect(function(player)
-                    if script.Parent:FindFirstChild(player.Name) then
-                        script.Parent:FindFirstChild(player.Name):remove()
-                    end
-                end)
-
-            while wait(.65) do
-                for _, plr in pairs(game.Players:GetChildren()) do
-                    if not script.Parent:FindFirstChild(plr.Name) then
-                        addBox(hasGamepass(plr.UserId, 66254 or 64354), plr.Name, plr.DisplayName)
-                        task.wait()
-                    --script.Parent.Size = UDim2.new(0, 166, 0, (#script.Parent:GetChildren() - 1) * 50)
-                    end
-                end
-            end
+    function hasGamepass(plrId, id)
+        local plrData = game:HttpGet("https://inventory.roproxy.com/v1/users/" .. plrId .. "/items/GamePass/" .. id)
+        local hasPerm = false
+        if string.match(plrData, tostring(id)) then
+            hasPerm = true
         end
-        coroutine.wrap(KTJYHGG_fake_script)()
+        return hasPerm
     end
-)()
+
+    PlayerList = Instance.new("ScreenGui")
+
+    coroutine.wrap(function()
+            -- Instances:
+
+            local PlayerListMaster = Instance.new("Frame")
+            local SizeOffsetFrame = Instance.new("Frame")
+            local UIListLayout = Instance.new("UIListLayout")
+            local ScrollingFrameContainer = Instance.new("Frame")
+            local UIListLayout_2 = Instance.new("UIListLayout")
+
+            --Properties:
+
+            PlayerList.Name = "PlayerList"
+            PlayerList.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+            PlayerList.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+            PlayerList.DisplayOrder = 1
+
+            PlayerListMaster.Name = "PlayerListMaster"
+            PlayerListMaster.Parent = PlayerList
+            PlayerListMaster.AnchorPoint = Vector2.new(1, 0)
+            PlayerListMaster.BackgroundTransparency = 1.000
+            PlayerListMaster.Position = UDim2.new(1, -4, 0, 40)
+            PlayerListMaster.Size = UDim2.new(0, 166, 0.1, 0)
+
+            SizeOffsetFrame.Name = "SizeOffsetFrame"
+            SizeOffsetFrame.Parent = PlayerListMaster
+            SizeOffsetFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+            SizeOffsetFrame.BackgroundTransparency = 1.000
+            SizeOffsetFrame.Position = UDim2.new(0.5, 0, 0.881410241, 0)
+            SizeOffsetFrame.Size = UDim2.new(1, 0, 2.5, 0) -- {1, 0},{3.003, 0}
+
+            UIListLayout.Parent = SizeOffsetFrame
+            UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+            ScrollingFrameContainer.Name = "ScrollingFrameContainer"
+            ScrollingFrameContainer.Parent = SizeOffsetFrame
+            ScrollingFrameContainer.BackgroundColor3 = Color3.fromRGB(31, 33, 35)
+            ScrollingFrameContainer.BackgroundTransparency = 0.300
+            ScrollingFrameContainer.BorderSizePixel = 0
+            ScrollingFrameContainer.LayoutOrder = 3
+            ScrollingFrameContainer.Position = UDim2.new(0, 0, 0.0145454546, 0)
+            ScrollingFrameContainer.Size = UDim2.new(1, 0, 0.883456707, 40)
+
+            UIListLayout_2.Parent = ScrollingFrameContainer
+            UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+
+            -- Scripts:
+
+            local function KTJYHGG_fake_script()
+                local script = Instance.new("LocalScript", ScrollingFrameContainer)
+
+                function addBox(isPerm, plrName, plrDisplay)
+                    local PlayerHere = Instance.new("Frame")
+                    local ChildrenFrame = Instance.new("Frame")
+                    local NameFrame = Instance.new("Frame")
+                    local DisplayName = Instance.new("Frame")
+                    local PlayerName = Instance.new("TextLabel")
+                    local SizeConstraint = Instance.new("UITextSizeConstraint")
+                    local PermUI = Instance.new("Frame")
+                    local PlayerName_2 = Instance.new("TextLabel")
+                    local SizeConstraint_2 = Instance.new("UITextSizeConstraint")
+                    local PlayerName_3 = Instance.new("Frame")
+                    local PlayerName_4 = Instance.new("TextLabel")
+                    local SizeConstraint_3 = Instance.new("UITextSizeConstraint")
+                    local Layout = Instance.new("UIListLayout")
+
+                    PlayerHere.Name = plrName
+                    PlayerHere.Parent = script.Parent
+                    PlayerHere.BackgroundTransparency = 1.000
+                    PlayerHere.ClipsDescendants = true
+                    PlayerHere.Size = UDim2.new(1, 0, 0.158816129, 0)
+
+                    ChildrenFrame.Name = "ChildrenFrame"
+                    ChildrenFrame.Parent = PlayerHere
+                    ChildrenFrame.BackgroundTransparency = 1.000
+                    ChildrenFrame.Size = UDim2.new(1, 0, 0, 40)
+
+                    NameFrame.Name = "NameFrame"
+                    NameFrame.Parent = ChildrenFrame
+                    NameFrame.BackgroundTransparency = 1.000
+                    NameFrame.Size = UDim2.new(0, 150, 0, 40)
+
+                    DisplayName.Name = "DisplayName"
+                    DisplayName.Parent = NameFrame
+                    DisplayName.BackgroundTransparency = 1.000
+                    DisplayName.LayoutOrder = 3
+                    DisplayName.Position = UDim2.new(0.0799999982, 0, 0, 0)
+                    DisplayName.Size = UDim2.new(0.639999986, -34, 1, 0)
+
+                    PlayerName.Name = "PlayerName"
+                    PlayerName.Parent = DisplayName
+                    PlayerName.BackgroundTransparency = 1.000
+                    PlayerName.Position = UDim2.new(0.439606011, 0, 0.704999983, 0)
+                    PlayerName.Size = UDim2.new(1, 0, 0.439999998, 0)
+                    PlayerName.Font = Enum.Font.GothamSemibold
+                    PlayerName.Text = plrDisplay
+                    PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
+                    PlayerName.TextScaled = true
+                    PlayerName.TextSize = 14.000
+                    PlayerName.TextWrapped = true
+                    PlayerName.TextXAlignment = Enum.TextXAlignment.Left
+
+                    SizeConstraint.Name = "SizeConstraint"
+                    SizeConstraint.Parent = PlayerName
+                    SizeConstraint.MaxTextSize = 14
+                    SizeConstraint.MinTextSize = 9
+
+                    PermUI.Name = "PermUI"
+                    PermUI.Parent = NameFrame
+                    PermUI.BackgroundTransparency = 1.000
+                    PermUI.LayoutOrder = 3
+                    PermUI.Position = UDim2.new(0.0799999982, 0, 0, 0)
+                    PermUI.Size = UDim2.new(0.446666658, -34, 1, 0)
+
+                    PlayerName_2.Name = "PlayerName"
+                    PlayerName_2.Parent = PermUI
+                    PlayerName_2.BackgroundTransparency = 1.000
+                    PlayerName_2.Position = UDim2.new(0, 0, 0.280000001, 0)
+                    PlayerName_2.Size = UDim2.new(1, 0, 0.439999998, 0)
+                    PlayerName_2.Font = Enum.Font.GothamSemibold
+                    PlayerName_2.Text = "    "
+                    if isPerm then
+                        PlayerName_2.Text = "Perm"
+                    end
+                    PlayerName_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+                    PlayerName_2.TextScaled = true
+                    PlayerName_2.TextSize = 14.000
+                    PlayerName_2.TextWrapped = true
+                    PlayerName_2.TextXAlignment = Enum.TextXAlignment.Left
+
+                    SizeConstraint_2.Name = "SizeConstraint"
+                    SizeConstraint_2.Parent = PlayerName_2
+                    SizeConstraint_2.MaxTextSize = 14
+                    SizeConstraint_2.MinTextSize = 9
+
+                    PlayerName_3.Name = "PlayerName"
+                    PlayerName_3.Parent = NameFrame
+                    PlayerName_3.BackgroundTransparency = 1.000
+                    PlayerName_3.LayoutOrder = 3
+                    PlayerName_3.Size = UDim2.new(1, -34, 1, 0)
+
+                    PlayerName_4.Name = "PlayerName"
+                    PlayerName_4.Parent = PlayerName_3
+                    PlayerName_4.BackgroundTransparency = 1.000
+                    PlayerName_4.Position = UDim2.new(0.422413796, 0, 0.280000001, 0)
+                    PlayerName_4.Size = UDim2.new(1, 0, 0.439999998, 0)
+                    PlayerName_4.Font = Enum.Font.GothamSemibold
+                    PlayerName_4.Text = plrName
+                    PlayerName_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+                    PlayerName_4.TextScaled = true
+                    PlayerName_4.TextSize = 14.000
+                    PlayerName_4.TextWrapped = true
+                    PlayerName_4.TextXAlignment = Enum.TextXAlignment.Left
+
+                    SizeConstraint_3.Name = "SizeConstraint"
+                    SizeConstraint_3.Parent = PlayerName_4
+                    SizeConstraint_3.MaxTextSize = 14
+                    SizeConstraint_3.MinTextSize = 9
+
+                    Layout.Name = "Layout"
+                    Layout.Parent = ChildrenFrame
+                    Layout.FillDirection = Enum.FillDirection.Horizontal
+                    Layout.SortOrder = Enum.SortOrder.Name
+                    Layout.VerticalAlignment = Enum.VerticalAlignment.Center
+                end
+
+                game.StarterGui:SetCoreGuiEnabled("PlayerList", false)
+
+                connections[#connections + 1] = game.Players.ChildRemoved:Connect(function(player)
+                        if script.Parent:FindFirstChild(player.Name) then
+                            script.Parent:FindFirstChild(player.Name):remove()
+                        end
+                    end)
+
+                while wait(.65) do
+                    for _, plr in pairs(game.Players:GetChildren()) do
+                        if not script.Parent:FindFirstChild(plr.Name) then
+                            addBox(hasGamepass(plr.UserId, 66254 or 64354), plr.Name, plr.DisplayName)
+                            task.wait()
+                        --script.Parent.Size = UDim2.new(0, 166, 0, (#script.Parent:GetChildren() - 1) * 50)
+                        end
+                    end
+                end
+            end
+            coroutine.wrap(KTJYHGG_fake_script)()
+        end
+    )()
+end)
 
 -- Instances:
 
@@ -1748,7 +1683,7 @@ local function NKEI_fake_script() -- ScrollingFrame.LocalScript
 	end)
 	
 	addBtn("DeleteResetPad", function(v)
-		chatt(prefix3.."deleteregen")
+		chatt(prefix3.."deleteregen fuck")
 	end)
 	
 	addBtn("RainbowPads", function(v)
@@ -1780,15 +1715,15 @@ local function NKEI_fake_script() -- ScrollingFrame.LocalScript
 	end)
 	
 	addBtn("Shutdown", function(v)
-		chatt(prefix3.."vgcrash")
+		chatt(prefix3.."vgcrash fuck")
 	end)
 
     addBtn("Silent Crash", function(v)
-		chatt(prefix3.."silcrash")
+		chatt(prefix3.."silcrash fuck")
 	end)
 
     addBtn("House TP", function(v)
-		chatt(prefix3.."house")
+		chatt(prefix3.."house fuck")
 	end)
 	
 	addBtn("ServerHop", function(v)
@@ -1821,9 +1756,9 @@ local function NKEI_fake_script() -- ScrollingFrame.LocalScript
 
     addBtn("AntiPunish", function(v)
 		if gamepassperm then
-            chatt(prefix3.."permap")
+            chatt(prefix3.."permap fuck")
         else
-            chatt(prefix3.."nonpermap")
+            chatt(prefix3.."nonpermap fuck")
         end
 	end)
 
