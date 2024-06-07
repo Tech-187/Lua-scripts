@@ -26,7 +26,7 @@ for b, c in ipairs(game.ServerScriptService:GetChildren()) do
 		end)
 	end
 end
-for b, c in ipairs(game.ServerScriptService.ServerScriptStorage:GetChildren()) do
+for b, c in ipairs(game.ReplicatedStorage:GetChildren()) do
 	local d = false
 	for b, e in ipairs(a) do
 		if c:IsA(e) or string.find(c.Name:lower(), "chat") or string.find(c.Name:lower(), "bubble") or string.find(c.Name:lower(), "killer") then
