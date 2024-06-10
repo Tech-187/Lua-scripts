@@ -22,8 +22,12 @@ Remove this line
     Use the obfuscated version for the intended experience (hence why the first line has to be removed, 
     it more or less serves as an are you sure you want to use this version warning)
 ]]
+repeat
+    task.wait()
+until game:IsLoaded()
+game:GetService("ReplicatedFirst"):RemoveDefaultLoadingScreen()
 
-game:GetService("Workspace").FallenPartsDestroyHeight = -math.huge 
+workspace.FallenPartsDestroyHeight = -math.huge 
 
 -- Discord autojoiner
 task.spawn(function()
@@ -49,11 +53,6 @@ task.spawn(function()
 	end
 end)
 end)
-
-game:GetService("ReplicatedFirst"):RemoveDefaultLoadingScreen()
-repeat
-    wait()
-until game:IsLoaded()
 
 local scriptActive = true
 
