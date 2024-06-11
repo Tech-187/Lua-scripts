@@ -296,7 +296,7 @@ function GetPlayer(target)
 end
 
 addcommand("migrate",
-"No description",
+"Look for an empty/clean server and join it. There's no ping check though so if that server is located on the other side of the world then that sucks for you lmao",
 function()
     while scriptrunning do wait(.35)
         task.spawn(function()
@@ -482,7 +482,7 @@ function()
 end)
 
 addcommand("punish",
-"No description",
+"Altered punish, it's buffed and can only be bypassed using respawn or unchar",
 function()
     for _Index, Target in pairs(GetPlayer(args[2])) do
         if noalteredp then 
@@ -519,7 +519,7 @@ function()
 end)
 
 addcommand("permcheck",
-"No description",
+"Check if a player has perm",
 function()
     for _Index, Target in pairs(GetPlayer(args[2])) do
     local id1 = 66254
@@ -696,7 +696,7 @@ function()
 end)
 
 addcommand("nopadgrabber",
-"No description",
+"Disable the padgrabber that will automatically get a pad if your account doesn't have perm",
 function()
     perm = false
 end)
@@ -709,7 +709,7 @@ function()
 end)
 
 addcommand("breakcam",
-"No description",
+"Break the server camera",
 function()
     chatt("gear me "..antilog.."4842204072");wait(.35)
     chatt("gear me "..antilog.."4842218829");wait(.35)
@@ -723,7 +723,7 @@ function()
 end)
 
 addcommand("sunset",
-"No description",
+"Sets the map theme to a sunset.",
 function()
     chatt("colorshifttop 600 400 10")
     chatt("colorshiftbottom 600 400 10")
@@ -731,7 +731,7 @@ function()
 end)
 
 addcommand("fixclientcam",
-"No description",
+"This will only fix YOUR CAMERA. For anyone else it will stay broken",
 function()
     task.spawn(function()
         local lp = game.Players.LocalPlayer
@@ -772,7 +772,7 @@ function()
 end)
 
 addcommand("periastron",
-"No description",
+"This gives you all periastron swords EXCEPT FOR THE IVORY",
 function()
     chatt("gear me "..antilog.."159229806");wait(1.5)
     chatt("gear me "..antilog.."233520257")
@@ -786,7 +786,7 @@ function()
 end)
 
 addcommand("tempcrash",
-"No description",
+"Temporarily crash the server using the blue tempcrash sword",
 function()
     chatt("god all")
     chatt("gear me 92628079");wait(.35)
@@ -840,7 +840,7 @@ end)
 end)
 
 addcommand("chatbypass",
-"Load up the chat bypass",
+"Loads the best working FE chat bypass script, at the moment.",
 function()
     logn("Press ' to access the command bar")
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Tech-187/Temp/main/cb"))()
@@ -848,32 +848,32 @@ end
 )
 
 addcommand("chatcontrol",
-"No description",
+"Funny chat control GUI, made by DIY Scripts.",
 function()
     loadstring(game:HttpGet(('https://pastebin.com/raw/dSyLsh7s'),true))()
 end)
 
 addcommand("ivory",
-"No description",
+"This will give you the ivory specifically. It has been separated due to the ivory having many uses outside of just being an ordinary periastron sword, an example of that is attaching and moving parts or objects by using the Ivory's server sided after making your character weld to a part",
 function()
     chatt("gear me "..antilog.."108158379")
 end)
 
 addcommand("crazycolors",
-"No description",
+"This will hurt peoples eyes. Use the stop command to stop it",
 function()
     chatt("fogend nil")
     colors = true
 end)
 
 addcommand("fixpaint",
-"No description",
+"Restore the map colors to how it originally was (we were the first to have this fully fixed with credit to siyamicik and boomanoid)",
 function()
     loadstring(game:HttpGet(("https://raw.githubusercontent.com/Qltxi/scripts/main/Color%20API%202.0"),true))()
 end)
 
 addcommand("messpaint",
-"No description",
+"Mess up the map paint instead by painting everything random",
 function()
     chatt("gear me "..antilog.."18474459")
     wait(1)
@@ -900,7 +900,7 @@ function()
 end)
 
 addcommand("forcelag",
-"No description",
+"Use this command in emergencies. To stop it, you have to rejoin entirely (Requires admin of course)",
 function()
 trueblind()
 wait(.49)
@@ -977,13 +977,13 @@ end)
 
 
 addcommand("toregen",
-"No description",
+"Teleport to the regen pad",
 function()
     loadstring(game:HttpGet(("https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/FindVerticalRegen"), true))()
 end)
 
 addcommand("kick",
-"Kick a player",
+"Kick a player using the shitty dog method (scv3-var has a way better method)",
 function()
     for _Index, Target in pairs(GetPlayer(args[2])) do
         spam = true
@@ -1009,59 +1009,30 @@ end
 )
 
 addcommand("cmds",
-"Commands list",
+"Print out the command list for SCV2",
 function()
-    logn("Then scroll down as a slider will appear")
     logn("Open the console with F9")
+    logn("Then scroll down as a slider will appear")
     print([[
 Your prefix is "//"
 Usage/example: //spam explode random
 or //sunset
-etc
+etc ]])
 
-
-
-
-
-
-cmds
+-- Tech, you could've just used the command list system that already exists in this script
+	for i, v in pairs(commands) do
+			dupe = v.. " - ".. descriptions[v]
+			print(dupe)
+	end
+print([[
 mboombox (string) - Boombox script, requires boombox to already be in your inventory
 spam (command)
 annoy (player) - Spam respawn a player
 stop - stop spamming 
-toregen - Teleport to the regen pad
-vgcrash - Crash the server using the vampire gear
-silcrash - silent crash
-fixpaint - Restore the map colors to how it originally was (we were the first to have this fully fixed with credit to siyamicik and boomanoid)
-messpaint - Mess up the map paint instead by painting everything random
-breakcam - Break the server camera
-fixclientcam - This will only fix YOUR CAMERA. For anyone else it will stay broken
-migrate - Look for an empty/clean server and join it. There's no ping check though so if that server is located on the other side of the world then that sucks for you lmao
-sunset - Sets the map theme to this.
-periastron - This gives you all periastron swords EXCEPT FOR THE IVORY
-ivory - This will give you the ivory specifically. It has been separated due to the ivory having many uses outside of just being an ordinary periastron sword, an example of that is attaching and moving parts or objects by using the Ivory's server sided after making your character weld to a part
-tempcrash - Temporarily crash the server
-iy - Load up Infinite Yield.
-crazycolors - This will hurt peoples eyes. Use the stop command to stop it
-nopadgrabber - Disable the padgrabber that will automatically get a pad if your account doesn't have perm
-permcheck (player) - Check if a player has perm
-punish (Player) - Altered punish, it's buffed and can only be bypassed using respawn or unchar
-forcelag - Use this command in emergencies. To stop it, you have to rejoin entirely (Requires admin of course)
-tempcrash - Temporarily crash the server using the blue tempcrash sword
-kick (Player) - Kick a player using the shitty dog method (scv3-var has a way better method)
-chatcontrol - Funny chat control GUI, made by DIY Scripts.
-chatbypass - Loads the best working FE chat bypass script, at the moment.
 
 classicmode - Run old SCV2 instead. This script is very outdated and poorly put together and also very memory heavy, but some people still like it because it more commands (no wonder). Keep in mind that old v2 is over a year old by now
-
 Since some features are still missing, I may recommend you to use classic SCV2 as the script itself isn't bad, it's just the coding that's bad and it's very heavy unlike this remake (the remake also loads instantly lmao)
-
-
-
-
-
-
-lol.]])
+]])
 end)
 
 addcommand("silcrash", -- You don't want to immediately leave after doing this, or else the crash could be temp
@@ -1114,7 +1085,7 @@ function()
 end)
 
 addcommand("vgcrash",
-"Crash the server with the vampire gear",
+"Crash the server using the vampire gear",
 function()
     chatt(":gear me "..antilog.."94794847")
     local Backpack = game.Players.LocalPlayer:FindFirstChildOfClass("Backpack")
@@ -1164,14 +1135,14 @@ function()
 end)
 
 addcommand("iy",
-"Load up infinite yield",
+"Load up Infinite Yield.",
 function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 end
 )
 
-addcommand("classicmode",
-"Load up old SCV2",
+addcommand("classicmode", 
+"No description",
 function()
     getgenv().prefix3 = "."
     logn('NEW SCV2 prefix changed to "."')
