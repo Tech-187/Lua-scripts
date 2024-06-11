@@ -33,6 +33,7 @@ local ws = game:GetService("Workspace")
 local plyrs = game:GetService("Players")
 local uis = game:GetService("UserInputService")
 
+-- Some executors break because of "shared". I can't fix since it would break the obsfucated code :P
 shared.gpcheck = true
 
 shared.banana = {} -- Ban for non-perms
@@ -527,7 +528,7 @@ function()
     task.wait()
     if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id1), id1) then
         permcheck1 = true
-        logn(Target.Name..' has perm in NBC')
+        logn(Target.Name..' has perm in NBC.')
         permcheck1 = true
         task.spawn(function()
             wait(1.35)
@@ -535,8 +536,14 @@ function()
         end)
     end
     if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id2), id2) then
-        logn(Target.Name..' has perm in BC')
-        chatt("punish "..Target.Name);wait(4.65)
+	permcheck1 = true
+        logn(Target.Name..' has perm in BC.')
+        permcheck1 = true
+        task.spawn(function()
+            wait(1.35)
+            permcheck1 = false
+        end)
+     --[[   chatt("punish "..Target.Name);wait(4.65)
         bcbought = true
         local file = "fuck and cum"
         local a = {}
@@ -558,10 +565,10 @@ function()
         for b, c in ipairs(a) do
             local e = string.rep("  ", 2 * (b - 1))
             chatt("h/ lol look\n\n\n\n\n\n\n" .. e .. _G["variable_" .. tostring(b)])
-        end
+        end ]]
     else 
         if permcheck1 == true then return end
-        logn(Target.Name..' does not have Perm')
+        logn(Target.Name..' does not have perm.')
     end
 end
 end)
@@ -709,7 +716,7 @@ function()
 end)
 
 addcommand("breakcam",
-"Break the server camera",
+"Break the server's camera",
 function()
     chatt("gear me "..antilog.."4842204072");wait(.35)
     chatt("gear me "..antilog.."4842218829");wait(.35)
@@ -723,7 +730,7 @@ function()
 end)
 
 addcommand("sunset",
-"Sets the map theme to a sunset.",
+"Sets the map theme to a sunset",
 function()
     chatt("colorshifttop 600 400 10")
     chatt("colorshiftbottom 600 400 10")
@@ -731,7 +738,7 @@ function()
 end)
 
 addcommand("fixclientcam",
-"This will only fix YOUR CAMERA. For anyone else it will stay broken",
+"This will only fix YOUR CAMERA. For everyone else, it will stay broken",
 function()
     task.spawn(function()
         local lp = game.Players.LocalPlayer
