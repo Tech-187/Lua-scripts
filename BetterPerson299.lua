@@ -32,71 +32,10 @@ local uniquemodstring = "BetterPerson299Command" -- Change this to whatever, jus
 local antilog = string.rep(0, math.random(16, 100))
 local lplayer = game.Players.LocalPlayer
 local userId = game.Players.LocalPlayer.UserId
-local connections = {} -- If you're going alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
+local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
 local gearcons = {}
-
-local newBlacklistedGear = false -- Setting this to true will add more blacklisted gears to the normal blacklisted gear list.
-local BlacklistedGear = { -- You can find the tool names using this script: https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
-	"VampireVanquisher",
-	"IvoryPeriastron",
-	"PaintBucket",
-	"SubspaceTripmine",
-	"Transmorpher",
-	"LaserFingerPointers",
-	"SeaThemedCrossbow",
-	"RageTable",
-	"IceStaff",
-	"BlackHoleSword",
-	"ViridianThrowingKnives"
-}
-
-if newBlacklistedGear then
-    table.insert(BlacklistedGear, "AzureDragonMagicSlayerSword")
-    table.insert(BlacklistedGear, "PrettyPrettyPrincessSceptor")
-    table.insert(BlacklistedGear, "OrinthianSwordAndShield")
-    table.insert(BlacklistedGear, "AR")
-    table.insert(BlacklistedGear, "AlienEgg")
-    table.insert(BlacklistedGear, "BarrelOfMonkeys")
-    table.insert(BlacklistedGear, "AnAlpacaYouKnow")
-    table.insert(BlacklistedGear, "BoneSword")
-    table.insert(BlacklistedGear, "WormholeTunneler")
-    table.insert(BlacklistedGear, "GiantAnimeHammer")
-    table.insert(BlacklistedGear, "FakeChartreusePeriastron")
-    table.insert(BlacklistedGear, "SkeletonScythe")
-    table.insert(BlacklistedGear, "BlizzardWand")
-    table.insert(BlacklistedGear, "SentryTurret")
-    table.insert(BlacklistedGear, "StatueStaffOfStonyJustice")
-    table.insert(BlacklistedGear, "TacticalAirstrike")
-    table.insert(BlacklistedGear, "Tactical Airstrike")
-    table.insert(BlacklistedGear, "Easterbomby")
-    table.insert(BlacklistedGear, "RainbowPeriastron")
-    table.insert(BlacklistedGear, "RemoteExplosiveDetonator")
-    table.insert(BlacklistedGear, "BeachUmbrella")
-    table.insert(BlacklistedGear, "ChickThrowingStars")
-    table.insert(BlacklistedGear, "CloverThrowingStars")
-    table.insert(BlacklistedGear, "GoldShuriken")
-    table.insert(BlacklistedGear, "MetallicThrowingKnives")
-    table.insert(BlacklistedGear, "NeonNinjaThrowingStars")
-    table.insert(BlacklistedGear, "TransparentThrowingStars")
-    table.insert(BlacklistedGear, "InstantTreehouse")
-    table.insert(BlacklistedGear, "BitePlant")
-    table.insert(BlacklistedGear, "SnowAndArrow")
-    table.insert(BlacklistedGear, "Crossbow")
-end
-
-getgenv().gearwhitelisted = { -- Players that are in this table won't get ungeared by default.
-	"Master0fSouIs",
-	"ScaleneSoap9803",
-	"t_echr",
-	"Humangas",
-	"ovicaI",
-	"Ba_lIon",
-	"naomicaesar",
-	"jjjuuikjjikkju",
-	"SoaringLys",
-	"Di33le2"
-}
-
+local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","Transmorpher","LaserFingerPointers","SeaThemedCrossbow","RageTable","IceStaff","BlackHoleSword","ViridianThrowingKnives"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
+getgenv().gearwhitelisted = {"Master0fSouIs","ScaleneSoap9803","t_echr","Humangas","ovicaI","Ba_lIon","naomicaesar","jjjuuikjjikkju","SoaringLys","Di33le2"} -- Players that are in this table won't get ungeared by default.
 local mousee = game.Players.LocalPlayer:GetMouse()
 local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function() end
 
@@ -256,9 +195,9 @@ task.spawn(function()
                                     if GEARANNOUNCE then
                                         for i = 1, 3 do
                                             chatt(
-                                                "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Sorry for the ungear, " ..
+                                                "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n No need to be a naughty boy " ..
                                                     plrname ..
-                                                        " ! \n\n\n\n\n\n " ..
+                                                        " !!! \n\n\n\n\n\n " ..
                                                             gear ..
                                                                 " is blacklisted in this server. \n Try it in another server or use another tool")
                                             wait(1.8)
@@ -278,7 +217,7 @@ task.spawn(function()
 end)
 
 if gearbl2 then
-    print("Gear blacklist is set to not strict.")
+    print("Gear blacklist is set to not strict")
     task.spawn(function()
         for _, player in pairs(game.Players:GetPlayers()) do
             if player.Name ~= game.Players.LocalPlayer.Name and not table.find(gearwhitelisted, player.Name) then
@@ -293,9 +232,9 @@ if gearbl2 then
                                         if GEARANNOUNCE then
                                             for i = 1, 3 do
                                                 chatt(
-                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Sorry for the ungear, " ..
+                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n No need to be a naughty boy " ..
                                                         player.Name ..
-                                                            " ! \n\n\n\n\n\n " ..
+                                                            " !!! \n\n\n\n\n\n " ..
                                                             blacklistedGear ..
                                                                     " is blacklisted in this server. \n Try it in another server or use another tool")
                                                 wait(1.8)
@@ -322,9 +261,9 @@ if gearbl2 then
                                         if GEARANNOUNCE then
                                             for i = 1, 3 do
                                                 chatt(
-                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Sorry for the ungear, " ..
+                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n No need to be a naughty boy " ..
                                                         player.Name ..
-                                                            " ! \n\n\n\n\n\n " ..
+                                                            " !!! \n\n\n\n\n\n " ..
                                                             blacklistedGear ..
                                                                     " is blacklisted in this server. \n Try it in another server or use another tool")
                                                 wait(1.8)
@@ -355,9 +294,9 @@ if gearbl2 then
                                         if GEARANNOUNCE then
                                             for i = 1, 3 do
                                                 chatt(
-                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Sorry for the ungear, " ..
+                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n No need to be a naughty boy " ..
                                                         player.Name ..
-                                                            " ! \n\n\n\n\n\n " ..
+                                                            " !!! \n\n\n\n\n\n " ..
                                                             blacklistedGear ..
                                                                     " is blacklisted in this server. \n Try it in another server or use another tool")
                                                 wait(1.8)
@@ -384,9 +323,9 @@ if gearbl2 then
                                         if GEARANNOUNCE then
                                             for i = 1, 3 do
                                                 chatt(
-                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Sorry for the ungear, " ..
+                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n No need to be a naughty boy " ..
                                                         player.Name ..
-                                                            " ! \n\n\n\n\n\n " ..
+                                                            " !!! \n\n\n\n\n\n " ..
                                                             blacklistedGear ..
                                                                     " is blacklisted in this server. \n Try it in another server or use another tool")
                                                 wait(1.8)
@@ -407,7 +346,7 @@ if gearbl2 then
         table.insert(gearcons, connection4)
     end)
 else
-    print("Gear blacklist is set to STRICT.")
+    print("Gear blacklist is set to STRICT")
 end
 
 function createKohlsUi(textTable)
@@ -870,7 +809,7 @@ connections[#connections + 1] = lplayer.Chatted:Connect(function(msg)
             print("Join shield active")
             pcall(function()
                 if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") or not game:GetService("Workspace").Terrain["_Game"].Workspace:FindFirstChild("Baseplate") then
-                    print("Part missing (regen/baseplate)")
+                    print("Part missing")
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
@@ -879,7 +818,7 @@ connections[#connections + 1] = lplayer.Chatted:Connect(function(msg)
             end)
             pcall(function()
                 if not game:GetService("Workspace").Terrain._Game.Workspace["Basic House"]:FindFirstChild("SmoothBlockModel112") then
-                    print("Part missing  (house floor)")
+                    print("Part missing")
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
@@ -888,7 +827,6 @@ connections[#connections + 1] = lplayer.Chatted:Connect(function(msg)
             end)
             pcall(function()
                 if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y > 1.5 or game:GetService("Workspace").Terrain._Game.Workspace["Basic House"].SmoothBlockModel112.CFrame.Y > 15 then
-		    print("Part in wrong place (house floor)")
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
@@ -897,7 +835,6 @@ connections[#connections + 1] = lplayer.Chatted:Connect(function(msg)
             end)
             pcall(function()
                 if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y < 0 then
-		    print("Part in wrong place (baseplate)")
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
@@ -963,30 +900,6 @@ connections[#connections + 1] = lplayer.Chatted:Connect(function(msg)
             chatt("speed me 32");wait(1.5)
             fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
         end
-   elseif string.sub(msg:lower(), 1, 14) == "!checkbackpack" then
-		local function checkforplayer(plr)
-    			for i, v in pairs(game.Players:GetPlayers()) do
-        			if string.sub(v.Name:lower(), 1, #plr) == plr then
-            				print(plr .. " was found as " .. v.Name)
-            				return v
-        			end
-    			end
-    			return nil
-		end
-			
-            	local finding = string.sub(msg:lower(), 16)
-            	if not checkforplayer(finding) then
-                	print("Invalid player")
-                	return
-            	end
-            	local wtech = checkforplayer(finding)
-            	local gplayer = game.Players:FindFirstChild(wtech)
-            	local Backpack = gplayer:FindFirstChild("Backpack")
-            	if Backpack then
-                	for _, v in pairs(Backpack:GetChildren()) do
-                    		print(v.Name)
-                	end
-            	end
     elseif string.sub(msg:lower(), 0, 6) == "!admin" then
         if shared.mod == true then
             PadCheck = true
