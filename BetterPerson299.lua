@@ -34,8 +34,34 @@ local lplayer = game.Players.LocalPlayer
 local userId = game.Players.LocalPlayer.UserId
 local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
 local gearcons = {}
-local BlacklistedGear = {"VampireVanquisher","IvoryPeriastron","PaintBucket","SubspaceTripmine","Transmorpher","LaserFingerPointers","SeaThemedCrossbow","RageTable","IceStaff","BlackHoleSword","ViridianThrowingKnives"} -- You can find the tool names using this script https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
-getgenv().gearwhitelisted = {"Master0fSouIs","ScaleneSoap9803","t_echr","Humangas","ovicaI","Ba_lIon","naomicaesar","jjjuuikjjikkju","SoaringLys","Di33le2"} -- Players that are in this table won't get ungeared by default.
+
+local BlacklistedGear = { -- You can find the tool names using this script: https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
+	"VampireVanquisher",
+	"IvoryPeriastron",
+	"PaintBucket",
+	"SubspaceTripmine",
+	"Transmorpher",
+	"LaserFingerPointers",
+	"SeaThemedCrossbow",
+	"RageTable",
+	"IceStaff",
+	"BlackHoleSword",
+	"ViridianThrowingKnives"
+}
+
+getgenv().gearwhitelisted = { -- Players that are in this table won't get ungeared by default.
+	"Master0fSouIs",
+	"ScaleneSoap9803",
+	"t_echr",
+	"Humangas",
+	"ovicaI",
+	"Ba_lIon",
+	"naomicaesar",
+	"jjjuuikjjikkju",
+	"SoaringLys",
+	"Di33le2"
+}
+
 local mousee = game.Players.LocalPlayer:GetMouse()
 local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function() end
 
