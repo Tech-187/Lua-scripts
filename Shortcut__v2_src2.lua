@@ -123,7 +123,7 @@ end
 
 task.spawn(function()
     while scriptrunning do task.wait()
-        coroutine.wrap(function() -- PadAbuse
+        coroutine.wrap(function() -- Pad Abuse (Loopgrab)
 			if padAbuse == true then
 				local pads = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:GetChildren("Head")
 				for i, pad in pairs(pads) do
@@ -132,8 +132,8 @@ task.spawn(function()
 							local cre = pad.Head
 							local spr = game.Players.LocalPlayer.Character:FindFirstChild("Head")
 							firetouchinterest(cre, spr, 1)
-                            firetouchinterest(cre, spr, 0)
-                            firetouchinterest(cre, spr, 1)
+                            				firetouchinterest(cre, spr, 0)
+                            				firetouchinterest(cre, spr, 1)
 							task.wait()
 							firetouchinterest(cre, spr, 0)
 							
@@ -154,8 +154,8 @@ task.spawn(function()
 					local pad = adminFlr.Pads:FindFirstChild("Touch to get admin")
 					local a = pad.Head
 					firetouchinterest(a, spr, 1)
-                    firetouchinterest(a, spr, 0)
-                    firetouchinterest(a, spr, 1)
+                    			firetouchinterest(a, spr, 0)
+                    			firetouchinterest(a, spr, 1)
 					task.wait()
 					firetouchinterest(a, spr, 0)
 				end)
@@ -170,12 +170,12 @@ task.spawn(function()
     local passid = 66254 or 64354
     if shared.gpcheck == true then
         if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. userId .. "/items/GamePass/" .. passid), passid) then
-            print("Perm found")
+            logn("Perm found. Pad grabber was not enabled.")
             gamepassperm = true
             perm = false 
-            print("Fake perm for those that didn't buy the gamepass. It's pointless if you do have it unless the API has an outage")
+            logn("If the API were to have an outage, the perm gamepass that you've bought would become useless.")
         else
-            print("Perm not found. Enabling pad grabber")
+            logn("Perm not found. Enabling pad grabber.")
             perm = true
         end
     end
@@ -297,7 +297,7 @@ function GetPlayer(target)
 end
 
 addcommand("migrate",
-"Look for an empty/clean server and join it. There's no ping check though so if that server is located on the other side of the world then that sucks for you lmao",
+"Look for an empty/clean server and join it. There's no ping check though so if that server is located on the other side of the world then that sucks for you",
 function()
     while scriptrunning do wait(.35)
         task.spawn(function()
@@ -310,7 +310,7 @@ function()
                 end
             end
             if #x > 0 then
-                logn("Joining a server with "..amount.." Players")
+                logn("Joining a server with "..amount.." players.")
                 wait(0.25)
                 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, x[math.random(1, #x)])
             else
