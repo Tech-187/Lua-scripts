@@ -523,54 +523,27 @@ addcommand("permcheck",
 "Check if a player has perm",
 function()
     for _Index, Target in pairs(GetPlayer(args[2])) do
-    local id1 = 66254
-    local id2 = 64354
-    task.wait()
-    if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id1), id1) then
-        permcheck1 = true
-        logn(Target.Name..' has perm in NBC.')
-        permcheck1 = true
-        task.spawn(function()
-            wait(1.35)
-            permcheck1 = false
-        end)
+    	local id1 = 66254
+    	local id2 = 64354
+    	task.wait()
+    	if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id1), id1) then
+        	permcheck1 = true
+        	logn(Target.Name..' has perm in NBC.')
+        	permcheck1 = true
+    	end
+
+    	if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id2), id2) then
+		permcheck1 = true
+        	logn(Target.Name..' has perm in BC.')
+        	permcheck1 = true
+   	end
+			
+    	task.wait(2.7)
+			
+   	if permcheck1 == false then 
+		return logn(Target.Name..' does not have perm.')
+    	end
     end
-    if string.match(game:HttpGet("https://inventory.roproxy.com/v1/users/" .. Target.UserId .. "/items/GamePass/" .. id2), id2) then
-	permcheck1 = true
-        logn(Target.Name..' has perm in BC.')
-        permcheck1 = true
-        task.spawn(function()
-            wait(1.35)
-            permcheck1 = false
-        end)
-     --[[   chatt("punish "..Target.Name);wait(4.65)
-        bcbought = true
-        local file = "fuck and cum"
-        local a = {}
-
-        for letter in file:gmatch(".") do
-        if letter ~= "\r" and letter ~= "\n" then
-            table.insert(a, letter)
-        end
-        end
-
-        for i, v in ipairs(a) do
-        print(i, v)
-        end
-
-        for b, c in ipairs(a) do
-            local d = "variable_" .. tostring(b)
-            _G[d] = c
-        end
-        for b, c in ipairs(a) do
-            local e = string.rep("  ", 2 * (b - 1))
-            chatt("h/ lol look\n\n\n\n\n\n\n" .. e .. _G["variable_" .. tostring(b)])
-        end ]]
-    else 
-        if permcheck1 == true then return end
-        logn(Target.Name..' does not have perm.')
-    end
-end
 end)
 
 addcommand("profilepos",
@@ -1037,8 +1010,6 @@ spam (command)
 annoy (player) - Spam respawn a player
 stop - stop spamming 
 
-classicmode - Run old SCV2 instead. This script is very outdated and poorly put together and also very memory heavy, but some people still like it because it more commands (no wonder). Keep in mind that old v2 is over a year old by now
-Since some features are still missing, I may recommend you to use classic SCV2 as the script itself isn't bad, it's just the coding that's bad and it's very heavy unlike this remake (the remake also loads instantly lmao)
 ]])
 end)
 
@@ -1149,7 +1120,7 @@ end
 )
 
 addcommand("classicmode", 
-"No description",
+"Run old SCV2 instead. This script is very outdated and poorly put together and also very memory heavy, but some people still like it because it more commands (no wonder). Keep in mind that old v2 is over a year old by now \n Since some features are still missing, I may recommend you to use classic SCV2 as the script itself isn't bad, it's just the coding that's bad and it's very heavy unlike this remake (the remake also loads instantly lmao)",
 function()
     getgenv().prefix3 = "."
     logn('NEW SCV2 prefix changed to "."')
@@ -1175,41 +1146,44 @@ task.spawn(function()
 				connections[#connections + 1] = game.Players[Plr.Name].Backpack.ChildAdded:connect(function()
 					if antiGear == true then
 						chatt("ungear " .. Plr.Name .. "                                                                                                                                                                                                                                                                                                                            others fuck " ..math.random(1, 1000))
-                        chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Gears have been disabled for now \n cry about it if you have any complaints \n and no we don't care about your hurt feelings")
-                        chatt("trip " .. Plr.Name);wait(.51)
-                        chatt("noclip                                                                                                                        " .. Plr.Name)
-                    end
+                        			chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Using gears have been disabled for this server right now \n Join another server to use them \n Sorry for the inconvenience")
+                        			chatt("trip " .. Plr.Name);wait(.51)
+                        			chatt("noclip                                                                                                                        " .. Plr.Name)
+                    			end
 				end)
 			end)
+				
 			connections[#connections + 1] = game.Players[Plr.Name].Backpack.ChildAdded:connect(function()
 				if antiGear == true then
-					chatt("ungear " .. Plr.Name .. "                                                                                                                                                                                                                                                                                                                            others fuck " ..math.random(1, 1000))
-                    chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Gears have been disabled for now \n cry about it if you have any complaints \n and no we don't care about your hurt feelings")
-                    chatt("trip " .. Plr.Name);wait(.51)
-                    chatt("noclip                                                                                                                        " .. Plr.Name)
-                end
+						chatt("ungear " .. Plr.Name .. "                                                                                                                                                                                                                                                                                                                            others fuck " ..math.random(1, 1000))
+                        			chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Using gears have been disabled for this server right now \n Join another server to use them \n Sorry for the inconvenience")
+                    				chatt("trip " .. Plr.Name);wait(.51)
+                    				chatt("noclip                                                                                                                        " .. Plr.Name)
+                		end
 			end)
 		end
 	end
+		
 	connections[#connections + 1] = game.Players.PlayerAdded:Connect(function(Plr)
 		if Plr.Name ~= game.Players.LocalPlayer.Name then
 			connections[#connections + 1] = Plr.CharacterAdded:Connect(function()
 				connections[#connections + 1] = game.Players[Plr.Name].Backpack.ChildAdded:connect(function()
 					if antiGear == true then
 						chatt("ungear " .. Plr.Name .. "                                                                                                                                                                                                                                                                                                                            others fuck " ..math.random(1, 1000))
-                        chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Gears have been disabled for now \n cry about it if you have any complaints \n and no we don't care about your hurt feelings")
-                        chatt("trip " .. Plr.Name);wait(.51)
-                        chatt("noclip                                                                                                                        " .. Plr.Name)
-                    end
+                        			chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Using gears have been disabled for this server right now \n Join another server to use them \n Sorry for the inconvenience")
+                        			chatt("trip " .. Plr.Name);wait(.51)
+                        			chatt("noclip                                                                                                                        " .. Plr.Name)
+                    			end
 				end)
 			end)
+					
 			connections[#connections + 1] = game.Players[Plr.Name].Backpack.ChildAdded:connect(function()
 				if antiGear == true then
 					chatt("ungear " .. Plr.Name .. "                                                                                                                                                                                                                                                                                                                            others fuck " ..math.random(1, 1000))
-                    chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Gears have been disabled for now \n cry about it if you have any complaints \n and no we don't care about your hurt feelings")
-                    chatt("trip " .. Plr.Name);wait(.51)
-                    chatt("noclip                                                                                                                        " .. Plr.Name)
-                end
+                        		chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Using gears have been disabled for this server right now \n Join another server to use them \n Sorry for the inconvenience")
+                    			chatt("trip " .. Plr.Name);wait(.51)
+                    			chatt("noclip                                                                                                                        " .. Plr.Name)
+                		end
 			end)
 		end
 	end)
