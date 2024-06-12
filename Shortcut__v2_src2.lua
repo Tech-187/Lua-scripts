@@ -33,7 +33,6 @@ local ws = game:GetService("Workspace")
 local plyrs = game:GetService("Players")
 local uis = game:GetService("UserInputService")
 
--- Some executors break because of "shared". I can't fix since it would break the obsfucated code :P
 shared.gpcheck = true
 
 shared.banana = {} -- Ban for non-perms
