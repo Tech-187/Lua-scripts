@@ -35,6 +35,7 @@ local userId = game.Players.LocalPlayer.UserId
 local connections = {} -- If you're going alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
 local gearcons = {}
 
+local newBlacklistedGear = false -- Setting this to true will add more blacklisted gears to the normal blacklisted gear list.
 local BlacklistedGear = { -- You can find the tool names using this script: https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
 	"VampireVanquisher",
 	"IvoryPeriastron",
@@ -48,6 +49,40 @@ local BlacklistedGear = { -- You can find the tool names using this script: http
 	"BlackHoleSword",
 	"ViridianThrowingKnives"
 }
+
+if newBlacklistedGear then
+    table.insert(BlacklistedGear, "AzureDragonMagicSlayerSword")
+    table.insert(BlacklistedGear, "PrettyPrettyPrincessSceptor")
+    table.insert(BlacklistedGear, "OrinthianSwordAndShield")
+    table.insert(BlacklistedGear, "AR")
+    table.insert(BlacklistedGear, "AlienEgg")
+    table.insert(BlacklistedGear, "BarrelOfMonkeys")
+    table.insert(BlacklistedGear, "AnAlpacaYouKnow")
+    table.insert(BlacklistedGear, "BoneSword")
+    table.insert(BlacklistedGear, "WormholeTunneler")
+    table.insert(BlacklistedGear, "GiantAnimeHammer")
+    table.insert(BlacklistedGear, "FakeChartreusePeriastron")
+    table.insert(BlacklistedGear, "SkeletonScythe")
+    table.insert(BlacklistedGear, "BlizzardWand")
+    table.insert(BlacklistedGear, "SentryTurret")
+    table.insert(BlacklistedGear, "StatueStaffOfStonyJustice")
+    table.insert(BlacklistedGear, "TacticalAirstrike")
+    table.insert(BlacklistedGear, "Tactical Airstrike")
+    table.insert(BlacklistedGear, "Easterbomby")
+    table.insert(BlacklistedGear, "RainbowPeriastron")
+    table.insert(BlacklistedGear, "RemoteExplosiveDetonator")
+    table.insert(BlacklistedGear, "BeachUmbrella")
+    table.insert(BlacklistedGear, "ChickThrowingStars")
+    table.insert(BlacklistedGear, "CloverThrowingStars")
+    table.insert(BlacklistedGear, "GoldShuriken")
+    table.insert(BlacklistedGear, "MetallicThrowingKnives")
+    table.insert(BlacklistedGear, "NeonNinjaThrowingStars")
+    table.insert(BlacklistedGear, "TransparentThrowingStars")
+    table.insert(BlacklistedGear, "InstantTreehouse")
+    table.insert(BlacklistedGear, "BitePlant")
+    table.insert(BlacklistedGear, "SnowAndArrow")
+    table.insert(BlacklistedGear, "Crossbow")
+end
 
 getgenv().gearwhitelisted = { -- Players that are in this table won't get ungeared by default.
 	"Master0fSouIs",
