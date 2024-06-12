@@ -195,9 +195,9 @@ task.spawn(function()
                                     if GEARANNOUNCE then
                                         for i = 1, 3 do
                                             chatt(
-                                                "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n No need to be a naughty boy " ..
+                                                "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Sorry for the ungear, " ..
                                                     plrname ..
-                                                        " !!! \n\n\n\n\n\n " ..
+                                                        " ! \n\n\n\n\n\n " ..
                                                             gear ..
                                                                 " is blacklisted in this server. \n Try it in another server or use another tool")
                                             wait(1.8)
@@ -217,7 +217,7 @@ task.spawn(function()
 end)
 
 if gearbl2 then
-    print("Gear blacklist is set to not strict")
+    print("Gear blacklist is set to not strict.")
     task.spawn(function()
         for _, player in pairs(game.Players:GetPlayers()) do
             if player.Name ~= game.Players.LocalPlayer.Name and not table.find(gearwhitelisted, player.Name) then
@@ -232,9 +232,9 @@ if gearbl2 then
                                         if GEARANNOUNCE then
                                             for i = 1, 3 do
                                                 chatt(
-                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n No need to be a naughty boy " ..
+                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Sorry for the ungear, " ..
                                                         player.Name ..
-                                                            " !!! \n\n\n\n\n\n " ..
+                                                            " ! \n\n\n\n\n\n " ..
                                                             blacklistedGear ..
                                                                     " is blacklisted in this server. \n Try it in another server or use another tool")
                                                 wait(1.8)
@@ -261,9 +261,9 @@ if gearbl2 then
                                         if GEARANNOUNCE then
                                             for i = 1, 3 do
                                                 chatt(
-                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n No need to be a naughty boy " ..
+                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Sorry for the ungear, " ..
                                                         player.Name ..
-                                                            " !!! \n\n\n\n\n\n " ..
+                                                            " ! \n\n\n\n\n\n " ..
                                                             blacklistedGear ..
                                                                     " is blacklisted in this server. \n Try it in another server or use another tool")
                                                 wait(1.8)
@@ -294,9 +294,9 @@ if gearbl2 then
                                         if GEARANNOUNCE then
                                             for i = 1, 3 do
                                                 chatt(
-                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n No need to be a naughty boy " ..
+                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Sorry for the ungear, " ..
                                                         player.Name ..
-                                                            " !!! \n\n\n\n\n\n " ..
+                                                            " ! \n\n\n\n\n\n " ..
                                                             blacklistedGear ..
                                                                     " is blacklisted in this server. \n Try it in another server or use another tool")
                                                 wait(1.8)
@@ -323,9 +323,9 @@ if gearbl2 then
                                         if GEARANNOUNCE then
                                             for i = 1, 3 do
                                                 chatt(
-                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n No need to be a naughty boy " ..
+                                                    "h/ \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Sorry for the ungear, " ..
                                                         player.Name ..
-                                                            " !!! \n\n\n\n\n\n " ..
+                                                            " ! \n\n\n\n\n\n " ..
                                                             blacklistedGear ..
                                                                     " is blacklisted in this server. \n Try it in another server or use another tool")
                                                 wait(1.8)
@@ -346,7 +346,7 @@ if gearbl2 then
         table.insert(gearcons, connection4)
     end)
 else
-    print("Gear blacklist is set to STRICT")
+    print("Gear blacklist is set to STRICT.")
 end
 
 function createKohlsUi(textTable)
@@ -809,7 +809,7 @@ connections[#connections + 1] = lplayer.Chatted:Connect(function(msg)
             print("Join shield active")
             pcall(function()
                 if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") or not game:GetService("Workspace").Terrain["_Game"].Workspace:FindFirstChild("Baseplate") then
-                    print("Part missing")
+                    print("Part missing (regen/baseplate)")
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
@@ -818,7 +818,7 @@ connections[#connections + 1] = lplayer.Chatted:Connect(function(msg)
             end)
             pcall(function()
                 if not game:GetService("Workspace").Terrain._Game.Workspace["Basic House"]:FindFirstChild("SmoothBlockModel112") then
-                    print("Part missing")
+                    print("Part missing  (house floor)")
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
@@ -827,6 +827,7 @@ connections[#connections + 1] = lplayer.Chatted:Connect(function(msg)
             end)
             pcall(function()
                 if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y > 1.5 or game:GetService("Workspace").Terrain._Game.Workspace["Basic House"].SmoothBlockModel112.CFrame.Y > 15 then
+		    print("Part in wrong place (house floor)")
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
@@ -835,6 +836,7 @@ connections[#connections + 1] = lplayer.Chatted:Connect(function(msg)
             end)
             pcall(function()
                 if game:GetService("Workspace").Terrain["_Game"].Workspace.Baseplate.CFrame.Y < 0 then
+		    print("Part in wrong place (baseplate)")
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
                     chatt("!rcrash fuck");wait(20)
