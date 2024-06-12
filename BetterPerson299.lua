@@ -32,7 +32,7 @@ local uniquemodstring = "BetterPerson299Command" -- Change this to whatever, jus
 local antilog = string.rep(0, math.random(16, 100))
 local lplayer = game.Players.LocalPlayer
 local userId = game.Players.LocalPlayer.UserId
-local connections = {} -- If you're gonna alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
+local connections = {} -- If you're going alter the script then please add any connections that you add to a table so it can be closed with the !closemod command
 local gearcons = {}
 
 local BlacklistedGear = { -- You can find the tool names using this script: https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/Inventory%20tool%20checker
@@ -928,6 +928,30 @@ connections[#connections + 1] = lplayer.Chatted:Connect(function(msg)
             chatt("speed me 32");wait(1.5)
             fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
         end
+   elseif string.sub(msg:lower(), 1, 14) == "!checkbackpack" then
+		local function checkforplayer(plr)
+    			for i, v in pairs(game.Players:GetPlayers()) do
+        			if string.sub(v.Name:lower(), 1, #plr) == plr then
+            				print(plr .. " was found as " .. v.Name)
+            				return v
+        			end
+    			end
+    			return nil
+		end
+			
+            	local finding = string.sub(msg:lower(), 16)
+            	if not checkforplayer(finding) then
+                	print("Invalid player")
+                	return
+            	end
+            	local wtech = checkforplayer(finding)
+            	local gplayer = game.Players:FindFirstChild(wtech)
+            	local Backpack = gplayer:FindFirstChild("Backpack")
+            	if Backpack then
+                	for _, v in pairs(Backpack:GetChildren()) do
+                    		print(v.Name)
+                	end
+            	end
     elseif string.sub(msg:lower(), 0, 6) == "!admin" then
         if shared.mod == true then
             PadCheck = true
