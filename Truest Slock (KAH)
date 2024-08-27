@@ -1,0 +1,53 @@
+task.spawn(function()
+    -- Your antihat goes here
+end)
+
+local function chatt(massage)
+    game.Players:Chat(massage)
+end
+
+function slogn(message)
+    game.StarterGui:SetCore("SendNotification",
+        {
+            Title = "SLOCK",
+            Text = message,
+            Duration = 5.5
+        })
+end
+
+local function blind(player)
+    chatt("blind "..player.Name)
+end
+
+pcall(function()
+    local objs = game:GetService("Workspace").Terrain._Game.Workspace.Obby:GetChildren()
+    for i, obj in pairs(objs) do
+        coroutine.wrap(function()
+            pcall(function()
+                obj.TouchInterest:Destroy()
+            end)
+        end)()
+    end
+end)
+
+slocker = true
+
+chatt("speed me 0")
+chatt("speed me 10000")
+chatt("size me 5")
+chatt("name me   ")
+wait(0.35)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-41, 3.7, -15.589996337891))
+chatt("invis me me me")
+task.delay(125, function()
+    slocker = false
+    slogn("You can clone urself now")
+    slogn("Hat spam stopped")
+end)
+
+game:GetService("Players").PlayerAdded:Connect(blind)
+
+while slocker do
+    chatt("hat all 0000000000000000000000000000"..hatid)
+    task.wait()
+end
