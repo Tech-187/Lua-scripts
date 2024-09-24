@@ -13,6 +13,7 @@ repeat task.wait() until game:IsLoaded()
 local antimessage = true
 local antiblind = true
 local antipunish = true
+local antikick = true
 
 local rns = game:GetService("RunService")
 local plrs = game:GetService("Players")
@@ -22,6 +23,9 @@ local plr = plrs.LocalPlayer
 local MarketplaceService = game:GetService("MarketplaceService")
 local permpasses = (MarketplaceService:UserOwnsGamePassAsync(plr.UserId, 66254) or MarketplaceService:UserOwnsGamePassAsync(plr.UserId, 64354) or MarketplaceService:UserOwnsGamePassAsync(plr.UserId, 35748) or MarketplaceService:UserOwnsGamePassAsync(plr.UserId, 37127))
 -- It doesn't automatically give u admin if u don't have any gamepasses because this is strongly based off of the original Ban GUI so ur gonna have to click the "Get Admin" button
+
+local gameFlr = workspace.Terrain._Game
+local adminFlr = gameFlr.Admin
 
 function chatt(i) game.Players:Chat(i) end
 
@@ -190,6 +194,7 @@ Tutup.TextColor3 = Color3.new(0, 1, 0)
 Tutup.TextSize = 25
 Tutup.MouseButton1Down:connect(function()
 	antipunish = false
+	antikick = false
 	PadCheck = false
 	for _, connection in ipairs(cons) do
 		connection:Disconnect()
@@ -434,6 +439,18 @@ if not isfile("banguibanned.txt") then
 	writefile("banguibanned.txt", "In here will just be a list of banned users \n Please keep in mind that some users able to bypass this ban but it's not really common \n\n\n")
 end
 
+task.spawn(function()
+    while antikick do task.wait()
+        for i,v in pairs(workspace:GetDescendants()) do
+            if v:IsA("Accessory") then
+                if tostring(v.AccessoryType) == "Enum.AccessoryType.Unknown" then -- kneekirs
+                    v:Destroy()
+                end
+            end
+        end
+    end
+end)
+
 --//   PlayerAdded Hook   //--
 cons[#cons + 1] = plrs.PlayerAdded:Connect(function(plr)
 	task.spawn(function()
@@ -460,7 +477,7 @@ cons[#cons + 1] = game.Players.LocalPlayer.Chatted:Connect(function(msg)
 	elseif string.sub(msg, 0, 4 + #prefix) == prefix.."kick" then
 		if debounce1 then return end
             getgenv().debounce1 = true
-            task.delay(1.5, function()
+            task.delay(5, function() -- Incrased the debounce to 5 seconds, incase someone spams the kick GUI button
                 getgenv().debounce1 = false
             end)
 		GetPlayer2(string.sub(msg, 6 + #prefix))
@@ -474,10 +491,13 @@ cons[#cons + 1] = game.Players.LocalPlayer.Chatted:Connect(function(msg)
 		chatt("size "..target.." 9.9")
 		chatt("size "..target.." 9.9")
 		chatt("spin MeansSpiderInDutch                                                                                                                                                                        "..target.." fuck")
+		if not permpasses then 
+			wait(0.35)
+		end
 		pcall(function()
 			fireclickdetector(adminFlr.Regen.ClickDetector, 0)
 		end)
-		wait(0.89)
+		wait(0.15)
 		chatt("setgrav "..target.." -251.2")
 		task.delay(3.65, function()
 			spammer = false
@@ -513,7 +533,7 @@ cons[#cons + 1] = rns.RenderStepped:Connect(function()
     end
 end)
 
-local file = readfile("banguibanned.txt") -- If you do not have this file then just create it, as simple as that. Anyone added to the file, per line will be added to the getgenv().gearwhitelisted table
+local file = readfile("banguibanned.txt")
 for plr in file:gmatch("[^\r\n]+") do
     table.insert(ggBanned, { "h", plr })
 end
