@@ -1,6 +1,12 @@
 local cons = {}
 local prefix = "s!"
 local antilog = string.rep(0, math.random(16, 100))
+local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function() end
+getgenv().autoexecute = true
+
+if autoexecute then
+    queueteleport('loadstring(game:HttpGet(("https://raw.githubusercontent.com/Tech-187/Lua-scripts/refs/heads/main/Ban%20GUI.lua"),true))()')
+end
 
 repeat task.wait() until game:IsLoaded()
 
