@@ -1,3 +1,5 @@
+game.Players.LocalPlayer:Kick("Patched until I replace the old hat with a new one. I have a working one but people are forcing me to gatekeep so")
+
 local cons = {}
 local prefix = "s!"
 local antilog = string.rep(0, math.random(16, 100))
@@ -503,10 +505,10 @@ cons[#cons + 1] = game.Players.LocalPlayer.Chatted:Connect(function(msg)
 			spammer = false
 		end)
 		for i = 1, 103 do
-			chatt("hat "..target.." "..antilog.."18137588505")
+			chatt("hat "..target.." "..antilog.."REPLACETHIS")
 		end
 		while spammer do task.wait()
-			chatt("hat "..target.." "..antilog.."18137588505")
+			chatt("hat "..target.." "..antilog.."REPLACETHIS")
 		end
 	end
 end)
