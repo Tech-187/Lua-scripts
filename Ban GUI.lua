@@ -1,10 +1,10 @@
-game.Players.LocalPlayer:Kick("Patched until I replace the old hat with a new one. I have a working one but people are forcing me to gatekeep so")
-
 local cons = {}
 local prefix = "s!"
 local antilog = string.rep(0, math.random(16, 100))
 local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function() end
-getgenv().autoexecute = true
+
+getgenv().antihat = false -- set this to true if ur on a non-ios device
+getgenv().autoexecute = false
 
 if autoexecute then
     queueteleport('loadstring(game:HttpGet(("https://raw.githubusercontent.com/Tech-187/Lua-scripts/refs/heads/main/Ban%20GUI.lua"),true))()')
@@ -15,7 +15,6 @@ repeat task.wait() until game:IsLoaded()
 local antimessage = true
 local antiblind = true
 local antipunish = true
-local antikick = true
 
 local rns = game:GetService("RunService")
 local plrs = game:GetService("Players")
@@ -196,7 +195,7 @@ Tutup.TextColor3 = Color3.new(0, 1, 0)
 Tutup.TextSize = 25
 Tutup.MouseButton1Down:connect(function()
 	antipunish = false
-	antikick = false
+	antihat = false
 	PadCheck = false
 	for _, connection in ipairs(cons) do
 		connection:Disconnect()
@@ -442,12 +441,10 @@ if not isfile("banguibanned.txt") then
 end
 
 task.spawn(function()
-    while antikick do task.wait()
+    while antihat do task.wait()
         for i,v in pairs(workspace:GetDescendants()) do
             if v:IsA("Accessory") then
-                if tostring(v.AccessoryType) == "Enum.AccessoryType.Unknown" then -- kneekirs
-                    v:Destroy()
-                end
+                v:Destroy()
             end
         end
     end
@@ -490,25 +487,23 @@ cons[#cons + 1] = game.Players.LocalPlayer.Chatted:Connect(function(msg)
 		chatt("skydive "..target.." "..target.." "..target.."                                                                                                                                                                      fuck")
 		chatt("skydive "..target.." "..target.." "..target.."                                                                                                                                                                      fuck")
 		chatt("skydive "..target.." "..target.." "..target.."                                                                                                                                                                      fuck")
-		chatt("size "..target.." 9.9")
-		chatt("size "..target.." 9.9")
-		chatt("spin MeansSpiderInDutch                                                                                                                                                                        "..target.." fuck")
-		if not permpasses then 
-			wait(0.35)
-		end
-		pcall(function()
-			fireclickdetector(adminFlr.Regen.ClickDetector, 0)
-		end)
-		wait(0.15)
-		chatt("setgrav "..target.." -251.2")
-		task.delay(3.65, function()
+		chatt("size "..target.." 4")
+		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
+		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
+		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
+		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
+		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
+		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
+		chatt("name "..target.." Imagine getting kicked L")
+		task.delay(5.69, function()
 			spammer = false
 		end)
-		for i = 1, 103 do
-			chatt("hat "..target.." "..antilog.."REPLACETHIS")
+		chatt("setgrav "..target.." -251.2")
+		for i = 1, 100 do
+			chatt("hat "..target.." "..antilog.."18219890448")
 		end
 		while spammer do task.wait()
-			chatt("hat "..target.." "..antilog.."REPLACETHIS")
+			chatt("hat "..target.." "..antilog.."18219890448")
 		end
 	end
 end)
