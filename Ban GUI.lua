@@ -3,8 +3,9 @@ local prefix = "s!"
 local antilog = string.rep(0, math.random(16, 100))
 local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function() end
 
-getgenv().antihat = false -- set this to true if ur on a non-ios device
-getgenv().autoexecute = false
+getgenv().antihat = false -- useless in this version
+getgenv().autoexecute = true
+getgenv().perm = true -- set this to false if ur executor crashes
 
 if autoexecute then
     queueteleport('loadstring(game:HttpGet(("https://raw.githubusercontent.com/Tech-187/Lua-scripts/refs/heads/main/Ban%20GUI.lua"),true))()')
@@ -15,6 +16,7 @@ repeat task.wait() until game:IsLoaded()
 local antimessage = true
 local antiblind = true
 local antipunish = true
+local firsttimeonly = true
 
 local rns = game:GetService("RunService")
 local plrs = game:GetService("Players")
@@ -22,7 +24,7 @@ local getplrs = plrs:GetChildren()
 local plr = plrs.LocalPlayer
 
 local MarketplaceService = game:GetService("MarketplaceService")
-local permpasses = (MarketplaceService:UserOwnsGamePassAsync(plr.UserId, 66254) or MarketplaceService:UserOwnsGamePassAsync(plr.UserId, 64354) or MarketplaceService:UserOwnsGamePassAsync(plr.UserId, 35748) or MarketplaceService:UserOwnsGamePassAsync(plr.UserId, 37127))
+local permpasses = (MarketplaceService:UserOwnsGamePassAsync(plr.UserId, 99999))
 -- It doesn't automatically give u admin if u don't have any gamepasses because this is strongly based off of the original Ban GUI so ur gonna have to click the "Get Admin" button
 
 local gameFlr = workspace.Terrain._Game
@@ -35,7 +37,9 @@ local function antipunishh()
 		coroutine.wrap(function()
 			while antipunish do task.wait()
 				if game.Lighting:FindFirstChild(game.Players.LocalPlayer.Name) then
-					game.Players.LocalPlayer.Character.Humanoid.Health = 0
+                    if not firsttimeonly then
+					    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+                    end
 					if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
 						queueteleport([[repeat task.wait() until game:IsLoaded()
 
@@ -107,8 +111,30 @@ wait(.35)
 game.Players:Chat("respawn all")]])
 						game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
 					else
-						chatt("reset me  ")
-						chatt(":punish others")
+						if firsttimeonly then
+                            chatt("unpunish me  ")
+							chatt(":punish others")
+							chatt("blind others")
+							chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Do not attempt it again!")
+							wait(.41)
+							fireclickdetector(adminFlr.Regen.ClickDetector, 0)
+							wait(6)
+							chatt("unpunish others") -- this is done so people are still "punished" but are able to reset out of it, giving them a second chance.
+							chatt("invis others")
+							chatt("freeze others")
+							wait(.6)
+							chatt("name others   ")
+							wait(.6)
+							chatt("thaw others")
+							wait(.6)
+							for i = 1, 100 do
+								chatt("ff nothing to see, be grateful!")
+							end
+                            firsttimeonly = false
+                        else
+                            chatt("reset me  ")
+                            chatt(":punish others")
+                        end
     				end
     			end
     		end
@@ -131,6 +157,78 @@ end
 if antipunish then
 	antipunishh()
 end
+
+local padAbuse = false
+local lc = {}
+
+task.spawn(function()
+	local function GetPad(msg)
+		while PadCheck == true do
+			task.wait(0)
+			if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
+				if game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin") then
+					local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
+					local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
+					task.wait(0.125)
+					pad.CanCollide = false
+					repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+					pad.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+					task.wait(0.125)
+					pad.CFrame = padCFrame
+					pad.CanCollide = true
+				else
+					fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
+				end
+			end
+		end
+	end
+
+	PadCheck = true
+	GetPad(msg)
+end)
+
+task.spawn(function()
+while task.wait() do
+coroutine.wrap(function()
+    if padAbuse == true then
+        local pads = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:GetChildren("Head")
+        for i, pad in pairs(pads) do
+            coroutine.wrap(function()
+                pcall(function()
+                    local cre = pad.Head
+                    local spr = game.Players.LocalPlayer.Character:FindFirstChild("Head")
+                    firetouchinterest(cre, spr, 1)
+                    firetouchinterest(cre, spr, 0)
+                    firetouchinterest(cre, spr, 1)
+                    task.wait()
+                    firetouchinterest(cre, spr, 0)
+                    
+                    if pad.Name ~= game.Players.LocalPlayer.Name.."'s admin" then
+                        fireclickdetector(adminFlr.Regen.ClickDetector, 0)
+                    end
+                end)
+            end)()
+        end
+    end
+end)()
+
+coroutine.wrap(function() -- Perm
+    local spr = game.Players.LocalPlayer.Character:FindFirstChild("Head")
+    if perm ~= true or adminFlr.Pads:FindFirstChild(game.Players.LocalPlayer.Name.."'s admin") ~= nil then 
+    else
+        pcall(function()
+            local pad = adminFlr.Pads:FindFirstChild("Touch to get admin")
+            local a = pad.Head
+            firetouchinterest(a, spr, 1)
+            firetouchinterest(a, spr, 0)
+            firetouchinterest(a, spr, 1)
+            task.wait()
+            firetouchinterest(a, spr, 0)
+        end)
+    end
+end)()
+end
+end)
 
 -- Objects
 
@@ -313,7 +411,7 @@ Admin.BorderSizePixel = 2
 Admin.Position = UDim2.new(0.0321931541, 0, 0.58477509, 0)
 Admin.Size = UDim2.new(0, 225, 0, 50)
 Admin.Font = Enum.Font.SciFi
-Admin.Text = "Get Admin"
+Admin.Text = "NoAdminLagger v2.3"
 Admin.TextColor3 = Color3.new(0, 1, 0)
 Admin.TextSize = 25
 
@@ -346,29 +444,54 @@ Data.TextWrapped = true
 -- Scripts
 
 Admin.MouseButton1Down:connect(function()
-	local function GetPad(msg)
-		while PadCheck == true do
-			task.wait(0)
-			if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
-				if game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin") then
-					local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
-					local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
-					task.wait(0.125)
-					pad.CanCollide = false
-					repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-					pad.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-					task.wait(0.125)
-					pad.CFrame = padCFrame
-					pad.CanCollide = true
-				else
-					fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
-				end
-			end
-		end
-	end
-	
-	PadCheck = true
-	GetPad(msg)
+	-- Bad method but I don't think this will ever get patched so I'm keeping it in. Can be useful if u do this with a ton of clients I guess
+    getgenv().on = true
+    while wait(1.3) do --// s
+        if on then
+            game:GetService("NetworkClient"):SetOutgoingKBPSLimit(0/0)
+            local function getmaxvalue(val)
+                local mainvalueifonetable = 499999
+                if type(val) ~= "number" then
+                    return nil
+                end
+                local calculateperfectval = (mainvalueifonetable / (val + 2))
+                return calculateperfectval
+            end
+
+            local function bomb(tableincrease, tries)
+                local maintable = {}
+                local spammedtable = {}
+
+                table.insert(spammedtable, {})
+                z = spammedtable[1]
+
+                for i = 1, tableincrease do
+                    local tableins = {}
+                    table.insert(z, tableins)
+                    z = tableins
+                end
+
+                local calculatemax = getmaxvalue(tableincrease)
+                local maximum
+
+                if calculatemax then
+                    maximum = calculatemax
+                else
+                    maximum = 10000
+                end
+
+                for i = 1, maximum do
+                    table.insert(maintable, spammedtable)
+                end
+
+                for i = 1, tries do
+                    game.RobloxReplicatedStorage.UpdatePlayerBlockList:FireServer(maintable)
+                end
+            end
+
+            bomb(250, 2)
+        end
+    end
 end)
 
 noclip = false
@@ -481,29 +604,107 @@ cons[#cons + 1] = game.Players.LocalPlayer.Chatted:Connect(function(msg)
             end)
 		GetPlayer2(string.sub(msg, 6 + #prefix))
 		spammer = true
+        plringame = true
 		chatt("respawn "..target)
-		chatt("blind "..target.."                                                                                                                                                                      fuck") -- fuck is added at the end so the command is tagged in peoples clogs. That prevents logging, as well as the double chat bug
-		chatt("invis "..target.."                                                                                                                                                                      fuck")
-		chatt("skydive "..target.." "..target.." "..target.."                                                                                                                                                                      fuck")
-		chatt("skydive "..target.." "..target.." "..target.."                                                                                                                                                                      fuck")
-		chatt("skydive "..target.." "..target.." "..target.."                                                                                                                                                                      fuck")
-		chatt("size "..target.." 4")
-		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
-		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
-		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
-		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
-		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
-		chatt("unseizure                                                                                                                                                                        "..target.." fuck")
-		chatt("name "..target.." Imagine getting kicked L")
-		task.delay(5.69, function()
-			spammer = false
+		chatt("setgrav "..target.." -8e8")
+		wait()
+		pcall(function()
+			fireclickdetector(adminFlr.Regen.ClickDetector, 0)
 		end)
-		chatt("setgrav "..target.." -251.2")
+		wait(0.89)
+        chatt("unpunish "..target)
+		task.wait()
+        chatt("invis "..target)
+        chatt("refresh "..target)
+        chatt("invis "..target)
+        chatt("kill "..target)
+        chatt("invis "..target)
+        chatt("trip "..target)
+        chatt("invis "..target)
+        chatt("speed "..target.." 00000000000000000000000000000000000000000000")
+        chatt("setgrav "..target.." -1000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+		wait(.1)
+        chatt("speed "..target.." 00000000000000000000000000000000000000000000")
+        chatt("invis "..target.." "..target..""..target)
+        chatt("unpunish "..target.." "..target.." "..target)
+		task.wait(.2)
+        chatt("invis "..target)
+		wait(.2)
+        chatt("reset "..target)
+		wait(0.89)
+		task.delay(4.69, function()
+			chatt("reset aIl                                                                                                                      others fuck")
+			wait(4)
+			spammer = false
+			pcall(function()
+                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/mute "..target,"all")
+            end)
+			local playerName = target
+            local players = game:GetService("Players")
+			local connections = {}
+
+            connections[#connections + 1] =  game.Players.ChildRemoved:Connect(function(player)
+                if player.Name == playerName then
+                    plringame = false
+                    print("Stopped kick on "..playerName)
+                end
+            end)
+
+            local function DisconnectAllConnections(player)
+                local playerConnections = connections[player]
+                if playerConnections then
+                    for _, connection in ipairs(playerConnections) do
+                        connection:Disconnect()
+                    end
+                    connections[player] = nil
+                end
+            end
+
+            local function CheckForRespawn(player)
+                local character = player.Character
+                if character then
+                    local characterAddedConnection
+                    characterAddedConnection = character:WaitForChild("HumanoidRootPart").AncestryChanged:Connect(function(_, parent)
+                        if parent == nil then
+                            plringame = false
+                            print("Stopped kick on "..playerName)
+                        end
+                    end)
+
+                    table.insert(connections, characterAddedConnection)
+                end
+            end
+
+            for _, player in ipairs(players:GetPlayers()) do
+                if player.Name == playerName then
+                    CheckForRespawn(player)
+                end
+            end
+
+            players.PlayerRemoving:Connect(function(player)
+                DisconnectAllConnections(player)
+            end)
+            
+            print("Got to this part!")
+            
+            while plringame == true do wait(10)
+                for _, player in ipairs(plrs:GetPlayers()) do
+                    if player.Name == playerName then
+                        spammer = false
+                        for i = 1, 128 do
+                            chatt("h \n\n\n\n\n\n\n\n\n\n "..shared.pmstuff)
+                        end
+                        wait(4)
+                        chatt("reset aIl                                                                                                                      others fuck")
+                    end
+                end
+            end
+		end)
 		for i = 1, 100 do
-			chatt("hat "..target.." "..antilog.."18219890448")
+			chatt("h \n\n\n\n\n\n\n\n\n\n "..shared.pmstuff)
 		end
 		while spammer do task.wait()
-			chatt("hat "..target.." "..antilog.."18219890448")
+			chatt("h \n\n\n\n\n\n\n\n\n\n "..shared.pmstuff)
 		end
 	end
 end)
@@ -529,6 +730,8 @@ cons[#cons + 1] = rns.RenderStepped:Connect(function()
         end
     end
 end)
+
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tech-187/Temp/main/pm%20stuff'),true))()
 
 local file = readfile("banguibanned.txt")
 for plr in file:gmatch("[^\r\n]+") do
