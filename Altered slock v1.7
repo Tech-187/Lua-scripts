@@ -22,6 +22,7 @@
         end
         
         local function trueblind()
+        if not permslock then return end
             chatt(":blind                                                                                                                                                                 all")
             chatt("fogcolor 0 0 0")
             chatt("fogend nil")
@@ -154,8 +155,10 @@
                             ratelimit = false
                             else
                             if v.Name ~= game.Players.LocalPlayer.Name then
-                                    chatt(":punish "..v.Name.." "..math.random(1,1000))
-                                    chatt(":blind "..v.Name.." "..math.random(1,1000))
+                                    chatt(":punish "..v.Name.."                                                                                              
+   others fuck")
+                                    chatt(":blind "..v.Name.."                                                                                              
+   others fuck")
                                 end
                             end
                         end
@@ -175,7 +178,9 @@
                 if string.sub(msg, 1, #prefix + 11) == prefix .. "serverlock" then
                     if not blindfinished then return end
                     blindfinished = true
+                    if permslock then
                     chatt(":punish all "..math.random(1,1000));wait()
+                    end
                     sl = true
                     trueblind()
                     pcall(function()
