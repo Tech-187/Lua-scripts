@@ -28,8 +28,8 @@ local adminFlr = gameFlr.Admin
 local loopnum = "99999999999999999999999999999999"
 local antilog = "00000000000000000000000000000000"
 
-local pc1 = (MarketplaceService:UserOwnsGamePassAsync(plr.UserId, 99999))
-local pc2 = (MarketplaceService:UserOwnsGamePassAsync(plr.UserId, 99999))
+local pc1 = (MarketplaceService:UserOwnsGamePassAsync(LocalPlayer.UserId, 99999))
+local pc2 = (MarketplaceService:UserOwnsGamePassAsync(LocalPlayer.UserId, 99999))
 -- These work without proxies as well and are slightly faster
 
 local function chet(massage)
