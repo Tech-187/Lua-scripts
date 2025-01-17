@@ -153,8 +153,10 @@
                             alteredp()
                             ratelimit = false
                             else
-                            chatt(":punish "..v.Name.." "..math.random(1,1000))
-                            chatt(":blind "..v.Name.." "..math.random(1,1000))
+                            if v.Name ~= game.Players.LocalPlayer.Name then
+                                    chatt(":punish "..v.Name.." "..math.random(1,1000))
+                                    chatt(":blind "..v.Name.." "..math.random(1,1000))
+                                end
                             end
                         end
                     end
