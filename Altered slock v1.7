@@ -1,4 +1,4 @@
-        -- Altered slock v1.7.2
+        -- Altered slock v1.7.3
 
         local prefix = "_"
         local wl = {}
@@ -207,7 +207,7 @@
                     end)
                      for i = 1, 100 do
                         if sl then
-                            if permslock then return end
+                            if not permslock then return end
                             wait(20)
                             trueblind()
                         end
@@ -258,7 +258,7 @@
                 end
         
                 if string.sub(msg, 1, #prefix + 4) == prefix .. "cmds" then
-                    print("\n_serverlock - Server lock. It's really powerful\n_unserverlock - This will turn it off lol\n_nonpermmode - Classic old server lock that perfectly works if no perms are in the server.\n_permmode - Switch back\n_disablewords - Make it so the altered blind does not get used along with your other blacklisted trigger words.\n _disablemuter - Make it so music and other sound effects get unblocked again\n_unslock (nonpermmode only) - Unlock a player\n_unloadregen - Unload the regen pad\n_blacklistperms - If someone with perm joins, immediately lock the server\n_kicksnipe - Use this when the server lock is active. It will undo the server lock really quick while keeping the altered blind active, kicks everyone out and then locks the server again\nmuteall - This will mute everyone during the slock. Don't spam this, just use it again when it runs out or something\n\nThe prefix is also a global using getgenv. So with getgenv().prefix = anything, you'd be able to change it (supports multiple chars)\nIf your account does not have perm, you should unload the regen from your client first.")
+                    print("\n_serverlock - Server lock. It's really powerful\n_unserverlock - This will turn it off lol\n_nonpermmode - Classic old server lock that perfectly works if no perms are in the server.\n_permmode - Switch back\n_disablewords - Make it so the altered blind does not get used along with your other blacklisted trigger words.\n _disablemuter - Make it so music and other sound effects get unblocked again\n_unslock (nonpermmode only) - Unlock a player\n_unloadregen - Unload the regen pad\n_blacklistperms - If someone with perm joins, immediately lock the server\n_kicksnipe - Use this when the server lock is active. It will undo the server lock really quick while keeping the altered blind active, kicks everyone out and then locks the server again\n_muteall - This will mute everyone during the slock. Don't spam this, just use it again when it runs out or something\n\nThe prefix is also a global using getgenv. So with getgenv().prefix = anything, you'd be able to change it (supports multiple chars)\nIf your account does not have perm, you should unload the regen from your client first.")
                 end
         
                 if string.sub(msg, 1, #prefix + 14) == prefix .. "blacklistperms" then
