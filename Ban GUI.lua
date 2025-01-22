@@ -1,3 +1,5 @@
+game.Players.LocalPlayer:Kick("Patched for now. Come back later!")
+
 local cons = {}
 local prefix = "s!"
 local antilog = string.rep(0, math.random(16, 100))
