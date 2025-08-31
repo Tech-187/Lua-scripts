@@ -7,10 +7,10 @@
 local function GetPad(msg)
     while PadCheck == true do
         task.wait(0)
-        if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
-            if game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin") then
-                local pad = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
-                local padCFrame = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
+        if not game:GetService("Workspace").Terrain["GameFolder"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
+            if game:GetService("Workspace").Terrain["GameFolder"].Admin.Pads:FindFirstChild("Touch to get admin") then
+                local pad = game:GetService("Workspace").Terrain["GameFolder"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head")
+                local padCFrame = game:GetService("Workspace").Terrain["GameFolder"].Admin.Pads:FindFirstChild("Touch to get admin"):FindFirstChild("Head").CFrame
                 task.wait(0.125)
                 pad.CanCollide = false
                 repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
@@ -19,7 +19,7 @@ local function GetPad(msg)
                 pad.CFrame = padCFrame
                 pad.CanCollide = true
             else
-                fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
+                fireclickdetector(game:GetService("Workspace").Terrain["GameFolder"].Admin.Regen.ClickDetector, 0)
             end
         end
     end
