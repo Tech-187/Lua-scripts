@@ -1,1 +1,39 @@
--- still looking for a better / more effective method
+game.Players:Chat("btools me                                                                                                    fuck")
+game.Players:Chat("givetools/me                                                                                                    fuck")
+wait(0.5)
+while true do
+PartTable = {}
+game.Workspace.ChildAdded:Connect(function(v)
+    if v:IsA('Part') then
+        table.insert(PartTable,v)
+        --print(v.Name)
+        end
+    end)
+for i = 1,3000 do
+local args = {
+    [1] = "CreatePart",
+    [2] = "Normal",
+    [3] = CFrame.new(Vector3.new(-112.61819458007812, 20.000003814697266, 80.5723876953125), Vector3.new(-0, -0, -1)),
+    [4] = workspace
+}
+task.spawn(function()
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Building Tools"):WaitForChild("SyncAPI"):WaitForChild("ServerEndpoint"):InvokeServer(unpack(args))
+end)
+end
+wait(0.5)
+for i,v in pairs(PartTable) do
+   local args = {
+    [1] = "SyncAnchor",
+    [2] = {
+        [1] = {
+            ["Part"] = v,
+            ["Anchored"] = false
+        }
+    }
+}
+task.spawn(function()
+game:GetService("Players").LocalPlayer.Character:WaitForChild("Building Tools"):WaitForChild("SyncAPI"):WaitForChild("ServerEndpoint"):InvokeServer(unpack(args))
+ end)
+end
+wait(5)
+end
