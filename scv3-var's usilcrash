@@ -1,5 +1,11 @@
 game.Players:Chat("btools me                                                                                                    fuck")
 game.Players:Chat("givetools/me                                                                                                    fuck")
+local Backpack = game.Players.LocalPlayer:FindFirstChildOfClass("Backpack")
+    game.Players.LocalPlayer.Backpack:WaitForChild("Building Tools")
+    for _, v in ipairs(Backpack:GetChildren()) do
+        v.Parent = game.Players.LocalPlayer.Character
+        v:Activate()
+    end
 wait(0.5)
 while true do
 PartTable = {}
