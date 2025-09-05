@@ -46,23 +46,6 @@ if pc1 and not pc2 then
                 end
                 wait(1)
                 chet("clone all all all all fuck")
-                task.spawn(function()
-                    if alreadyspammed then return end
-                    alreadyspammed = true
-                    chet("gear all "..antilog.."4842204072")
-                    chet("fogend nil")
-                    chet("flash the fuck out of your ass")
-                    chet("hmsg normal GAME HAS BEEN NUKED")
-                    chet("hmsg center GAME HAS BEEN NUKED")
-                    for i = 1, 350 do
-                        chet("respawn/                                                                                                                                       others others others fuck")
-                    end
-                    chet("gear all "..antilog.."4842204072")
-                    chet("fogend nil")
-                    chet("flash the fuck out of your ass")
-                    chet("hmsg normal GAME HAS BEEN NUKED")
-                    chet("hmsg center GAME HAS BEEN NUKED")
-                end)
                 wait(.49)
                 for i = 1, 128 do
                     task.wait()
@@ -112,10 +95,17 @@ if pc1 and not pc2 then
     end
     end)
 elseif not pc1 and pc2 then -- Just perm, not persons. This is also the most simple
-    for i = 1,52 do
-        chet("dog all all all all                                                                           fuck")
+    for i = 1, 5 do
+        chet("size all .3")
     end
-    for i = 1,51 do
+    for i = 1, 23 do
+        chet("freeze all all all all                                                                fuck")
+        chet("dog all all all all                                                                      fuck")
+    end
+    for i = 1, 5 do
+        chet("size all 10")
+    end
+    for i = 1, 200 do
         chet("clone all all all all                                                                           fuck")
     end
     while task.wait() do
