@@ -1,5 +1,5 @@
 local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function() end
-getgenv().autoexecute = false -- This annoys me, no more of this.
+getgenv().autoexecute = true
 
 if autoexecute then
     queueteleport([[
@@ -20,7 +20,7 @@ end
 
 local connections = {}
 
-local gameFlr = workspace.Terrain._Game
+local gameFlr = workspace.Terrain.GameFolder
 local adminFlr = gameFlr.Admin
 
 local soundvis = false
@@ -63,7 +63,7 @@ getgenv().house_keybind = "n"
 getgenv().reset_keybind = "c" -- This also shares with VAR
 getgenv().scriptrunning = true -- keep on
 
-local Game_Folder = game:GetService("Workspace").Terrain["_Game"]
+local Game_Folder = game:GetService("Workspace").Terrain["GameFolder"]
 local Workspace_Folder = Game_Folder.Workspace
 
 game:GetService("Workspace").FallenPartsDestroyHeight = 0/0
@@ -124,7 +124,7 @@ task.spawn(function()
     while scriptrunning do task.wait()
         coroutine.wrap(function() -- PadAbuse
 			if padAbuse == true then
-				local pads = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:GetChildren("Head")
+				local pads = game:GetService("Workspace").Terrain["GameFolder"].Admin.Pads:GetChildren("Head")
 				for i, pad in pairs(pads) do
 					coroutine.wrap(function()
 						pcall(function()
@@ -348,11 +348,11 @@ getgenv().nonpermantipunish = true
 coroutine.wrap(function()
 while nonpermantipunish do task.wait()
 if game.Lighting:FindFirstChild(game.Players.LocalPlayer.Name) then
-if not game:GetService("Workspace").Terrain["_Game"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
+if not game:GetService("Workspace").Terrain["GameFolder"].Admin.Pads:FindFirstChild(game.Players.LocalPlayer.Name .. "'s admin") then
 queueteleport([[
 repeat task.wait() until game:IsLoaded()
 
-local gameFlr = workspace.Terrain._Game
+local gameFlr = workspace.Terrain.GameFolder
 local adminFlr = gameFlr.Admin
 local padAbuse = true
 local perm = true
@@ -376,7 +376,7 @@ task.spawn(function()
 while task.wait() do
 coroutine.wrap(function()
     if padAbuse == true then
-        local pads = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:GetChildren("Head")
+        local pads = game:GetService("Workspace").Terrain["GameFolder"].Admin.Pads:GetChildren("Head")
         for i, pad in pairs(pads) do
             coroutine.wrap(function()
                 pcall(function()
@@ -505,7 +505,7 @@ function()
         chatt("invis "..Target.Name.." "..math.random(1,1000));wait(.2)
         chatt(":reset "..Target.Name.." "..math.random(1,1000));wait(.15)
         pcall(function()
-            fireclickdetector(game:GetService("Workspace").Terrain["_Game"].Admin.Regen.ClickDetector, 0)
+            fireclickdetector(game:GetService("Workspace").Terrain["GameFolder"].Admin.Regen.ClickDetector, 0)
             chatt("iyc firecd")
         end)
         for i = 1, 20 do
@@ -594,7 +594,7 @@ function()
             return notify('r', 'Regen profile has already been created')
         end
     end
-    local part = game:GetService("Workspace").Terrain["_Game"].Admin.Regen
+    local part = game:GetService("Workspace").Terrain["GameFolder"].Admin.Regen
     shared.regencoords = part.Position
     local line = 'game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(' .. shared.regencoords.X .. ', ' .. shared.regencoords.Y .. ', ' .. shared.regencoords.Z .. ') -- Those are your personalized coords. Delete this file if you want to generate new coords'
     writefile("regprofile.lua", line)
@@ -621,7 +621,7 @@ function()
     local function L_2_func()
         repeat task.wait()
         until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-        local L_10_=game:GetService("Workspace").Terrain["_Game"]local L_11_=L_10_.Workspace;local L_12_=L_10_.Admin;local L_13_=game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")local L_14_=true
+        local L_10_=game:GetService("Workspace").Terrain["GameFolder"]local L_11_=L_10_.Workspace;local L_12_=L_10_.Admin;local L_13_=game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")local L_14_=true
         spawn(function()
             while scriptrunning do
                 game:GetService('RunService').Heartbeat:wait()
@@ -952,7 +952,7 @@ addcommand("nok",
 "No description",
 function()
     pcall(function()
-        local objs = game:GetService("Workspace").Terrain._Game.Workspace.Obby:GetChildren()
+        local objs = game:GetService("Workspace").Terrain.GameFolder.Workspace.Obby:GetChildren()
         for i, obj in pairs(objs) do
             coroutine.wrap(function()
                 pcall(function()
@@ -1077,7 +1077,7 @@ function()
     for _Index, Target in pairs(GetPlayer(args[2])) do
         local id1 = 66254
         task.wait()
-        if not game:GetService("Workspace").Terrain["_Game"].Admin:FindFirstChild("Regen") then
+        if not game:GetService("Workspace").Terrain["GameFolder"].Admin:FindFirstChild("Regen") then
             chatt("h \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Failed to ban "..Target.Name.." \n Try a different method instead")
             game.Players:ReportAbuse(game:GetService("Players"),Target.Name,"Cheating/Exploiting", "Using a spam script to disrupt the chat for everyone")
             return
@@ -1645,13 +1645,13 @@ local function NKEI_fake_script() -- ScrollingFrame.LocalScript
 		chatt("fogcolor 255 255 0")
         soundvis = true
         chatt("time 0")
-        game:GetService("Workspace").Terrain["_Game"].Folder:WaitForChild("Sound")
-        local loud = game:GetService("Workspace").Terrain["_Game"].Folder.Sound.PlaybackLoudness
+        game:GetService("Workspace").Terrain["GameFolder"].Folder:WaitForChild("Sound")
+        local loud = game:GetService("Workspace").Terrain["GameFolder"].Folder.Sound.PlaybackLoudness
         repeat
             if loud > 75 then
             else
-                if game:GetService("Workspace").Terrain["_Game"].Folder:FindFirstChild("Sound") then
-                    chatt("fogend "..game:GetService("Workspace").Terrain["_Game"].Folder.Sound.PlaybackLoudness / 4)
+                if game:GetService("Workspace").Terrain["GameFolder"].Folder:FindFirstChild("Sound") then
+                    chatt("fogend "..game:GetService("Workspace").Terrain["GameFolder"].Folder.Sound.PlaybackLoudness / 4)
                 else
                 end
             end;wait()
@@ -1696,7 +1696,7 @@ local function NKEI_fake_script() -- ScrollingFrame.LocalScript
 		while true do
 			for i = 0,1,0.001*speed do
 				local clr = Color3.fromHSV(i,1,1)
-				local padss = game:GetService("Workspace").Terrain["_Game"].Admin.Pads:GetChildren("Head")
+				local padss = game:GetService("Workspace").Terrain["GameFolder"].Admin.Pads:GetChildren("Head")
 				for i, v in pairs(padss) do
 					local jkfv = v.Head
 					coroutine.wrap(function()
