@@ -1,11 +1,21 @@
-game.Players:Chat("btools me                                                                                                    fuck")
-game.Players:Chat("givetools/me                                                                                                    fuck")
-local Backpack = game.Players.LocalPlayer:FindFirstChildOfClass("Backpack")
-    game.Players.LocalPlayer.Backpack:WaitForChild("Building Tools")
-    for _, v in ipairs(Backpack:GetChildren()) do
-        v.Parent = game.Players.LocalPlayer.Character
-        v:Activate()
-    end
+local function equip()
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
+		task.spawn(function()
+			if v:IsA'Tool' then
+				v.Parent = game.Players.LocalPlayer.Character
+			end
+		end)
+	end
+end
+
+if game.Players.LocalPlayer.Backpack:FindFirstChild("Building Tools") or game.Players.LocalPlayer.Character:FindFirstChild("Building Tools") then
+    --equip()
+else
+    game.Players:Chat("btools me                                                                                                    fuck")
+    game.Players:Chat("givetools/me                                                                                                    fuck")
+    --game.Players.LocalPlayer.Backpack:WaitForChild("Building Tools")
+    --equip()
+end
 wait(0.5)
 while true do
 PartTable = {}
@@ -23,7 +33,7 @@ local args = {
     [4] = workspace
 }
 task.spawn(function()
-game:GetService("Players").LocalPlayer.Character:WaitForChild("Building Tools"):WaitForChild("SyncAPI"):WaitForChild("ServerEndpoint"):InvokeServer(unpack(args))
+game:GetService("Players").LocalPlayer.Backpack:WaitForChild("Building Tools"):WaitForChild("SyncAPI"):WaitForChild("ServerEndpoint"):InvokeServer(unpack(args))
 end)
 end
 wait(0.5)
@@ -38,7 +48,7 @@ for i,v in pairs(PartTable) do
     }
 }
 task.spawn(function()
-game:GetService("Players").LocalPlayer.Character:WaitForChild("Building Tools"):WaitForChild("SyncAPI"):WaitForChild("ServerEndpoint"):InvokeServer(unpack(args))
+game:GetService("Players").LocalPlayer.Backpack:WaitForChild("Building Tools"):WaitForChild("SyncAPI"):WaitForChild("ServerEndpoint"):InvokeServer(unpack(args))
  end)
 end
 wait(5)
