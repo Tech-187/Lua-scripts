@@ -1,3 +1,5 @@
+-- this is best used when u startertools urself building tools, but does work perfectly fine without it
+
 local function equip()
     for i,v in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
 		task.spawn(function()
@@ -25,7 +27,7 @@ game.Workspace.ChildAdded:Connect(function(v)
         --print(v.Name)
         end
     end)
-for i = 1,3000 do
+for i = 1,5500 do
 local args = {
     [1] = "CreatePart",
     [2] = "Normal",
@@ -51,5 +53,5 @@ task.spawn(function()
 game:GetService("Players").LocalPlayer.Backpack:WaitForChild("Building Tools"):WaitForChild("SyncAPI"):WaitForChild("ServerEndpoint"):InvokeServer(unpack(args))
  end)
 end
-wait(5)
+wait(2.5)
 end
